@@ -112,7 +112,8 @@ async function loginUser() {
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    // Si l'erreur est liée à un mot de passe incorrect
+    console.log("Erreur retournée par l'API:", error); // Ajouter un log pour voir la structure de l'erreur
+
     if (error.message === "Invalid credentials") {
       document.getElementById("loginErrorMessage").textContent = "Mot de passe incorrect.";
     } else {
