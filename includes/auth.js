@@ -108,14 +108,14 @@ async function loginUser() {
       body: { email, password }
     });
 
+    // Sauvegarde du token si la connexion réussit
     saveToken(data.access_token);
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    console.log("Erreur retournée par l'API:", error); // Ajouter un log pour voir la structure de l'erreur
-
+    // Si l'erreur est liée à un mot de passe incorrect ou à des identifiants invalides
     if (error.message === "Invalid credentials") {
-      document.getElementById("loginErrorMessage").textContent = "Mot de passe incorrect.";
+      document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
     } else {
       document.getElementById("loginErrorMessage").textContent = "Erreur lors de la connexion. Veuillez réessayer.";
     }
