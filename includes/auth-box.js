@@ -33,6 +33,7 @@ class AuthBox extends HTMLElement {
 
             <!-- FORMULAIRE CONNEXION -->
             <article id="loginPanel" class="ar-auth__card ar-auth__card--login">
+            <div id="errorMessage" class="error-message"></div>
               <div class="ar-auth__card-top">
                 <div class="ar-auth__icon ar-auth__icon--primary">
                   <span>→</span>
@@ -85,6 +86,7 @@ class AuthBox extends HTMLElement {
 
             <!-- FORMULAIRE INSCRIPTION -->
             <article id="registerPanel" class="ar-auth__card ar-auth__card--register ar-auth__card--hidden">
+            <div id="errorMessage" class="error-message"></div>
               <div class="ar-auth__card-top">
                 <div class="ar-auth__icon ar-auth__icon--soft">
                   <span>+</span>
