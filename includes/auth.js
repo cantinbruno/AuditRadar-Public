@@ -1,5 +1,25 @@
 const API = "https://api.wavetools.fr";
 
+function setOut(value) {
+  const out = document.getElementById("out");
+  if (!out) return;
+
+  out.textContent =
+    typeof value === "string" ? value : JSON.stringify(value, null, 2);
+
+  out.classList.remove("is-error", "is-success");
+
+  if (typeof value === "string" && (
+    value.toLowerCase().includes("réussie") ||
+    value.toLowerCase().includes("active") ||
+    value.toLowerCase().includes("connecté")
+  )) {
+    out.classList.add("is-success");
+  } else {
+    out.classList.add("is-error");
+  }
+}
+
 function saveToken(token) {
   localStorage.setItem("access_token", token);
 }
@@ -13,56 +33,13 @@ function clearToken() {
 }
 
 function showAuth() {
-  const authBox = document.getElementById("authBox");
-  const protectedContent = document.getElementById("protectedContent");
-
-  if (authBox) authBox.style.display = "block";
-  if (protectedContent) protectedContent.style.display = "none";
+  document.getElementById("authBox").style.display = "block";
+  document.getElementById("protectedContent").style.display = "none";
 }
 
 function showProtected() {
-  const authBox = document.getElementById("authBox");
-  const protectedContent = document.getElementById("protectedContent");
-
-  if (authBox) authBox.style.display = "none";
-  if (protectedContent) protectedContent.style.display = "block";
-}
-
-function setMessage(id, value, type = "error") {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  if (!value) {
-    el.textContent = "";
-    el.classList.remove("is-error", "is-success");
-    return;
-  }
-
-  el.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
-  el.classList.remove("is-error", "is-success");
-  el.classList.add(type === "success" ? "is-success" : "is-error");
-}
-
-function clearMessage(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  el.textContent = "";
-  el.classList.remove("is-error", "is-success");
-}
-
-function extractErrorMessage(error) {
-  if (typeof error === "string") return error;
-
-  if (error && typeof error === "object") {
-    if (typeof error.detail === "string") return error.detail;
-
-    if (Array.isArray(error.detail) && error.detail.length > 0) {
-      return error.detail.map(item => item.msg || JSON.stringify(item)).join(", ");
-    }
-  }
-
-  return "Une erreur est survenue.";
+  document.getElementById("authBox").style.display = "none";
+  document.getElementById("protectedContent").style.display = "block";
 }
 
 async function request(path, options = {}) {
@@ -81,8 +58,8 @@ async function request(path, options = {}) {
   }
 
   const response = await fetch(API + path, {
-    method,
-    headers,
+    method: method,
+    headers: headers,
     body: body !== null ? JSON.stringify(body) : null
   });
 
@@ -107,30 +84,123 @@ async function checkAuth() {
 
   if (!token) {
     showAuth();
-    return false;
+    return;
   }
 
   try {
     await request("/auth/me");
     showProtected();
-    return true;
+    setOut("Session active.");
   } catch (error) {
     clearToken();
     showAuth();
-    return false;
+    setOut("Session invalide. Merci de vous reconnecter.");
   }
 }
 
-window.AuditRadarCore = {
-  API,
-  saveToken,
-  getToken,
-  clearToken,
-  showAuth,
-  showProtected,
-  setMessage,
-  clearMessage,
-  extractErrorMessage,
-  request,
-  checkAuth
-};
+async function registerUser() {
+  try {
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPass").value;
+
+    if (!email || !password) {
+      setOut("Veuillez remplir l'email et le mot de passe.");
+      return;
+    }
+
+    await request("/auth/register", {
+      method: "POST",
+      body: { email, password }
+    });
+
+    const loginData = await request("/auth/login", {
+      method: "POST",
+      body: { email, password }
+    });
+
+    saveToken(loginData.access_token);
+    showProtected();
+    setOut("Inscription réussie.");
+  } catch (error) {
+    setOut(error);
+  }
+}
+
+async function loginUser() {
+  try {
+    const email = document.getElementById("logEmail").value.trim();
+    const password = document.getElementById("logPass").value;
+
+    if (!email || !password) {
+      setOut("Veuillez remplir l'email et le mot de passe.");
+      return;
+    }
+
+    const data = await request("/auth/login", {
+      method: "POST",
+      body: { email, password }
+    });
+
+    saveToken(data.access_token);
+    showProtected();
+    setOut("Connexion réussie.");
+  } catch (error) {
+    setOut(error);
+  }
+}
+
+async function getProfile() {
+  try {
+    const data = await request("/auth/me");
+    setOut(data);
+  } catch (error) {
+    setOut(error);
+  }
+}
+
+async function runScript() {
+  try {
+    const script = document.getElementById("scriptName").value.trim();
+
+    if (!script) {
+      setOut("Le nom du script est vide.");
+      return;
+    }
+
+    const data = await request("/run/" + encodeURIComponent(script));
+    setOut(data);
+  } catch (error) {
+    setOut(error);
+  }
+}
+
+function logoutUser() {
+  clearToken();
+  showAuth();
+  setOut("Déconnexion réussie.");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const waitForElements = () => {
+    const btnRegister = document.getElementById("btnRegister");
+    const btnLogin = document.getElementById("btnLogin");
+    const btnMe = document.getElementById("btnMe");
+    const btnRun = document.getElementById("btnRun");
+    const btnLogout = document.getElementById("btnLogout");
+
+    if (!btnRegister || !btnLogin || !btnMe || !btnRun || !btnLogout) {
+      setTimeout(waitForElements, 50);
+      return;
+    }
+
+    btnRegister.addEventListener("click", registerUser);
+    btnLogin.addEventListener("click", loginUser);
+    btnMe.addEventListener("click", getProfile);
+    btnRun.addEventListener("click", runScript);
+    btnLogout.addEventListener("click", logoutUser);
+
+    checkAuth();
+  };
+
+  waitForElements();
+});
