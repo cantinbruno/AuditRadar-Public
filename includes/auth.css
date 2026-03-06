@@ -156,17 +156,6 @@
   box-shadow: var(--ar-auth-shadow-card);
 }
 
-.ar-auth__card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 22px;
-  right: 22px;
-  height: 4px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.7), rgba(37, 99, 235, 0));
-}
-
 .ar-auth__card--login {
   border-color: #c8dafb;
   background:
