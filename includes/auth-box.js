@@ -2,18 +2,23 @@ class AuthBox extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <section id="authBox" class="ar-auth">
+
         <div class="ar-auth__header">
-          <h2 class="ar-auth__title">Connexion / Inscription</h2>
+          <h2 class="ar-auth__title">Accès sécurisé</h2>
           <p class="ar-auth__subtitle">
-            Accédez à votre espace personnel en vous connectant ou en créant un compte.
+            Connectez-vous à votre espace personnel ou créez un compte pour accéder
+            aux fonctionnalités sécurisées de la plateforme.
           </p>
         </div>
 
         <div class="ar-auth__grid">
+
           <article class="ar-auth__panel ar-auth__panel--register">
             <div class="ar-auth__panel-header">
-              <h3 class="ar-auth__panel-title">Inscription</h3>
-              <p class="ar-auth__panel-text">Créez votre compte pour commencer.</p>
+              <h3 class="ar-auth__panel-title">Créer un compte</h3>
+              <p class="ar-auth__panel-text">
+                Créez votre accès en quelques secondes.
+              </p>
             </div>
 
             <div class="ar-auth__form-group">
@@ -36,7 +41,10 @@ class AuthBox extends HTMLElement {
                 autocomplete="new-password">
             </div>
 
-            <button id="btnRegister" class="ar-auth__button ar-auth__button--secondary" type="button">
+            <button
+              id="btnRegister"
+              class="ar-auth__button ar-auth__button--secondary"
+              type="button">
               S'inscrire
             </button>
           </article>
@@ -44,7 +52,9 @@ class AuthBox extends HTMLElement {
           <article class="ar-auth__panel ar-auth__panel--login">
             <div class="ar-auth__panel-header">
               <h3 class="ar-auth__panel-title">Connexion</h3>
-              <p class="ar-auth__panel-text">Connectez-vous à votre espace sécurisé.</p>
+              <p class="ar-auth__panel-text">
+                Retrouvez votre espace sécurisé.
+              </p>
             </div>
 
             <div class="ar-auth__form-group">
@@ -67,11 +77,16 @@ class AuthBox extends HTMLElement {
                 autocomplete="current-password">
             </div>
 
-            <button id="btnLogin" class="ar-auth__button ar-auth__button--primary" type="button">
+            <button
+              id="btnLogin"
+              class="ar-auth__button ar-auth__button--primary"
+              type="button">
               Se connecter
             </button>
           </article>
+
         </div>
+
       </section>
     `;
   }
