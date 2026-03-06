@@ -140,17 +140,17 @@ async function registerUser() {
       return;
     }
 
-    // Requête API d'enregistrement
+    // Requête API d'enregistrement avec un corps de requête correctement formaté
     const response = await request("/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password }), // Assure-toi que les données sont bien envoyées en JSON
       headers: { "Content-Type": "application/json" }
     });
 
     // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password }), // Assure-toi de la même structure pour la connexion
       headers: { "Content-Type": "application/json" }
     });
 
@@ -158,12 +158,12 @@ async function registerUser() {
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    console.error("Erreur lors de l'inscription:", error); // Log détaillé pour examiner l'erreur
+    console.error(error); // Log détaillé pour examiner l'erreur
 
-    // Vérification du détail de l'erreur
-    if (error && error.detail && Array.isArray(error.detail) && error.detail[0] && error.detail[0].msg) {
-      const errorMessage = error.detail[0].msg;
-      document.getElementById("registerErrorMessage").textContent = errorMessage;
+    // Gestion d'une erreur spécifique de l'API
+    if (error && error.detail && Array.isArray(error.detail)) {
+      const errorMsg = error.detail[0]?.msg || "Erreur inconnue";
+      document.getElementById("registerErrorMessage").textContent = errorMsg;
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
