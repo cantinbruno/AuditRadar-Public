@@ -102,12 +102,21 @@ async function registerUser() {
       return;
     }
 
-    const response = await request("/auth/register", {
+    // Validation de la complexité du mot de passe
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setOut("Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.");
+      return;
+    }
+
+    // Requête API d'enregistrement
+    await request("/auth/register", {
       method: "POST",
       body: { email, password }
     });
 
-    // Connexion après l'inscription
+    // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
       body: { email, password }
@@ -131,16 +140,23 @@ async function loginUser() {
       return;
     }
 
+    // Requête API de connexion
     const data = await request("/auth/login", {
       method: "POST",
       body: { email, password }
     });
 
+    // Sauvegarde du token
     saveToken(data.access_token);
-    showProtected();
+    showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    setOut(error);
+    // Si le mot de passe est incorrect ou autre erreur
+    if (error.message === "Invalid credentials") {
+      setOut("Le mot de passe ou l'email est incorrect.");
+    } else {
+      setOut(error);
+    }
   }
 }
 
