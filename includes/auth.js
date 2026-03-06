@@ -94,19 +94,20 @@ async function checkAuth() {
 
 async function registerUser() {
   try {
-    const email = document.getElementById("regEmail")?.value.trim() || "";
-    const password = document.getElementById("regPass")?.value || "";
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPass").value;
 
     if (!email || !password) {
       setOut("Veuillez remplir email et mot de passe.");
       return;
     }
 
-    await request("/auth/register", {
+    const response = await request("/auth/register", {
       method: "POST",
       body: { email, password }
     });
 
+    // Connexion après l'inscription
     const loginData = await request("/auth/login", {
       method: "POST",
       body: { email, password }
@@ -122,8 +123,8 @@ async function registerUser() {
 
 async function loginUser() {
   try {
-    const email = document.getElementById("logEmail")?.value.trim() || "";
-    const password = document.getElementById("logPass")?.value || "";
+    const email = document.getElementById("logEmail").value.trim();
+    const password = document.getElementById("logPass").value;
 
     if (!email || !password) {
       setOut("Veuillez remplir email et mot de passe.");
@@ -181,6 +182,7 @@ function logoutUser() {
 function switchAuthPanel(panel) {
   const loginPanel = document.getElementById("loginPanel");
   const registerPanel = document.getElementById("registerPanel");
+
   const showLogin = document.getElementById("showLogin");
   const showRegister = document.getElementById("showRegister");
 
