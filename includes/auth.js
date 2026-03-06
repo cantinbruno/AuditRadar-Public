@@ -143,14 +143,14 @@ async function registerUser() {
     // Requête API d'enregistrement
     const response = await request("/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),  // Envoi des données sous forme de JSON
-      headers: { "Content-Type": "application/json" }  // Spécifie que c'est du JSON
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" }
     });
 
     // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),  // Envoi des données sous forme de JSON
+      body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" }
     });
 
@@ -158,9 +158,12 @@ async function registerUser() {
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    console.error(error); // Log pour vérifier l'erreur exacte
-    if (error && error.detail && error.detail.includes("model_attributes_type")) {
-      document.getElementById("registerErrorMessage").textContent = "Le format des données est invalide, vérifiez votre email et mot de passe.";
+    console.error("Erreur lors de l'inscription:", error); // Log détaillé pour examiner l'erreur
+
+    // Vérification du détail de l'erreur
+    if (error && error.detail && Array.isArray(error.detail) && error.detail[0] && error.detail[0].msg) {
+      const errorMessage = error.detail[0].msg;
+      document.getElementById("registerErrorMessage").textContent = errorMessage;
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
