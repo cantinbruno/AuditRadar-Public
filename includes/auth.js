@@ -92,21 +92,48 @@ async function checkAuth() {
   }
 }
 
+async function loginUser() {
+  try {
+    const email = document.getElementById("logEmail").value.trim();
+    const password = document.getElementById("logPass").value;
+
+    if (!email || !password) {
+      document.getElementById("loginErrorMessage").textContent = "Veuillez remplir email et mot de passe.";
+      return;
+    }
+
+    // Requête de connexion
+    const data = await request("/auth/login", {
+      method: "POST",
+      body: { email, password }
+    });
+
+    saveToken(data.access_token);
+    showProtected(); // Passage à la zone protégée
+    setOut("Connexion réussie.");
+  } catch (error) {
+    if (error.message === "Invalid credentials") {
+      document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
+    } else {
+      document.getElementById("loginErrorMessage").textContent = "Erreur lors de la connexion. Veuillez réessayer.";
+    }
+  }
+}
+
 async function registerUser() {
   try {
     const email = document.getElementById("regEmail").value.trim();
     const password = document.getElementById("regPass").value;
 
     if (!email || !password) {
-      setOut("Veuillez remplir email et mot de passe.");
+      document.getElementById("registerErrorMessage").textContent = "Veuillez remplir email et mot de passe.";
       return;
     }
 
-    // Validation de la complexité du mot de passe
+    // Validation du mot de passe
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-
     if (!passwordRegex.test(password)) {
-      setOut("Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.");
+      document.getElementById("registerErrorMessage").textContent = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
       return;
     }
 
@@ -126,37 +153,7 @@ async function registerUser() {
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    setOut(error);
-  }
-}
-
-async function loginUser() {
-  try {
-    const email = document.getElementById("logEmail").value.trim();
-    const password = document.getElementById("logPass").value;
-
-    if (!email || !password) {
-      setOut("Veuillez remplir email et mot de passe.");
-      return;
-    }
-
-    // Requête API de connexion
-    const data = await request("/auth/login", {
-      method: "POST",
-      body: { email, password }
-    });
-
-    // Sauvegarde du token
-    saveToken(data.access_token);
-    showProtected(); // Passage à la zone protégée
-    setOut("Connexion réussie.");
-  } catch (error) {
-    // Si le mot de passe est incorrect ou autre erreur
-    if (error.message === "Invalid credentials") {
-      setOut("Le mot de passe ou l'email est incorrect.");
-    } else {
-      setOut(error);
-    }
+    document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
   }
 }
 
