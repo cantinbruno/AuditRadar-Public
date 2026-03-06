@@ -112,8 +112,9 @@ async function loginUser() {
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
+    // Si l'erreur est liée à un mot de passe incorrect
     if (error.message === "Invalid credentials") {
-      document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
+      document.getElementById("loginErrorMessage").textContent = "Mot de passe incorrect.";
     } else {
       document.getElementById("loginErrorMessage").textContent = "Erreur lors de la connexion. Veuillez réessayer.";
     }
