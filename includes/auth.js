@@ -112,9 +112,9 @@ async function loginUser() {
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    console.log("Erreur API: ", error); // Log pour inspecter l'objet d'erreur
+    console.log("Erreur API: ", error); // Log complet pour inspecter l'objet d'erreur
 
-    // Vérifie si l'erreur contient une information spécifique
+    // Si l'objet d'erreur a un message spécifique
     if (error && error.message && error.message.includes("Invalid credentials")) {
       document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
     } else if (error && error.status === 401) {
