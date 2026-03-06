@@ -155,7 +155,7 @@ async function getProfile() {
 
 async function runScript() {
   try {
-    const script = document.getElementById("scriptName")?.value.trim() || "";
+    const script = document.getElementById("scriptName").value.trim();
 
     if (!script) {
       setOut("Nom du script vide.");
