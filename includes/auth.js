@@ -143,20 +143,24 @@ async function registerUser() {
     // Requête API d'enregistrement
     await request("/auth/register", {
       method: "POST",
-      body: { email, password }
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" }
     });
 
     // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
-      body: { email, password }
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" }
     });
 
     saveToken(loginData.access_token);
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    // Gestion de l'email déjà existant
+    console.error(error); // Log pour voir l'erreur exacte dans la console
+
+    // Vérification de l'email déjà existant
     if (error && error.detail && error.detail === "Email already exists") {
       document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else {
