@@ -5,12 +5,14 @@
   <script src="/includes/head.js"></script>
   <site-head
     title="Accueil - Audit Radar"
-    description="Audit Radar : Auditer votre système depuis internet en un clique.">
+    description="Audit Radar : Auditer votre système depuis internet en un clic.">
   </site-head>
 
   <script src="/includes/header.js" defer></script>
   <script src="/includes/footer.js" defer></script>
-  <script src="/includes/auth.js" defer></script>
+  <script src="/includes/auth-sections.js" defer></script>
+  <script src="/includes/auth-ui.js" defer></script>
+  <script src="/includes/secure-ui.js" defer></script>
 
   <link rel="stylesheet" href="/includes/auth.css">
 </head>
@@ -24,127 +26,12 @@
         <span class="ar-home__badge">Plateforme sécurisée</span>
         <h1 class="ar-home__title">Accueil</h1>
         <p class="ar-home__subtitle">
-          Bienvenue sur Audit Radar. Connectez-vous pour accéder à votre espace sécurisé
-          et lancer vos actions protégées.
+          Bienvenue sur Audit Radar. Connectez-vous pour accéder à votre espace sécurisé.
         </p>
       </div>
     </section>
 
-    <!-- Zone affichée si non connecté -->
-    <section id="authBox" class="ar-auth">
-      <div class="ar-auth__header">
-        <h2 class="ar-auth__title">Connexion / Inscription</h2>
-        <p class="ar-auth__subtitle">
-          Accédez à votre espace personnel en vous connectant ou en créant un compte.
-        </p>
-      </div>
-
-      <div class="ar-auth__grid">
-        <article class="ar-auth__panel ar-auth__panel--register">
-          <div class="ar-auth__panel-header">
-            <h3 class="ar-auth__panel-title">Inscription</h3>
-            <p class="ar-auth__panel-text">Créez votre compte pour commencer.</p>
-          </div>
-
-          <div class="ar-auth__form-group">
-            <label class="ar-auth__label" for="regEmail">Adresse email</label>
-            <input
-              id="regEmail"
-              class="ar-auth__input"
-              type="email"
-              placeholder="nom@exemple.fr"
-              autocomplete="email">
-          </div>
-
-          <div class="ar-auth__form-group">
-            <label class="ar-auth__label" for="regPass">Mot de passe</label>
-            <input
-              id="regPass"
-              class="ar-auth__input"
-              type="password"
-              placeholder="Votre mot de passe"
-              autocomplete="new-password">
-          </div>
-
-          <button id="btnRegister" class="ar-auth__button ar-auth__button--secondary" type="button">
-            S'inscrire
-          </button>
-        </article>
-
-        <article class="ar-auth__panel ar-auth__panel--login">
-          <div class="ar-auth__panel-header">
-            <h3 class="ar-auth__panel-title">Connexion</h3>
-            <p class="ar-auth__panel-text">Connectez-vous à votre espace sécurisé.</p>
-          </div>
-
-          <div class="ar-auth__form-group">
-            <label class="ar-auth__label" for="logEmail">Adresse email</label>
-            <input
-              id="logEmail"
-              class="ar-auth__input"
-              type="email"
-              placeholder="nom@exemple.fr"
-              autocomplete="email">
-          </div>
-
-          <div class="ar-auth__form-group">
-            <label class="ar-auth__label" for="logPass">Mot de passe</label>
-            <input
-              id="logPass"
-              class="ar-auth__input"
-              type="password"
-              placeholder="Votre mot de passe"
-              autocomplete="current-password">
-          </div>
-
-          <button id="btnLogin" class="ar-auth__button ar-auth__button--primary" type="button">
-            Se connecter
-          </button>
-        </article>
-      </div>
-    </section>
-
-    <!-- Zone affichée si connecté -->
-    <section id="protectedContent" class="ar-secure">
-      <div class="ar-secure__header">
-        <h2 class="ar-secure__title">Espace sécurisé</h2>
-        <p class="ar-secure__subtitle">
-          Vous êtes connecté. Vous pouvez maintenant accéder aux actions protégées.
-        </p>
-      </div>
-
-      <div class="ar-secure__content">
-        <div class="ar-secure__form-group">
-          <label class="ar-secure__label" for="scriptName">Nom du script</label>
-          <input
-            id="scriptName"
-            class="ar-secure__input"
-            type="text"
-            placeholder="Ex: afficher.sh">
-        </div>
-
-        <div class="ar-secure__actions">
-          <button id="btnRun" class="ar-secure__button ar-secure__button--primary" type="button">
-            Exécuter
-          </button>
-          <button id="btnMe" class="ar-secure__button ar-secure__button--ghost" type="button">
-            Mon profil
-          </button>
-          <button id="btnLogout" class="ar-secure__button ar-secure__button--danger" type="button">
-            Déconnexion
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="ar-output">
-      <div class="ar-output__header">
-        <h2 class="ar-output__title">Résultat</h2>
-        <p class="ar-output__subtitle">Les réponses de l’API s’affichent ici.</p>
-      </div>
-
-      <pre id="out" class="ar-output__box">Aucune action effectuée.</pre>
-    </section>
+    <auth-sections></auth-sections>
   </main>
 
   <site-footer></site-footer>
