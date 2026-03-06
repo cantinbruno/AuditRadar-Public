@@ -141,16 +141,16 @@ async function registerUser() {
     }
 
     // Requête API d'enregistrement
-    await request("/auth/register", {
+    const response = await request("/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" }
+      body: JSON.stringify({ email, password }),  // Envoi des données sous forme de JSON
+      headers: { "Content-Type": "application/json" }  // Spécifie que c'est du JSON
     });
 
     // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password }),  // Envoi des données sous forme de JSON
       headers: { "Content-Type": "application/json" }
     });
 
@@ -158,11 +158,9 @@ async function registerUser() {
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    console.error(error); // Log pour voir l'erreur exacte dans la console
-
-    // Vérification de l'email déjà existant
-    if (error && error.detail && error.detail === "Email already exists") {
-      document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
+    console.error(error); // Log pour vérifier l'erreur exacte
+    if (error && error.detail && error.detail.includes("model_attributes_type")) {
+      document.getElementById("registerErrorMessage").textContent = "Le format des données est invalide, vérifiez votre email et mot de passe.";
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
