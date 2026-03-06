@@ -1,9 +1,5 @@
 const API = "https://api.wavetools.fr";
 
-/* -----------------------------
-   AFFICHAGE MESSAGE
------------------------------ */
-
 function setOut(value) {
   const out = document.getElementById("out");
   if (!out) return;
@@ -13,10 +9,6 @@ function setOut(value) {
       ? value
       : JSON.stringify(value, null, 2);
 }
-
-/* -----------------------------
-   TOKEN
------------------------------ */
 
 function saveToken(token) {
   localStorage.setItem("access_token", token);
@@ -29,10 +21,6 @@ function getToken() {
 function clearToken() {
   localStorage.removeItem("access_token");
 }
-
-/* -----------------------------
-   UI AUTH / PROTECTED
------------------------------ */
 
 function showAuth() {
   const authBox = document.getElementById("authBox");
@@ -50,10 +38,6 @@ function showProtected() {
   if (protectedContent) protectedContent.style.display = "block";
 }
 
-/* -----------------------------
-   REQUEST API
------------------------------ */
-
 async function request(path, options = {}) {
   const method = options.method || "GET";
   const body = options.body || null;
@@ -70,15 +54,14 @@ async function request(path, options = {}) {
   }
 
   const response = await fetch(API + path, {
-    method: method,
-    headers: headers,
+    method,
+    headers,
     body: body !== null ? JSON.stringify(body) : null
   });
 
   const text = await response.text();
 
   let data;
-
   try {
     data = JSON.parse(text);
   } catch {
@@ -91,10 +74,6 @@ async function request(path, options = {}) {
 
   return data;
 }
-
-/* -----------------------------
-   CHECK AUTH
------------------------------ */
 
 async function checkAuth() {
   const token = getToken();
@@ -113,14 +92,10 @@ async function checkAuth() {
   }
 }
 
-/* -----------------------------
-   REGISTER
------------------------------ */
-
 async function registerUser() {
   try {
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPass").value;
+    const email = document.getElementById("regEmail")?.value.trim() || "";
+    const password = document.getElementById("regPass")?.value || "";
 
     if (!email || !password) {
       setOut("Veuillez remplir email et mot de passe.");
@@ -129,38 +104,26 @@ async function registerUser() {
 
     await request("/auth/register", {
       method: "POST",
-      body: {
-        email: email,
-        password: password
-      }
+      body: { email, password }
     });
 
     const loginData = await request("/auth/login", {
       method: "POST",
-      body: {
-        email: email,
-        password: password
-      }
+      body: { email, password }
     });
 
     saveToken(loginData.access_token);
-
     showProtected();
-
     setOut("Inscription réussie.");
   } catch (error) {
     setOut(error);
   }
 }
 
-/* -----------------------------
-   LOGIN
------------------------------ */
-
 async function loginUser() {
   try {
-    const email = document.getElementById("logEmail").value.trim();
-    const password = document.getElementById("logPass").value;
+    const email = document.getElementById("logEmail")?.value.trim() || "";
+    const password = document.getElementById("logPass")?.value || "";
 
     if (!email || !password) {
       setOut("Veuillez remplir email et mot de passe.");
@@ -169,25 +132,16 @@ async function loginUser() {
 
     const data = await request("/auth/login", {
       method: "POST",
-      body: {
-        email: email,
-        password: password
-      }
+      body: { email, password }
     });
 
     saveToken(data.access_token);
-
     showProtected();
-
     setOut("Connexion réussie.");
   } catch (error) {
     setOut(error);
   }
 }
-
-/* -----------------------------
-   PROFILE
------------------------------ */
 
 async function getProfile() {
   try {
@@ -198,13 +152,9 @@ async function getProfile() {
   }
 }
 
-/* -----------------------------
-   RUN SCRIPT
------------------------------ */
-
 async function runScript() {
   try {
-    const script = document.getElementById("scriptName").value.trim();
+    const script = document.getElementById("scriptName")?.value.trim() || "";
 
     if (!script) {
       setOut("Nom du script vide.");
@@ -212,16 +162,11 @@ async function runScript() {
     }
 
     const data = await request("/run/" + encodeURIComponent(script));
-
     setOut(data);
   } catch (error) {
     setOut(error);
   }
 }
-
-/* -----------------------------
-   LOGOUT
------------------------------ */
 
 function logoutUser() {
   clearToken();
@@ -230,22 +175,17 @@ function logoutUser() {
 }
 
 /* -----------------------------
-   SWITCH LOGIN / REGISTER
+   SWAP LOGIN / REGISTER
 ----------------------------- */
 
 function switchAuthPanel(panel) {
   const loginPanel = document.getElementById("loginPanel");
   const registerPanel = document.getElementById("registerPanel");
-
   const showLogin = document.getElementById("showLogin");
   const showRegister = document.getElementById("showRegister");
 
-  if (
-    !loginPanel ||
-    !registerPanel ||
-    !showLogin ||
-    !showRegister
-  ) {
+  if (!loginPanel || !registerPanel || !showLogin || !showRegister) {
+    console.warn("Swap auth impossible : éléments manquants");
     return;
   }
 
@@ -264,76 +204,79 @@ function switchAuthPanel(panel) {
   }
 }
 
-/* -----------------------------
-   INIT
------------------------------ */
+function bindAuthSwitch() {
+  const showLogin = document.getElementById("showLogin");
+  const showRegister = document.getElementById("showRegister");
+  const goLogin = document.getElementById("goLogin");
+  const goRegister = document.getElementById("goRegister");
+
+  if (showLogin) {
+    showLogin.onclick = function () {
+      switchAuthPanel("login");
+    };
+  }
+
+  if (showRegister) {
+    showRegister.onclick = function () {
+      switchAuthPanel("register");
+    };
+  }
+
+  if (goLogin) {
+    goLogin.onclick = function () {
+      switchAuthPanel("login");
+    };
+  }
+
+  if (goRegister) {
+    goRegister.onclick = function () {
+      switchAuthPanel("register");
+    };
+  }
+}
+
+function bindMainActions() {
+  const btnRegister = document.getElementById("btnRegister");
+  const btnLogin = document.getElementById("btnLogin");
+  const btnMe = document.getElementById("btnMe");
+  const btnRun = document.getElementById("btnRun");
+  const btnLogout = document.getElementById("btnLogout");
+
+  if (btnRegister) btnRegister.onclick = registerUser;
+  if (btnLogin) btnLogin.onclick = loginUser;
+  if (btnMe) btnMe.onclick = getProfile;
+  if (btnRun) btnRun.onclick = runScript;
+  if (btnLogout) btnLogout.onclick = logoutUser;
+}
+
+function initAuthUI() {
+  bindMainActions();
+  bindAuthSwitch();
+  checkAuth();
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+  let tries = 0;
+
   const waitForElements = () => {
-    const btnRegister = document.getElementById("btnRegister");
+    const authBox = document.getElementById("authBox");
     const btnLogin = document.getElementById("btnLogin");
+    const btnRegister = document.getElementById("btnRegister");
+    const loginPanel = document.getElementById("loginPanel");
+    const registerPanel = document.getElementById("registerPanel");
 
-    const btnMe = document.getElementById("btnMe");
-    const btnRun = document.getElementById("btnRun");
-    const btnLogout = document.getElementById("btnLogout");
-
-    const showLogin = document.getElementById("showLogin");
-    const showRegister = document.getElementById("showRegister");
-
-    const goLogin = document.getElementById("goLogin");
-    const goRegister = document.getElementById("goRegister");
-
-    if (!btnRegister || !btnLogin) {
-      setTimeout(waitForElements, 50);
+    if (authBox && btnLogin && btnRegister && loginPanel && registerPanel) {
+      initAuthUI();
       return;
     }
 
-    /* auth */
+    tries += 1;
 
-    btnRegister.addEventListener("click", registerUser);
-    btnLogin.addEventListener("click", loginUser);
-
-    /* secure */
-
-    if (btnMe) {
-      btnMe.addEventListener("click", getProfile);
+    if (tries < 100) {
+      setTimeout(waitForElements, 50);
+    } else {
+      console.warn("Initialisation auth incomplète : éléments introuvables");
     }
-
-    if (btnRun) {
-      btnRun.addEventListener("click", runScript);
-    }
-
-    if (btnLogout) {
-      btnLogout.addEventListener("click", logoutUser);
-    }
-
-    /* switch */
-
-    if (showLogin) {
-      showLogin.addEventListener("click", function () {
-        switchAuthPanel("login");
-      });
-    }
-
-    if (showRegister) {
-      showRegister.addEventListener("click", function () {
-        switchAuthPanel("register");
-      });
-    }
-
-    if (goLogin) {
-      goLogin.addEventListener("click", function () {
-        switchAuthPanel("login");
-      });
-    }
-
-    if (goRegister) {
-      goRegister.addEventListener("click", function () {
-        switchAuthPanel("register");
-      });
-    }
-
-    checkAuth();
   };
 
   waitForElements();
