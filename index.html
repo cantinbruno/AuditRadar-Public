@@ -7,16 +7,65 @@
     title="Accueil - Audit Radar"
     description="Audit Radar : Auditer votre système depuis internet en un clique.">
   </site-head>
+
   <script src="/includes/header.js" defer></script>
   <script src="/includes/footer.js" defer></script>
+  <script src="/includes/auth.js" defer></script>
+
+  <link rel="stylesheet" href="/includes/auth.css">
 </head>
 
 <body>
- <site-header></site-header>
-  <main>
-    <h1>Accueil</h1>
-    <p>Bienvenue sur Audit Radar.</p>
+  <site-header></site-header>
+
+  <main class="home-page">
+    <section class="hero">
+      <h1>Accueil</h1>
+      <p>Bienvenue sur Audit Radar.</p>
+    </section>
+
+    <!-- Affiché si non connecté -->
+    <section id="authBox" class="card">
+      <h2>Connexion / Inscription</h2>
+      <p>Connectez-vous pour accéder au contenu protégé.</p>
+
+      <div class="auth-grid">
+        <div class="auth-block">
+          <h3>Inscription</h3>
+          <input id="regEmail" type="email" placeholder="Email">
+          <input id="regPass" type="password" placeholder="Mot de passe">
+          <button id="btnRegister" type="button">S'inscrire</button>
+        </div>
+
+        <div class="auth-block">
+          <h3>Connexion</h3>
+          <input id="logEmail" type="email" placeholder="Email">
+          <input id="logPass" type="password" placeholder="Mot de passe">
+          <button id="btnLogin" type="button">Se connecter</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Affiché si connecté -->
+    <section id="protectedContent" class="card">
+      <h2>Espace sécurisé</h2>
+      <p>Vous êtes connecté.</p>
+
+      <input id="scriptName" type="text" placeholder="Nom du script (ex: test.sh)">
+
+      <div class="button-row">
+        <button id="btnRun" type="button">Exécuter</button>
+        <button id="btnMe" type="button">Mon profil</button>
+        <button id="btnLogout" type="button">Déconnexion</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Résultat</h2>
+      <pre id="out">Aucune action effectuée.</pre>
+    </section>
   </main>
+
   <site-footer></site-footer>
 </body>
 
