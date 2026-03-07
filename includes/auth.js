@@ -141,7 +141,7 @@ async function registerUser() {
     }
 
     // Requête API d'enregistrement
-    await request("/auth/register", {
+    const response = await request("/auth/register", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" }
@@ -160,14 +160,13 @@ async function registerUser() {
   } catch (error) {
     console.error("Erreur lors de l'inscription:", error); // Log détaillé de l'objet d'erreur
 
-    // Vérification du détail de l'erreur
+    // Vérification spécifique pour l'email déjà utilisé
     if (error && error.detail && Array.isArray(error.detail)) {
-      const errorMessage = error.detail[0]?.msg || "Erreur inconnue"; // Vérifier le message exact
-      // Si l'email est déjà pris
-      if (errorMessage.toLowerCase().includes("already exists")) {
+      const errorMessage = error.detail[0]?.msg || "Erreur inconnue";
+      if (errorMessage.includes("already exists")) {
         document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
       } else {
-        document.getElementById("registerErrorMessage").textContent = errorMessage; // Afficher message d'erreur générique
+        document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
       }
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
