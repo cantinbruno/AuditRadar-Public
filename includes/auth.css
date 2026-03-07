@@ -252,6 +252,8 @@
 
 .ar-auth__actions {
   margin-top: 8px;
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
 }
 
 .ar-auth__button {
