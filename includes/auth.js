@@ -140,20 +140,18 @@ async function registerUser() {
       return;
     }
 
-    // Requête API d'enregistrement
+    // Envoi de la requête d'inscription
     const response = await request("/auth/register", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" }
     });
 
-    const responseData = await response.json();
-
-    // Vérifier si l'erreur est liée à un email déjà existant (erreur 422 ou 400)
+    // Vérifier si l'API renvoie une erreur 400 ou 422 (email déjà utilisé)
     if (response.status === 422 || response.status === 400) {
       document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else if (response.ok) {
-      // Connexion automatique après inscription
+      // Connexion automatique après inscription réussie
       const loginData = await request("/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
