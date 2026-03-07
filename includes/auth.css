@@ -134,6 +134,7 @@
 
 /* panel */
 .ar-auth__panel-wrap {
+  margin: auto;
   position: relative;
   z-index: 1;
 }
