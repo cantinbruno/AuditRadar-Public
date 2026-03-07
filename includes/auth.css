@@ -89,7 +89,7 @@
 
 /* switch */
 .ar-auth__switch {
-  position: fixed;     /* Utilisation de fixed pour être toujours visible à l'écran */
+  position: absolute;     /* Utilisation de fixed pour être toujours visible à l'écran */
   top: 16px;           /* Espacement de 16px depuis le haut de la page */
   right: 16px;         /* Espacement de 16px depuis la droite de la page */
   z-index: 9999;       /* Le switch est au-dessus des autres éléments */
