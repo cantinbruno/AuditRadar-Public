@@ -89,11 +89,10 @@
 
 /* switch */
 .ar-auth__switch {
-  position: absolute;  /* Positionné par rapport au header */
-  top: 50%;            /* Centré verticalement dans le header */
-  right: 16px;         /* Aligne le switch à droite du header */
-  transform: translateY(-50%);  /* Ajuste le switch pour qu'il soit centré verticalement par rapport au header */
-  z-index: 9999;       /* Assure que le switch est au-dessus du contenu du header */
+  position: fixed;     /* Le switch reste fixé par rapport à la fenêtre */
+  top: -40px;          /* Le switch est positionné juste au-dessus du header (ajustez selon la hauteur de votre header) */
+  right: 16px;         /* Le switch est positionné à droite de la fenêtre */
+  z-index: 9999;       /* Le switch est au-dessus du header et des autres éléments */
   display: inline-flex;
   gap: 8px;
   padding: 6px;
@@ -101,9 +100,9 @@
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
-  max-width: 300px;     /* Limite la largeur du switch */
-  width: auto;          /* Ajuste la largeur automatiquement selon le contenu */
-  margin-bottom: 0;     /* Éviter tout margement indésirable */
+  max-width: 300px;    /* Limite la largeur du switch */
+  width: auto;         /* Ajuste la largeur automatiquement selon le contenu */
+  margin-bottom: 0;    /* Éviter tout margement indésirable */
 }
 
 /* Bouton switch */
