@@ -3,22 +3,6 @@ class AuthBox extends HTMLElement {
     this.innerHTML = `
       <section id="authBox" class="ar-auth">
         <div class="ar-auth__shell">
-
-          <div class="ar-auth__switch">
-            <button
-              id="showLogin"
-              class="ar-auth__switch-btn ar-auth__switch-btn--active"
-              type="button">
-              Connexion
-            </button>
-
-            <button
-              id="showRegister"
-              class="ar-auth__switch-btn"
-              type="button">
-              Inscription
-            </button>
-          </div>
           
           <div class="ar-auth__intro">
             <h2 class="ar-auth__title">Accès à la plateforme d'audit</h2>
