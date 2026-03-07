@@ -7,7 +7,7 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garantit que le body occupe toute la hauteur de la fenêtre */
+  height: 100vh; /* Garantit que le body occupe toute la hauteur de la fenêtre */
 }
 
 /* Couleur de fond pour le header */
@@ -19,18 +19,16 @@ header {
   flex-shrink: 0; /* Empêche le header de se réduire */
 }
 
+/* Contenu principal */
+main {
+  flex: 1; /* Cela permet au contenu de prendre tout l'espace restant */
+}
+
 /* Couleur de fond pour le footer */
 footer {
   background-color: #333333; /* Remplacez cette couleur par celle que vous souhaitez */
   color: white; /* Texte blanc dans le footer */
   padding: 10px;
   text-align: center;
-  margin-top: auto; /* Fait en sorte que le footer reste en bas de la page */
   width: 100%;
-}
-
-/* Assurez-vous que les sections de header et footer ne collent pas au bord */
-header, footer {
-  width: 100%;
-  box-sizing: border-box;
 }
