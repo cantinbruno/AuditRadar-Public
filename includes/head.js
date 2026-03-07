@@ -15,8 +15,6 @@ class SiteHead extends HTMLElement {
       <meta name="robots" content="index, follow">
       <meta http-equiv="content-language" content="fr">
       <meta name="author" content="Audit Radar">
-
-      <link rel="stylesheet" href="/includes/style.css">
     `;
   }
 }
