@@ -102,22 +102,6 @@
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
-}
-
-/* switch */
-.ar-auth__switch {
-  position: fixed;
-  top: 16px; /* Espace de 16px depuis le haut de la page */
-  right: 16px; /* Espace de 16px depuis la droite de la page */
-  z-index: 9999; /* Assure que le switch soit au-dessus des autres éléments */
-  display: inline-flex;
-  gap: 8px;
-  padding: 6px;
-  margin-bottom: 24px;
-  border: 1px solid var(--ar-auth-border);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
   max-width: 300px; /* Limite la largeur du switch pour éviter qu'il ne s'étire */
   width: auto; /* Ajuste la largeur automatiquement selon le contenu */
 }
