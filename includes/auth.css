@@ -89,10 +89,10 @@
 
 /* switch */
 .ar-auth__switch {
-  position: absolute; /* Le switch reste positionné par rapport à la page */
-  top: 0px;           /* Espace de 16px depuis le haut de la page */
-  right: 16px;         /* Espace de 16px depuis la droite de la page */
-  z-index: 9999;       /* Assure que le switch est au-dessus des autres éléments */
+  position: fixed;     /* Utilisation de fixed pour être toujours visible à l'écran */
+  top: 16px;           /* Espacement de 16px depuis le haut de la page */
+  right: 16px;         /* Espacement de 16px depuis la droite de la page */
+  z-index: 9999;       /* Le switch est au-dessus des autres éléments */
   display: inline-flex;
   gap: 8px;
   padding: 6px;
@@ -131,6 +131,12 @@
   background: linear-gradient(135deg, var(--ar-auth-primary) 0%, #3b82f6 100%);
   color: #ffffff;
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
+}
+
+/* Footer */
+footer {
+  position: relative;
+  z-index: 1;  /* S'assurer que le footer n'est pas au-dessus du switch */
 }
 /* panel */
 .ar-auth__panel-wrap {
