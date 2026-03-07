@@ -89,8 +89,8 @@
 
 /* switch */
 .ar-auth__switch {
-  position: fixed;      /* Le switch reste fixé au coin supérieur droit */
-  top: 16px;            /* Aligne le switch 16px en dessous du top */
+  position: fixed;      /* Le switch reste fixé */
+  top: 56px;            /* Positionné juste en dessous du header (ajustez selon la hauteur de votre header) */
   right: 16px;          /* Aligne le switch à droite de la page */
   z-index: 9999;        /* Assure que le switch est au-dessus des autres éléments */
   display: inline-flex;
