@@ -105,6 +105,24 @@
   margin-bottom: 0;    /* Éviter tout margement indésirable */
 }
 
+/* switch */
+.ar-auth__switch {
+  position: absolute;  /* Positionné par rapport au body/page */
+  top: 0;              /* Aligne le switch tout en haut de la page */
+  right: 16px;         /* Aligne le switch à droite */
+  z-index: 9999;       /* Le switch est au-dessus des autres éléments */
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid var(--ar-auth-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  max-width: 300px;    /* Limite la largeur du switch */
+  width: auto;         /* Ajuste la largeur automatiquement selon le contenu */
+  margin-bottom: 0;    /* Éviter tout margement indésirable */
+}
+
 /* Bouton switch */
 .ar-auth__switch-btn {
   min-height: 42px;
@@ -131,12 +149,6 @@
   background: linear-gradient(135deg, var(--ar-auth-primary) 0%, #3b82f6 100%);
   color: #ffffff;
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
-}
-
-/* Footer */
-footer {
-  position: relative;
-  z-index: 1;  /* S'assurer que le footer n'est pas au-dessus du switch */
 }
 /* panel */
 .ar-auth__panel-wrap {
