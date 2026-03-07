@@ -2,7 +2,7 @@
 
 /* Appliquer la couleur de fond à toute la page */
 body {
-  background-color: #686A6C /* Remplacez cette couleur par celle que vous souhaitez */
+  background-color: #686A6C; /* Remplacez cette couleur par celle que vous souhaitez */
   color: white;
   margin: 0;
   font-family: Arial, sans-serif;
