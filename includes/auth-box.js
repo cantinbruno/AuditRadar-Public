@@ -19,7 +19,7 @@ class AuthBox extends HTMLElement {
               Inscription
             </button>
           </div>
-          <br><br><br>
+          
           <div class="ar-auth__intro">
             <h2 class="ar-auth__title">Accès à la plateforme d'audit</h2>
             <p class="ar-auth__subtitle">
