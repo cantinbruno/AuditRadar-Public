@@ -95,9 +95,8 @@
 /* switch */
 .ar-auth__switch {
   position: fixed;
-  top: 50%;
+  top: 0;
   right: 0;
-  transform: translateY(-50%);
   z-index: 1;
   display: inline-flex;
   gap: 8px;
