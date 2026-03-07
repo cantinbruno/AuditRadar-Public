@@ -87,52 +87,6 @@
   line-height: 1.8;
 }
 
-/* switch */
-.ar-auth__switch {
-  position: fixed;     /* Le switch reste fixé par rapport à la fenêtre */
-  top: -4px;          /* Le switch est positionné juste au-dessus du header (ajustez selon la hauteur de votre header) */
-  right: 12px;         /* Le switch est positionné à droite de la fenêtre */
-  z-index: 9999;       /* Le switch est au-dessus du header et des autres éléments */
-  display: inline-flex;
-  gap: 8px;
-  padding: 6px;
-  border: 1px solid var(--ar-auth-border);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
-  max-width: 300px;    /* Limite la largeur du switch */
-  width: auto;         /* Ajuste la largeur automatiquement selon le contenu */
-  margin-bottom: 0;    /* Éviter tout margement indésirable */
-}
-
-/* Bouton switch */
-.ar-auth__switch-btn {
-  min-height: 42px;
-  padding: 0 16px;
-  border: none;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--ar-auth-text-soft);
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  white-space: nowrap;  /* Empêche le texte de se couper */
-}
-
-/* Hover sur le bouton switch */
-.ar-auth__switch-btn:hover {
-  background: #eef4ff;
-  color: var(--ar-auth-primary);
-}
-
-/* Etat actif du bouton switch */
-.ar-auth__switch-btn--active {
-  background: linear-gradient(135deg, var(--ar-auth-primary) 0%, #3b82f6 100%);
-  color: #ffffff;
-  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
-}
-
 /* panel */
 .ar-auth__panel-wrap {
   position: relative;
