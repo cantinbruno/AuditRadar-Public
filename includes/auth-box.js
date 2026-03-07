@@ -21,7 +21,7 @@ class AuthBox extends HTMLElement {
           </div>
 
           <div class="ar-auth__intro">
-            <h2 class="ar-auth__title">Accès à la platefomrme d'audit</h2>
+            <h2 class="ar-auth__title">Accès à la plateforme d'audit</h2>
             <p class="ar-auth__subtitle">
               Connectez-vous à votre espace personnel ou créez un compte pour accéder instantanément aux fonctionnalités avancées de Audit Radar, votre plateforme d'audit informatique en un clic.
             </p>
