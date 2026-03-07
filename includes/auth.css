@@ -33,9 +33,7 @@
   margin: 0 0 32px;
 }
 
-.ar-auth *,
-.ar-auth *::before,
-.ar-auth *::after {
+.ar-auth * {
   box-sizing: border-box;
   font-family: inherit;
 }
@@ -44,13 +42,10 @@
   position: relative;
   overflow: hidden;
   padding: 42px;
-  border: 1px solid var(--ar-auth-border);
-  border-radius: var(--ar-auth-radius-xl);
   background:
     radial-gradient(circle at top right, rgba(37, 99, 235, 0.10), transparent 28%),
     radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.05), transparent 24%),
     linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: var(--ar-auth-shadow-main);
 }
 
 .ar-auth__shell::before {
