@@ -10,6 +10,7 @@ body {
 
 /* Couleur de fond pour le header */
 header {
+  position: relative;
   background-color: #000000; /* Noir pur pour un contraste fort */
   color: white;
   margin-top: 0; /* Réduit l'espace au-dessus du header */
@@ -18,7 +19,6 @@ header {
   padding-bottom: 10px; /* Réduit le padding en bas */
   text-align: center;
   flex-shrink: 0;
-  position: relative;
   z-index: 1;
 }
 
