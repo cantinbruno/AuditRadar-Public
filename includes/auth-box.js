@@ -4,14 +4,6 @@ class AuthBox extends HTMLElement {
       <section id="authBox" class="ar-auth">
         <div class="ar-auth__shell">
 
-          <div class="ar-auth__intro">
-            <h2 class="ar-auth__title">Accès sécurisé</h2>
-            <p class="ar-auth__subtitle">
-              Connectez-vous à votre espace personnel ou créez un compte pour accéder
-              aux fonctionnalités sécurisées de la plateforme.
-            </p>
-          </div>
-
           <div class="ar-auth__switch">
             <button
               id="showLogin"
@@ -26,6 +18,14 @@ class AuthBox extends HTMLElement {
               type="button">
               Inscription
             </button>
+          </div>
+
+          <div class="ar-auth__intro">
+            <h2 class="ar-auth__title">Accès sécurisé</h2>
+            <p class="ar-auth__subtitle">
+              Connectez-vous à votre espace personnel ou créez un compte pour accéder
+              aux fonctionnalités sécurisées de la plateforme.
+            </p>
           </div>
 
           <div class="ar-auth__panel-wrap">
