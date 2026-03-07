@@ -15,7 +15,6 @@ class AuthBox extends HTMLElement {
 
             <!-- FORMULAIRE CONNEXION -->
             <article id="loginPanel" class="ar-auth__card ar-auth__card--login">
-              <div id="loginErrorMessage" class="error-message"></div> <!-- Zone d'erreur pour la connexion -->
 
               <div class="ar-auth__card-top">
                 <div class="ar-auth__icon ar-auth__icon--primary">
@@ -65,11 +64,12 @@ class AuthBox extends HTMLElement {
                   Créer un compte
                 </button>
               </p>
+              <div id="loginErrorMessage" class="error-message"></div> <!-- Zone d'erreur pour la connexion -->
             </article>
+            
 
             <!-- FORMULAIRE INSCRIPTION -->
             <article id="registerPanel" class="ar-auth__card ar-auth__card--register ar-auth__card--hidden">
-              <div id="registerErrorMessage" class="error-message"></div> <!-- Zone d'erreur pour l'inscription -->
 
               <div class="ar-auth__card-top">
                 <div class="ar-auth__icon ar-auth__icon--soft">
@@ -119,6 +119,7 @@ class AuthBox extends HTMLElement {
                   Se connecter
                 </button>
               </p>
+              <div id="registerErrorMessage" class="error-message"></div> <!-- Zone d'erreur pour l'inscription -->
             </article>
 
           </div>
