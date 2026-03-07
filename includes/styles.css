@@ -6,9 +6,8 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100%;
   min-height: 100vh;
-  overflow: hidden; /* Empêche les débordements horizontaux */
+  overflow-x: hidden; /* Empêche les débordements horizontaux */
 }
 
 /* Couleur de fond pour le header */
