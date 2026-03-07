@@ -2,7 +2,9 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header>
-        <!-- Le header est actuellement vide -->
+        <a href="/" class="logo">
+           <img src="/img/logo.png" alt="WaveTools">
+        </a>
       </header>
     `;
   }
