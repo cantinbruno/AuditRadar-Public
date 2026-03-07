@@ -3,7 +3,7 @@ class SiteHeader extends HTMLElement {
     this.innerHTML = `
       <header>
         <a href="/" class="logo">
-           <img src="/img/logo.png" alt="WaveTools">
+           <img src="/img/logo.png" alt="WaveTools" class="logo">
         </a>
       </header>
     `;
