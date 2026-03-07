@@ -139,16 +139,13 @@
 }
 
 .ar-auth__card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   max-width: 720px;
   padding: 28px;
   border: 1px solid var(--ar-auth-border);
   border-radius: var(--ar-auth-radius-lg);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
   box-shadow: var(--ar-auth-shadow-card);
+  margin: 0 auto; /* Cela va centrer l'élément horizontalement */
 }
 
 .ar-auth__card--login {
