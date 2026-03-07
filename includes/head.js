@@ -15,6 +15,16 @@ class SiteHead extends HTMLElement {
       <meta name="robots" content="index, follow">
       <meta http-equiv="content-language" content="fr">
       <meta name="author" content="Audit Radar">
+
+      <script src="/includes/header.js" defer></script>
+      <script src="/includes/footer.js" defer></script>
+      <script src="/includes/auth-box.js" defer></script>
+      <script src="/includes/secure-box.js" defer></script>
+      <script src="/includes/auth.js" defer></script>
+  
+      <link rel="stylesheet" href="/includes/styles.css">
+      <link rel="stylesheet" href="/includes/auth.css">
+      
     `;
   }
 }
