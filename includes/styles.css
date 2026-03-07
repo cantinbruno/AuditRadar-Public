@@ -2,11 +2,13 @@ body {
   background-color: #BDC3C7; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
   color: white;  /* Texte clair pour la lisibilité */
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Empêche les débordements horizontaux */
+  overflow: hidden; /* Empêche les débordements horizontaux */
 }
 
 /* Couleur de fond pour le header */
@@ -48,4 +50,11 @@ footer {
   margin-right: auto; /* Centre le logo horizontalement */
   margin-top: 0; /* Enlève tout espace au-dessus des éléments dans le header */
   margin-bottom: 0; /* Enlève tout espace en-dessous */
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
