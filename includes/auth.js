@@ -160,15 +160,9 @@ async function registerUser() {
   } catch (error) {
     console.error("Erreur lors de l'inscription:", error); // Log détaillé de l'objet d'erreur
 
-    // Inspecter le détail de l'erreur pour mieux comprendre ce que l'API renvoie
-    if (error && error.detail && Array.isArray(error.detail)) {
-      console.log("Détail de l'erreur:", error.detail); // Afficher le détail complet de l'erreur
-      // Vérifier si l'email existe déjà
-      if (error.detail[0].msg === "Email already exists") {
-        document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
-      } else {
-        document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
-      }
+    // Vérification si l'email est déjà utilisé
+    if (error && error.detail && error.detail[0] && error.detail[0].msg === "Email already exists") {
+      document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
