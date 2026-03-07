@@ -18,6 +18,8 @@ header {
   padding-bottom: 10px; /* Réduit le padding en bas */
   text-align: center;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 /* Contenu principal */
