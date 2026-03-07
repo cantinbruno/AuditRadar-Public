@@ -83,7 +83,7 @@
 .ar-auth__subtitle {
   max-width: 760px;
   margin: 0;
-  color: white;
+  color: var(--ar-auth-text);
   font-size: 1.03rem;
   line-height: 1.8;
 }
