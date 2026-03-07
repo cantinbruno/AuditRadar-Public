@@ -89,10 +89,10 @@
 
 /* switch */
 .ar-auth__switch {
-  position: fixed;      /* Le switch reste fixé */
-  top: 56px;            /* Positionné juste en dessous du header (ajustez selon la hauteur de votre header) */
-  right: 16px;          /* Aligne le switch à droite de la page */
-  z-index: 9999;        /* Assure que le switch est au-dessus des autres éléments */
+  position: absolute;  /* Positionné par rapport au header */
+  top: 50%;            /* Centré verticalement dans le header */
+  right: 16px;         /* Aligne le switch à droite du header */
+  z-index: 9999;       /* Assure que le switch est au-dessus du contenu du header */
   display: inline-flex;
   gap: 8px;
   padding: 6px;
@@ -132,7 +132,6 @@
   color: #ffffff;
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
 }
-
 /* panel */
 .ar-auth__panel-wrap {
   position: relative;
