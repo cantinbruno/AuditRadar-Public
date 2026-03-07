@@ -1,38 +1,35 @@
-/* styles.css */
-
-/* Appliquer la couleur de fond à toute la page */
 body {
-  background-color: #686A6C; /* Remplacez cette couleur par celle que vous souhaitez */
-  color: white;
+  background-color: #2C3E50; /* Gris foncé neutre pour un contraste agréable */
+  color: white;  /* Texte clair pour la lisibilité */
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garantit que le body occupe toute la hauteur de la fenêtre */
+  min-height: 100vh;
 }
 
 /* Couleur de fond pour le header */
 header {
-  background-color: #686A6C; /* Remplacez cette couleur par celle que vous souhaitez */
-  color: white; /* Texte blanc dans le header */
+  background-color: #1A2631; /* Bleu nuit profond */
+  color: white;
   padding: 20px;
   text-align: center;
-  flex-shrink: 0; /* Empêche le header de se réduire */
+  flex-shrink: 0;
 }
 
 /* Contenu principal */
 main {
-  flex: 1; /* Cela permet au contenu de prendre tout l'espace restant */
-  padding: 20px; /* Ajout de padding pour un peu de contenu visuel */
+  flex: 1;
+  padding: 20px;
   box-sizing: border-box;
 }
 
 /* Couleur de fond pour le footer */
 footer {
-  background-color: #686A6C; /* Remplacez cette couleur par celle que vous souhaitez */
-  color: white; /* Texte blanc dans le footer */
+  background-color: #212121; /* Charcoal pour une touche élégante */
+  color: white;
   padding: 10px;
   text-align: center;
   width: 100%;
-  flex-shrink: 0; /* Empêche le footer de se réduire */
+  flex-shrink: 0;
 }
