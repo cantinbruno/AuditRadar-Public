@@ -140,37 +140,46 @@ async function registerUser() {
       return;
     }
 
-    // Requête API d'enregistrement
-    const response = await request("/auth/register", {
+    // Structure des données à envoyer
+    const data = { email, password };
+
+    // Envoi de la requête d'inscription
+    const response = await fetch("https://api.wavetools.fr/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" }
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
 
-    // Connexion automatique après inscription
-    const loginData = await request("/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" }
-    });
+    const responseData = await response.json();
 
-    saveToken(loginData.access_token);
-    showProtected();
-    setOut("Inscription réussie.");
-  } catch (error) {
-    console.error("Erreur lors de l'inscription:", error); // Log détaillé de l'objet d'erreur
-
-    // Vérification spécifique pour l'email déjà utilisé
-    if (error && error.detail && Array.isArray(error.detail)) {
-      const errorMessage = error.detail[0]?.msg || "Erreur inconnue";
-      if (errorMessage.includes("already exists")) {
+    if (response.status === 422) {
+      // Si l'email est déjà pris, on gère l'erreur
+      if (responseData.detail && responseData.detail[0].msg.includes("already exists")) {
         document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
-      } else {
-        document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
       }
+    } else if (response.ok) {
+      // Si l'inscription est réussie, on se connecte immédiatement
+      const loginResponse = await fetch("https://api.wavetools.fr/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const loginData = await loginResponse.json();
+      saveToken(loginData.access_token);
+      showProtected();
+      setOut("Inscription réussie.");
     } else {
       document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
+
+  } catch (error) {
+    document.getElementById("registerErrorMessage").textContent = "Erreur lors de l'inscription. Veuillez réessayer.";
+    console.error("Erreur de requête:", error);
   }
 }
 
