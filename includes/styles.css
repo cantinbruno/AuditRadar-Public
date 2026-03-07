@@ -1,5 +1,5 @@
 body {
-  background-color: #BDC3C7; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
+  background-color: #F9FAFB; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
   color: white;  /* Texte clair pour la lisibilité */
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
 /* Couleur de fond pour le header */
 header {
   position: relative;
-  background-color: #000000; /* Noir pur pour un contraste fort */
+  background-color: #111827; /* Noir pur pour un contraste fort */
   color: white;
   margin-top: 0; /* Réduit l'espace au-dessus du header */
   margin-bottom: 10px; /* Réduit l'espace en-dessous du header */
@@ -33,7 +33,7 @@ main {
 
 /* Couleur de fond pour le footer */
 footer {
-  background-color: #000000; /* Noir pur pour maintenir la cohérence */
+  background-color: #111827; /* Noir pur pour maintenir la cohérence */
   color: white;
   padding: 10px;
   text-align: center;
@@ -49,14 +49,4 @@ footer {
   margin-right: auto; /* Centre le logo horizontalement */
   margin-top: 0; /* Enlève tout espace au-dessus des éléments dans le header */
   margin-bottom: 0; /* Enlève tout espace en-dessous */
-}
-
-#canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
