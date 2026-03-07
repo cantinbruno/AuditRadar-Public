@@ -1,1 +1,30 @@
+/* styles.css */
 
+/* Appliquer la couleur de fond à toute la page */
+body {
+  background-color: #f0f0f0; /* Remplacez cette couleur par celle que vous souhaitez */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Couleur de fond pour le header */
+header {
+  background-color: #4CAF50; /* Remplacez cette couleur par celle que vous souhaitez */
+  color: white; /* Texte blanc dans le header */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Couleur de fond pour le footer */
+footer {
+  background-color: #333333; /* Remplacez cette couleur par celle que vous souhaitez */
+  color: white; /* Texte blanc dans le footer */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Assurez-vous que les sections de header et footer ne collent pas au bord */
+header, footer {
+  width: 100%;
+  box-sizing: border-box;
+}
