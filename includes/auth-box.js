@@ -5,7 +5,6 @@ class AuthBox extends HTMLElement {
         <div class="ar-auth__shell">
 
           <div class="ar-auth__intro">
-            <span class="ar-auth__eyebrow">AUDIT RADAR</span>
             <h2 class="ar-auth__title">Accès sécurisé</h2>
             <p class="ar-auth__subtitle">
               Connectez-vous à votre espace personnel ou créez un compte pour accéder
