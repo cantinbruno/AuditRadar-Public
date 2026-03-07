@@ -140,36 +140,26 @@ async function registerUser() {
       return;
     }
 
-    // Structure des données à envoyer
-    const data = { email, password };
-
-    // Envoi de la requête d'inscription
-    const response = await fetch("https://api.wavetools.fr/auth/register", {
+    // Requête API d'enregistrement
+    const response = await request("/auth/register", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" }
     });
 
     const responseData = await response.json();
 
-    if (response.status === 422) {
-      // Si l'email est déjà pris, on gère l'erreur
-      if (responseData.detail && responseData.detail[0].msg.includes("already exists")) {
-        document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
-      }
+    // Vérifier si l'erreur est liée à un email déjà existant (erreur 422 ou 400)
+    if (response.status === 422 || response.status === 400) {
+      document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else if (response.ok) {
-      // Si l'inscription est réussie, on se connecte immédiatement
-      const loginResponse = await fetch("https://api.wavetools.fr/auth/login", {
+      // Connexion automatique après inscription
+      const loginData = await request("/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" }
       });
 
-      const loginData = await loginResponse.json();
       saveToken(loginData.access_token);
       showProtected();
       setOut("Inscription réussie.");
