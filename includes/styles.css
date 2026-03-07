@@ -1,6 +1,6 @@
 body {
-  background-color: #2C3E50; /* Gris foncé pour bien faire ressortir le bleu */
-  color: white;  /* Texte clair pour une bonne lisibilité */
+  background-color: #BDC3C7; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
+  color: white;  /* Texte clair pour la lisibilité */
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
@@ -10,7 +10,7 @@ body {
 
 /* Couleur de fond pour le header */
 header {
-  background-color: #3498DB; /* Bleu classique */
+  background-color: #000000; /* Noir pur pour un contraste fort */
   color: white;
   padding: 20px;
   text-align: center;
@@ -26,7 +26,7 @@ main {
 
 /* Couleur de fond pour le footer */
 footer {
-  background-color: #34495E; /* Gris avec une touche bleue */
+  background-color: #000000; /* Noir pur pour maintenir la cohérence */
   color: white;
   padding: 10px;
   text-align: center;
