@@ -2,7 +2,6 @@ body {
   background-color: #F9FAFB; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
   color: white;  /* Texte clair pour la lisibilité */
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
