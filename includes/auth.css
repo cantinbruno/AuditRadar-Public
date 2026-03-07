@@ -92,6 +92,7 @@
   position: absolute;  /* Positionné par rapport au header */
   top: 50%;            /* Centré verticalement dans le header */
   right: 16px;         /* Aligne le switch à droite du header */
+  transform: translateY(-50%);  /* Ajuste le switch pour qu'il soit centré verticalement par rapport au header */
   z-index: 9999;       /* Assure que le switch est au-dessus du contenu du header */
   display: inline-flex;
   gap: 8px;
@@ -132,6 +133,7 @@
   color: #ffffff;
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.18);
 }
+
 /* panel */
 .ar-auth__panel-wrap {
   position: relative;
