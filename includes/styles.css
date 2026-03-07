@@ -5,6 +5,9 @@ body {
   background-color: #f0f0f0; /* Remplacez cette couleur par celle que vous souhaitez */
   margin: 0;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garantit que le body occupe toute la hauteur de la fenêtre */
 }
 
 /* Couleur de fond pour le header */
@@ -13,6 +16,7 @@ header {
   color: white; /* Texte blanc dans le header */
   padding: 20px;
   text-align: center;
+  flex-shrink: 0; /* Empêche le header de se réduire */
 }
 
 /* Couleur de fond pour le footer */
@@ -21,6 +25,8 @@ footer {
   color: white; /* Texte blanc dans le footer */
   padding: 10px;
   text-align: center;
+  margin-top: auto; /* Fait en sorte que le footer reste en bas de la page */
+  width: 100%;
 }
 
 /* Assurez-vous que les sections de header et footer ne collent pas au bord */
