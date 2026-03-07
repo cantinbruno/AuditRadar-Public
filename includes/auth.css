@@ -89,8 +89,8 @@
 
 /* switch */
 .ar-auth__switch {
-  position: fixed;     /* Le switch reste fixé par rapport à la fenêtre */
-  top: -10px;          /* Le switch est positionné juste au-dessus du header (ajustez selon la hauteur de votre header) */
+  position: relative;     /* Le switch reste fixé par rapport à la fenêtre */
+  top: -2px;          /* Le switch est positionné juste au-dessus du header (ajustez selon la hauteur de votre header) */
   right: 16px;         /* Le switch est positionné à droite de la fenêtre */
   z-index: 9999;       /* Le switch est au-dessus du header et des autres éléments */
   display: inline-flex;
