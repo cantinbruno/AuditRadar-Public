@@ -4,8 +4,8 @@ class SecureBox extends HTMLElement {
       <section id="protectedContent">
         
         <navigation-bar></navigation-bar>
-        <script src="navigation.js"></script>
-        
+        <script src="/dashboard/navigation.js"></script>
+
         <div class="ar-secure__header">
           <h2 class="ar-secure__title">Espace sécurisé</h2>
           <p class="ar-secure__subtitle">
