@@ -1,11 +1,19 @@
+/* Réinitialisation de box-sizing pour tout le site */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #E5E7EB; /* Gris clair avec une touche de bleu pour contraster avec le bleu classique */
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #E5E7EB;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  overflow-x: hidden; /* Empêche les débordements horizontaux */
 }
 
 /* Couleur de fond pour le header */
