@@ -174,76 +174,28 @@ async function getProfile() {
   }
 }
 
-async function runScript() {
-  try {
-    const script = document.getElementById("scriptName").value.trim();
-
-    if (!script) {
-      setOut("Nom du script vide.");
-      return;
-    }
-
-    const data = await request("/run/" + encodeURIComponent(script));
-    setOut(data);
-  } catch (error) {
-    setOut(error);
-  }
-}
-
 function logoutUser() {
   clearToken();
   showAuth();
   setOut("Déconnexion réussie.");
 }
 
-/* -----------------------------
-   SWAP LOGIN / REGISTER
------------------------------ */
-
 function switchAuthPanel(panel) {
   const loginPanel = document.getElementById("loginPanel");
   const registerPanel = document.getElementById("registerPanel");
 
-  const showLogin = document.getElementById("showLogin");
-  const showRegister = document.getElementById("showRegister");
-
-  if (!loginPanel || !registerPanel || !showLogin || !showRegister) {
-    console.warn("Swap auth impossible : éléments manquants");
-    return;
-  }
-
   if (panel === "register") {
     loginPanel.classList.add("ar-auth__card--hidden");
     registerPanel.classList.remove("ar-auth__card--hidden");
-
-    showLogin.classList.remove("ar-auth__switch-btn--active");
-    showRegister.classList.add("ar-auth__switch-btn--active");
   } else {
     registerPanel.classList.add("ar-auth__card--hidden");
     loginPanel.classList.remove("ar-auth__card--hidden");
-
-    showRegister.classList.remove("ar-auth__switch-btn--active");
-    showLogin.classList.add("ar-auth__switch-btn--active");
   }
 }
 
 function bindAuthSwitch() {
-  const showLogin = document.getElementById("showLogin");
-  const showRegister = document.getElementById("showRegister");
   const goLogin = document.getElementById("goLogin");
   const goRegister = document.getElementById("goRegister");
-
-  if (showLogin) {
-    showLogin.onclick = function () {
-      switchAuthPanel("login");
-    };
-  }
-
-  if (showRegister) {
-    showRegister.onclick = function () {
-      switchAuthPanel("register");
-    };
-  }
 
   if (goLogin) {
     goLogin.onclick = function () {
@@ -262,13 +214,11 @@ function bindMainActions() {
   const btnRegister = document.getElementById("btnRegister");
   const btnLogin = document.getElementById("btnLogin");
   const btnMe = document.getElementById("btnMe");
-  const btnRun = document.getElementById("btnRun");
   const btnLogout = document.getElementById("btnLogout");
 
   if (btnRegister) btnRegister.onclick = registerUser;
   if (btnLogin) btnLogin.onclick = loginUser;
   if (btnMe) btnMe.onclick = getProfile;
-  if (btnRun) btnRun.onclick = runScript;
   if (btnLogout) btnLogout.onclick = logoutUser;
 }
 
@@ -283,12 +233,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const waitForElements = () => {
     const authBox = document.getElementById("authBox");
-    const btnLogin = document.getElementById("btnLogin");
-    const btnRegister = document.getElementById("btnRegister");
     const loginPanel = document.getElementById("loginPanel");
     const registerPanel = document.getElementById("registerPanel");
 
-    if (authBox && btnLogin && btnRegister && loginPanel && registerPanel) {
+    if (authBox && loginPanel && registerPanel) {
       initAuthUI();
       return;
     }
