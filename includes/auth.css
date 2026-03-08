@@ -43,7 +43,7 @@
   overflow: hidden;
   padding: 42px;
   display: flex;
-  flex-direction: column; /* Changer pour une disposition en colonne */
+  flex-direction: column; /* Le texte sera au-dessus de l'image et du formulaire */
   align-items: center;
 }
 
@@ -51,20 +51,7 @@
   position: relative;
   z-index: 1;
   margin-bottom: 26px;
-  text-align: center; /* Centrer le texte */
-}
-
-.ar-auth__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 14px;
-  margin-bottom: 18px;
-  border-radius: 999px;
-  background: var(--ar-auth-primary-soft);
-  color: var(--ar-auth-primary);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  text-align: center;
 }
 
 .ar-auth__title {
@@ -83,28 +70,28 @@
   line-height: 1.8;
 }
 
-/* Image à gauche du formulaire */
+/* Conteneur de l'image à gauche du formulaire */
+.ar-auth__panel-wrap {
+  display: flex;
+  flex-direction: row; /* Disposition en ligne */
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
 .ar-auth__image-container {
   width: 100%;
   max-width: 350px;
-  height: 100%; /* L'image prend toute la hauteur du formulaire */
+  height: 100%;
   flex-shrink: 0;
-  margin-bottom: 20px; /* Espacement entre l'image et le formulaire */
+  margin-bottom: 20px;
 }
 
 .ar-auth__image-container img {
   width: 100%;
-  height: auto; /* L'image conserve ses proportions */
-  object-fit: cover; /* L'image couvre tout le conteneur sans déformation */
+  height: auto;
+  object-fit: cover;
   border-radius: var(--ar-auth-radius-lg);
-}
-
-.ar-auth__panel-wrap {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  width: 100%;
-  justify-content: center;
 }
 
 .ar-auth__form-container {
@@ -114,6 +101,7 @@
   max-width: 600px;
 }
 
+/* Panel styles */
 .ar-auth__card {
   max-width: 720px;
   padding: 28px;
@@ -199,7 +187,7 @@
 .ar-auth__actions {
   margin-top: 8px;
   display: flex;
-  justify-content: center; /* Centrer horizontalement */
+  justify-content: center;
 }
 
 .ar-auth__button {
