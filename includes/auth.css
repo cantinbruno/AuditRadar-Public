@@ -42,11 +42,11 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  height: 100vh; /* Occupe toute la hauteur de la fenêtre */
-  align-items: stretch; /* Assure que l'image et le formulaire aient la même hauteur */
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
   justify-content: center;
-  padding: 0 42px; /* Espacement autour du conteneur */
+  padding: 0 42px;
 }
 
 .ar-auth__intro {
@@ -72,18 +72,17 @@
   line-height: 1.8;
 }
 
-/* L'image et le formulaire prennent la même hauteur et sont séparés en 40/60 */
 .ar-auth__panel-wrap {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Disposition en ligne */
   width: 100%;
-  height: 100%; /* Prendre toute la hauteur */
+  height: 100%; 
 }
 
 .ar-auth__image-container {
-  width: 40%; /* L'image prend 40% de la largeur */
-  height: 100%; /* L'image prend toute la hauteur */
+  flex-grow: 1; /* Prendre l'espace restant */
   flex-shrink: 0;
+  height: 100%;
 }
 
 .ar-auth__image-container img {
@@ -94,18 +93,16 @@
 }
 
 .ar-auth__form-container {
+  flex-grow: 1; /* Prendre l'espace restant */
   display: flex;
   flex-direction: column;
-  width: 60%; /* Le formulaire prend 60% de la largeur */
-  height: 100%; /* Le formulaire prend toute la hauteur */
   padding: 20px;
   box-sizing: border-box;
-  justify-content: center; /* Centrer le formulaire dans sa zone */
+  justify-content: center;
   background-color: white;
   border-radius: var(--ar-auth-radius-lg);
 }
 
-/* Panel styles */
 .ar-auth__card {
   max-width: 720px;
   padding: 28px;
@@ -264,6 +261,7 @@
   display: none;
 }
 
+/* Responsive styles */
 @media (max-width: 980px) {
   .ar-auth__shell {
     padding: 30px;
