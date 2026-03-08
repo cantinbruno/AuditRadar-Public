@@ -1,17 +1,16 @@
-/* Container principal - prend toute la hauteur */
+/* Container principal */
 .ar-auth {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  padding: 30px;
   width: 100%;
 }
 
-/* Titre et sous-titre du texte d'introduction */
+/* Intro avec le texte au-dessus de l'image et du formulaire */
 .ar-auth__intro {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .ar-auth__title {
@@ -25,7 +24,7 @@
   margin-top: 10px;
 }
 
-/* Container avec image et formulaire */
+/* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
@@ -33,9 +32,10 @@
   width: 100%;
   max-width: 1200px;
   height: 100%;
+  box-sizing: border-box;
 }
 
-/* Conteneur pour l'image à gauche */
+/* Conteneur de l'image */
 .ar-auth__image-container {
   flex: 1;
   display: flex;
@@ -48,10 +48,10 @@
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* L'image couvre toute la zone sans déformation */
 }
 
-/* Conteneur pour le formulaire à droite */
+/* Conteneur pour le formulaire */
 .ar-auth__form-container {
   flex: 1;
   display: flex;
@@ -61,21 +61,22 @@
   padding-left: 20px;
 }
 
-/* Styles des cartes de formulaire */
+/* Formulaire avec carte */
 .ar-auth__card {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px; /* Plus petit que la version précédente pour un effet plus épuré */
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   padding: 30px;
   box-sizing: border-box;
   border: 1px solid #ddd;
 }
 
-/* Header de la carte (icône + titre) */
+/* Section du haut du formulaire (icône et titre) */
 .ar-auth__card-top {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 25px;
 }
@@ -103,7 +104,7 @@
   color: #555;
 }
 
-/* Styles pour les champs de formulaire */
+/* Styles des champs de saisie */
 .ar-auth__form-group {
   margin-bottom: 20px;
 }
@@ -132,7 +133,7 @@
   outline: none;
 }
 
-/* Boutons */
+/* Bouton de connexion */
 .ar-auth__button {
   width: 100%;
   padding: 12px;
@@ -155,13 +156,13 @@
 }
 
 .ar-auth__button--secondary {
-  background-color: #28a745;
+  background-color: #007bff;
 }
 
-/* Texte en bas du formulaire */
+/* Texte en bas pour la navigation entre les formulaires */
 .ar-auth__bottom-text {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
   color: #333;
 }
 
