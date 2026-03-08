@@ -3,21 +3,23 @@ class AuthBox extends HTMLElement {
     this.innerHTML = `
       <section id="authBox" class="ar-auth">
         <div class="ar-auth__shell">
+          <!-- Texte au-dessus de l'image -->
+          <div class="ar-auth__intro">
+            <h2 class="ar-auth__title">Accès à la plateforme d'audit</h2>
+            <p class="ar-auth__subtitle">
+              Connectez-vous à votre espace personnel ou créez un compte pour accéder instantanément aux fonctionnalités avancées de Audit Radar, votre plateforme d'audit informatique en un clic.
+            </p>
+          </div>
+
+          <!-- Container pour l'image et le formulaire -->
           <div class="ar-auth__container">
             <!-- Image à gauche -->
             <div class="ar-auth__image">
-              <img src="/img/auth.png" alt="Audit Informatique">
+              <img src="/includes/auth.png" alt="Audit Informatique">
             </div>
 
             <!-- Partie formulaire à droite -->
             <div class="ar-auth__form">
-              <div class="ar-auth__intro">
-                <h2 class="ar-auth__title">Accès à la plateforme d'audit</h2>
-                <p class="ar-auth__subtitle">
-                  Connectez-vous à votre espace personnel ou créez un compte pour accéder instantanément aux fonctionnalités avancées de Audit Radar, votre plateforme d'audit informatique en un clic.
-                </p>
-              </div>
-
               <div class="ar-auth__panel-wrap">
                 <!-- FORMULAIRE CONNEXION -->
                 <article id="loginPanel" class="ar-auth__card ar-auth__card--login">
@@ -25,7 +27,6 @@ class AuthBox extends HTMLElement {
                     <div class="ar-auth__icon ar-auth__icon--primary">
                       <span>→</span>
                     </div>
-
                     <div>
                       <h3 class="ar-auth__card-title">Connexion</h3>
                       <p class="ar-auth__card-text">
@@ -79,7 +80,6 @@ class AuthBox extends HTMLElement {
                     <div class="ar-auth__icon ar-auth__icon--soft">
                       <span>+</span>
                     </div>
-
                     <div>
                       <h3 class="ar-auth__card-title">Créer un compte</h3>
                       <p class="ar-auth__card-text">
