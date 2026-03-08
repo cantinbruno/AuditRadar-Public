@@ -87,7 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111827;
+  background-color: #007bff;
   color: white;
   margin-right: 10px;
   border-radius: 6px; /* Ajouter un carré autour des icônes */
@@ -128,7 +128,7 @@
 }
 
 .ar-auth__input:focus {
-  border-color: #111827; /* Bordure bleue au focus */
+  border-color: #007bff; /* Bordure bleue au focus */
   box-shadow: none; /* Aucune ombre au focus */
   outline: none; /* Enlever la bordure par défaut du focus */
 }
@@ -156,7 +156,7 @@
 }
 
 .ar-auth__button--primary {
-  background-color: #111827;
+  background-color: #007bff;
   color: white;
   border: none;
 }
@@ -167,7 +167,7 @@
 }
 
 .ar-auth__button--secondary {
-  background-color: #111827;
+  background-color: #007bff;
   color: white;
   border: none;
 }
@@ -184,7 +184,7 @@
 
 .ar-auth__link-btn {
   background: none;
-  color: #111827;
+  color: #007bff;
   border: none;
   cursor: pointer;
 }
