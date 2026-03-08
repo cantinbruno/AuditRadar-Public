@@ -24,14 +24,11 @@
 
 .ar-auth__shell {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
-  padding: 0; /* Pas d'espace supplémentaire */
-  overflow: hidden;
-  background-color: var(--ar-auth-page-bg); /* Fond de la page */
+  min-height: 100vh;
+  background-color: var(--ar-auth-page-bg);
+  padding: 20px;
 }
 
 .ar-auth__intro {
@@ -46,22 +43,23 @@
 }
 
 .ar-auth__subtitle {
-  color: var(--ar-auth-text-soft);
+  color: var(--ar-auth-text);
   font-size: 1rem;
   line-height: 1.5;
 }
 
 .ar-auth__panel-wrap {
   display: flex;
-  flex-wrap: wrap; /* Pour permettre à l'image et au formulaire de se réorganiser en petit écran */
-  max-width: 1200px;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
-  height: 100%;
-  margin: 0 auto; /* Centrer */
+  max-width: 1200px;
+  margin: 0;
 }
 
 .ar-auth__image-container {
   flex: 1;
+  min-width: 250px;
   height: 100%;
 }
 
@@ -80,8 +78,8 @@
   box-sizing: border-box;
   border-radius: var(--ar-auth-radius-lg);
   box-shadow: var(--ar-auth-shadow-card);
-  margin: 0; /* Pas d'espace autour du formulaire */
-  min-width: 300px; /* Assurer que le formulaire ne devienne pas trop petit sur les petits écrans */
+  margin: 0;
+  min-width: 300px;
 }
 
 .ar-auth__card {
@@ -91,7 +89,6 @@
   border-radius: var(--ar-auth-radius-lg);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
   box-shadow: var(--ar-auth-shadow-card);
-  margin: 0 auto;
 }
 
 .ar-auth__card--hidden {
@@ -120,11 +117,7 @@
   color: var(--ar-auth-text);
   font-size: 16px;
   outline: none;
-  transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease,
-    background 0.18s ease;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, background 0.18s ease;
 }
 
 .ar-auth__input::placeholder {
@@ -167,6 +160,10 @@
   background: linear-gradient(135deg, var(--ar-auth-primary-hover) 0%, var(--ar-auth-primary) 100%);
 }
 
+.ar-auth__button--secondary {
+  background: var(--ar-auth-secondary-bg);
+}
+
 .ar-auth__bottom-text {
   margin-top: 20px;
   font-size: 0.95rem;
@@ -183,10 +180,17 @@
   text-decoration: underline;
 }
 
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .ar-auth__shell {
-    padding: 22px;
+    padding: 20px;
   }
 
   .ar-auth__form-container {
@@ -205,8 +209,8 @@
   }
 
   .ar-auth__panel-wrap {
-    flex-direction: column; /* Empiler l'image et le formulaire en mode mobile */
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .ar-auth__button {
@@ -214,13 +218,6 @@
   }
 
   .ar-auth__image-container {
-    display: none; /* Cacher l'image en mobile pour plus de place */
+    display: none;
   }
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
-  font-weight: bold;
 }
