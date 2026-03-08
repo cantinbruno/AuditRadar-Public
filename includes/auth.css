@@ -64,7 +64,6 @@
   width: 60%; /* Ajuster la largeur du formulaire */
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
-  background-color: #fff;
   border: none; /* Retirer toute bordure du formulaire externe */
   box-shadow: none; /* Aucune ombre autour du formulaire externe */
 }
