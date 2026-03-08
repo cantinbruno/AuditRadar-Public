@@ -13,11 +13,12 @@
   align-items: center;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* Retirer l'ombre autour du conteneur principal */
   overflow: hidden;
   width: 100%;
   max-width: 1200px; /* Limiter la largeur du conteneur principal */
   margin: 0 auto; /* Centre le conteneur principal horizontalement */
+  border: none; /* Retirer la bordure du conteneur principal */
 }
 
 .ar-auth__intro {
@@ -66,7 +67,7 @@
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
   background-color: #fff;
-  border: none; /* Aucune bordure visible */
+  border: none; /* Retirer toute bordure du formulaire */
   box-shadow: none; /* Aucune ombre autour du formulaire */
 }
 
