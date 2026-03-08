@@ -42,24 +42,24 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Disposition en colonne */
+  flex-direction: column;
   height: 100vh;
-  align-items: center;
-  justify-content: flex-start; /* Le contenu commence en haut */
-  padding: 0 42px;
+  align-items: stretch; /* Étire les éléments pour occuper toute la hauteur */
+  justify-content: flex-start; /* Alignement du contenu en haut */
+  padding: 40px;
 }
 
 .ar-auth__intro {
   position: relative;
   z-index: 1;
-  margin-bottom: 26px; /* Assurez-vous qu'il y ait un espacement sous le texte */
-  text-align: center;
+  margin-bottom: 26px; /* Espacement sous le texte */
+  text-align: left; /* Garde le texte aligné à gauche */
 }
 
 .ar-auth__title {
   margin: 0 0 12px;
   color: var(--ar-auth-text);
-  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-size: clamp(2rem, 3vw, 3rem); /* Utilise clamp pour une taille dynamique */
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -72,24 +72,24 @@
   line-height: 1.8;
 }
 
-/* Conteneur qui contient l'image et le formulaire */
+/* Zone contenant l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  flex-direction: row; /* En ligne pour grands écrans */
+  flex-direction: row; /* En ligne pour les grands écrans */
   width: 100%;
   height: 100%;
 }
 
 .ar-auth__image-container {
-  flex-grow: 1; /* Prend l'espace restant */
-  flex-shrink: 0; /* Ne réduit pas l'image */
-  height: 100%; /* Prend toute la hauteur */
+  flex-grow: 1; /* Prend tout l'espace restant */
+  flex-shrink: 0;
+  height: 100%;
 }
 
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Assurez-vous que l'image remplit son conteneur */
+  object-fit: cover; /* Remplir le conteneur sans déformation */
   border-radius: var(--ar-auth-radius-lg);
 }
 
@@ -98,14 +98,16 @@
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
-  justify-content: flex-start; /* Le contenu du formulaire commence en haut */
+  justify-content: flex-start;
   background-color: white;
   border-radius: var(--ar-auth-radius-lg);
-  flex-grow: 1; /* Le formulaire prend l'espace restant */
+  flex-grow: 1;
+  max-width: 400px; /* Limiter la largeur pour ne pas dépasser */
+  margin-left: 20px; /* Ajoute un peu d'espace entre le formulaire et l'image */
 }
 
 .ar-auth__card {
-  max-width: 720px;
+  max-width: 100%;
   padding: 28px;
   border: 1px solid var(--ar-auth-border);
   border-radius: var(--ar-auth-radius-lg);
@@ -277,12 +279,12 @@
   }
 
   .ar-auth__image-container {
-    width: 100%; /* L'image prend toute la largeur sur mobile */
-    height: 250px; /* Limiter la hauteur de l'image sur mobile */
+    width: 100%;
+    height: 250px;
   }
 
   .ar-auth__form-container {
-    width: 100%; /* Le formulaire prend 100% de la largeur sur mobile */
+    width: 100%;
     margin-top: 20px;
   }
 
