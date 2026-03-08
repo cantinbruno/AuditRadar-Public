@@ -37,7 +37,7 @@
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 1; /* L'image prend 50% de l'espace */
+  flex: 1 1 50%; /* L'image prend 50% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center; /* Centre l'image verticalement */
@@ -54,7 +54,7 @@
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 1; /* Le formulaire prend 50% de l'espace */
+  flex: 1 1 50%; /* Le formulaire prend 50% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center; /* Centre le formulaire verticalement */
