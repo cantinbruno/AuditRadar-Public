@@ -2,25 +2,19 @@
   --ar-auth-page-bg: #f4f8fc;
   --ar-auth-surface: #ffffff;
   --ar-auth-surface-soft: #f8fbff;
-
   --ar-auth-border: #d8e3f0;
   --ar-auth-border-strong: #c3d2e4;
-
   --ar-auth-text: #0f172a;
   --ar-auth-text-soft: #5f6f86;
   --ar-auth-placeholder: #98a6bb;
-
   --ar-auth-primary: #2563eb;
   --ar-auth-primary-hover: #1d4ed8;
   --ar-auth-primary-soft: #eaf2ff;
-
   --ar-auth-secondary-bg: #eef4ff;
   --ar-auth-secondary-hover: #dde9ff;
-
   --ar-auth-shadow-main: 0 24px 60px rgba(15, 23, 42, 0.08);
   --ar-auth-shadow-card: 0 14px 34px rgba(15, 23, 42, 0.07);
   --ar-auth-shadow-button: 0 12px 24px rgba(37, 99, 235, 0.18);
-
   --ar-auth-radius-xl: 30px;
   --ar-auth-radius-lg: 22px;
   --ar-auth-radius-md: 16px;
@@ -84,39 +78,6 @@
   color: var(--ar-auth-text);
   font-size: 1.03rem;
   line-height: 1.8;
-}
-
-/* Texte au-dessus de l'image et du formulaire */
-.ar-auth__intro {
-  margin-bottom: 40px; /* Ajout d'un espacement avant l'image */
-}
-
-/* Container principal pour la disposition */
-.ar-auth__container {
-  display: flex;
-  justify-content: space-between; /* Pour séparer l'image et le formulaire */
-  gap: 30px; /* Espacement entre l'image et le formulaire */
-  align-items: center; /* Centrer verticalement */
-  height: 500px; /* Hauteur fixe pour que l'image et le formulaire aient la même taille */
-}
-
-/* Style pour l'image à gauche */
-.ar-auth__image {
-  flex: 1; /* L'image prend tout l'espace à gauche */
-  max-width: 50%; /* L'image ne prend pas plus de la moitié de l'espace */
-  height: 100%; /* L'image aura la même hauteur que le formulaire */
-}
-
-.ar-auth__form {
-  flex: 1; /* Le formulaire prend l'autre moitié de l'espace */
-  max-width: 50%; /* Le formulaire occupe jusqu'à la moitié de l'espace */
-  height: 100%; /* Le formulaire aura la même hauteur que l'image */
-}
-
-.ar-auth__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Assure que l'image remplit bien l'espace sans distorsion */
 }
 
 /* Panel */
