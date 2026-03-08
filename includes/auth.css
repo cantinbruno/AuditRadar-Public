@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; /* Assure que l'élément occupe toute la hauteur de la fenêtre */
   background-color: #f9f9f9;
 }
 
@@ -16,7 +16,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 100%;
-  max-width: 1200px; /* Limiter la largeur */
+  max-width: 1200px; /* Limiter la largeur du conteneur principal */
+  margin: 0 auto; /* Centre le conteneur principal horizontalement */
 }
 
 .ar-auth__intro {
