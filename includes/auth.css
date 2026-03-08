@@ -51,7 +51,7 @@
   width: 30%; /* Réduire la taille de l'image */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   padding: 10px;
 }
 
@@ -73,7 +73,7 @@
   border-radius: 12px; /* Coins arrondis pour le conteneur interne */
   background-color: #fff;
   border: 2px solid black; /* Ajouter une bordure noire au conteneur interne */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile autour du conteneur interne */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 1); /* Ombre subtile autour du conteneur interne */
 }
 
 .ar-auth__card-top {
