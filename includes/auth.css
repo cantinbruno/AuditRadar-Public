@@ -152,6 +152,11 @@
   text-decoration: underline;
 }
 
+/* Cacher les formulaires */
+.ar-auth__card--hidden {
+  display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .ar-auth__shell {
