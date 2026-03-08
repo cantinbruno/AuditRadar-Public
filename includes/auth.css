@@ -65,9 +65,15 @@
   width: 60%; /* Ajuster la largeur du formulaire */
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
-  border: 2px solid #007bff; /* Bordure plus visible pour le bloc */
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Ombre plus marquée autour du formulaire */
+  border: 2px solid transparent; /* Bordure transparente par défaut */
   background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Ombre marquée autour du formulaire */
+  transition: box-shadow 0.3s ease, border 0.3s ease; /* Transition douce pour l'ombre et la bordure */
+}
+
+.ar-auth__form-container:hover {
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Ombre plus marquée au survol */
+  border: 2px solid #007bff; /* Bordure bleue visible au survol */
 }
 
 .ar-auth__card {
@@ -121,7 +127,7 @@
   width: 100%;
   padding: 12px; /* Plus de padding pour donner de l'espace à l'intérieur */
   border-radius: 8px; /* Coins arrondis */
-  border: 2px solid #007bff; /* Bordure plus visible avec une couleur bleue */
+  border: 2px solid #ddd; /* Bordure légère grise par défaut */
   font-size: 14px;
   transition: border 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la bordure et l'ombre */
   background-color: #fff;
@@ -129,13 +135,13 @@
 }
 
 .ar-auth__input:focus {
-  border-color: #0056b3; /* Bordure bleue foncée au focus */
-  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Ombre bleue plus marquée */
+  border-color: #007bff; /* Bordure bleue au focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile */
   outline: none; /* Enlever la bordure par défaut du focus */
 }
 
 .ar-auth__input:hover {
-  border-color: #0056b3; /* Changer la bordure au survol */
+  border-color: #007bff; /* Changer la bordure au survol */
 }
 
 .error-message {
