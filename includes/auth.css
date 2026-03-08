@@ -1,197 +1,170 @@
-/* Container principal */
 .ar-auth {
+  font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center;  /* Centrer horizontalement */
-  align-items: center;      /* Centrer verticalement */
-  height: 100%;             /* Prendre toute la hauteur disponible */
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
 }
 
-/* Intro avec le texte au-dessus de l'image et du formulaire */
+.ar-auth__shell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
 .ar-auth__intro {
-  text-align: center;
-  margin-bottom: 40px;
+  flex: 1;
+  padding: 20px;
 }
 
 .ar-auth__title {
-  font-size: 2.5rem;
-  color: #333;
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .ar-auth__subtitle {
-  font-size: 1.2rem;
+  font-size: 16px;
   color: #555;
-  margin-top: 10px;
 }
 
-/* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  justify-content: center; /* Centrer horizontalement */
-  align-items: center;     /* Centrer verticalement */
-  width: 100%;
-  max-width: 1200px;
-  height: 500px;           /* Fixer la hauteur des deux éléments */
-  box-sizing: border-box;
-  margin-top: 20px;
+  flex: 2;
 }
 
-/* Conteneur de l'image */
 .ar-auth__image-container {
+  flex: 1;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding-right: 20px;
 }
 
 .ar-auth__image-container img {
-  width: 400px;   /* Largeur fixe de l'image */
-  height: 500px;  /* Hauteur fixe de l'image */
-  object-fit: cover; /* Assurer que l'image couvre la zone sans déformation */
-  border-radius: 12px; /* Coins arrondis pour l'image */
+  max-width: 100%;
+  height: auto;
 }
 
-/* Conteneur pour le formulaire */
 .ar-auth__form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding-left: 20px;
+  flex: 1;
+  padding: 20px;
 }
 
-/* Formulaire avec carte */
 .ar-auth__card {
-  width: 100%;
-  max-width: 400px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Section du haut du formulaire (icône + titre) */
 .ar-auth__card-top {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 25px;
-}
-
-.ar-auth__icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  margin-right: 15px;
-}
-
-.ar-auth__card-title {
-  font-size: 1.8rem;
-  color: #333;
-}
-
-.ar-auth__card-text {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Styles des champs de saisie */
-.ar-auth__form-group {
   margin-bottom: 20px;
 }
 
+.ar-auth__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.ar-auth__card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ar-auth__card-text {
+  font-size: 14px;
+  color: #777;
+}
+
+.ar-auth__form-group {
+  margin-bottom: 15px;
+}
+
 .ar-auth__label {
-  font-size: 1rem;
-  color: #333;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .ar-auth__input {
   width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
-.ar-auth__input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  outline: none;
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-/* Bouton de connexion */
+.ar-auth__actions {
+  margin-top: 20px;
+}
+
 .ar-auth__button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.ar-auth__button--primary {
   background-color: #007bff;
   color: white;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.ar-auth__button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+.ar-auth__button--secondary {
+  background-color: #28a745;
+  color: white;
 }
 
-/* Texte en bas pour la navigation entre les formulaires */
 .ar-auth__bottom-text {
   text-align: center;
-  margin-top: 20px;
-  color: #333;
+  margin-top: 10px;
 }
 
 .ar-auth__link-btn {
   background: none;
-  border: none;
   color: #007bff;
+  border: none;
   cursor: pointer;
+}
+
+.ar-auth__link-btn:hover {
   text-decoration: underline;
 }
 
-/* Message d'erreur */
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ar-auth__shell {
+    flex-direction: column;
+  }
 
-/* Cacher le formulaire d'inscription au départ */
-.ar-auth__card--hidden {
-  display: none;
-}
-
-/* Responsive pour les grands écrans */
-@media (min-width: 768px) {
   .ar-auth__panel-wrap {
-    height: 500px;
-    flex-wrap: nowrap;
+    flex-direction: column;
   }
 
   .ar-auth__image-container,
   .ar-auth__form-container {
-    flex: 1;
-    min-width: 400px; /* Largeur minimale pour chaque élément */
+    flex: none;
+    width: 100%;
   }
 }
