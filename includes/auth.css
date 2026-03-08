@@ -89,14 +89,16 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  border: 2px solid #007bff; /* Bordure bleue autour de l'icône */
-  border-radius: 50%;
-  color: black; /* Icônes en noir */
-  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border: none; /* Enlever bordure existante */
+  background-color: #007bff; /* Fond bleu pour la flèche et le + */
+  color: white; /* Icônes en blanc */
+  font-size: 1.5rem;
+  border-radius: 5px; /* Coins arrondis pour les icônes */
 }
 
+/* Titre et texte */
 .ar-auth__card-title {
   font-size: 1.6rem;
   color: black; /* Titre en noir */
@@ -140,14 +142,6 @@
   background-color: #007bff; /* Fond bleu */
   color: white; /* Texte des boutons en blanc */
   font-size: 1rem;
-}
-
-.ar-auth__button--primary {
-  background-color: #007bff;
-}
-
-.ar-auth__button--secondary {
-  background-color: #28a745;
 }
 
 /* Texte en bas pour la navigation entre les formulaires */
