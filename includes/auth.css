@@ -100,20 +100,36 @@
 }
 
 .ar-auth__form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Espacement plus important entre les champs */
 }
 
 .ar-auth__label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px; /* Augmenter l'espace entre le label et le champ */
+  font-size: 14px;
+  color: #555; /* Couleur du texte du label */
+  font-weight: bold; /* Ajouter du gras au label */
 }
 
+/* Amélioration des bordures des champs */
 .ar-auth__input {
   width: 100%;
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  border-radius: 8px; /* Coins arrondis */
+  border: 2px solid #ddd; /* Bordure fine par défaut */
   font-size: 14px;
+  transition: border 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la bordure et l'ombre */
+  background-color: #fff;
+}
+
+.ar-auth__input:focus {
+  border-color: #007bff; /* Bordure bleue au focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile pour donner un effet de focus */
+  outline: none; /* Enlever la bordure par défaut du focus */
+}
+
+.ar-auth__input:hover {
+  border-color: #007bff; /* Changer la bordure au survol */
 }
 
 .error-message {
@@ -128,20 +144,32 @@
 
 .ar-auth__button {
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
+  padding: 12px; /* Augmenter un peu la hauteur des boutons */
+  border-radius: 8px; /* Coins arrondis pour les boutons */
   font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transition pour le survol */
 }
 
 .ar-auth__button--primary {
   background-color: #007bff;
   color: white;
+  border: none;
+}
+
+.ar-auth__button--primary:hover {
+  background-color: #0056b3; /* Changer la couleur de fond au survol */
+  transform: scale(1.05); /* Léger agrandissement pour l'effet de survol */
 }
 
 .ar-auth__button--secondary {
   background-color: #28a745;
   color: white;
+  border: none;
+}
+
+.ar-auth__button--secondary:hover {
+  background-color: #218838; /* Changer la couleur de fond au survol */
+  transform: scale(1.05); /* Léger agrandissement pour l'effet de survol */
 }
 
 .ar-auth__bottom-text {
