@@ -44,22 +44,22 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  align-items: stretch; /* Étire les éléments pour occuper toute la hauteur */
-  justify-content: flex-start; /* Alignement du contenu en haut */
+  align-items: stretch; /* Remplir la hauteur */
+  justify-content: center; /* Centrer verticalement */
   padding: 40px;
 }
 
 .ar-auth__intro {
   position: relative;
   z-index: 1;
-  margin-bottom: 26px; /* Espacement sous le texte */
-  text-align: left; /* Garde le texte aligné à gauche */
+  margin-bottom: 26px;
+  text-align: center; /* Centrer le texte */
 }
 
 .ar-auth__title {
   margin: 0 0 12px;
   color: var(--ar-auth-text);
-  font-size: clamp(2rem, 3vw, 3rem); /* Utilise clamp pour une taille dynamique */
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -72,16 +72,16 @@
   line-height: 1.8;
 }
 
-/* Zone contenant l'image et le formulaire */
+/* Conteneur de l'image et du formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  flex-direction: row; /* En ligne pour les grands écrans */
+  flex-direction: row;
   width: 100%;
   height: 100%;
 }
 
 .ar-auth__image-container {
-  flex-grow: 1; /* Prend tout l'espace restant */
+  flex-grow: 1;
   flex-shrink: 0;
   height: 100%;
 }
@@ -89,7 +89,7 @@
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Remplir le conteneur sans déformation */
+  object-fit: cover;
   border-radius: var(--ar-auth-radius-lg);
 }
 
@@ -102,12 +102,14 @@
   background-color: white;
   border-radius: var(--ar-auth-radius-lg);
   flex-grow: 1;
-  max-width: 400px; /* Limiter la largeur pour ne pas dépasser */
-  margin-left: 20px; /* Ajoute un peu d'espace entre le formulaire et l'image */
+  max-width: 450px; /* Agrandir la largeur du formulaire */
+  margin-left: 20px;
+  height: auto;
+  min-height: 400px; /* Hauteur minimale pour que le formulaire soit plus grand */
 }
 
 .ar-auth__card {
-  max-width: 100%;
+  width: 100%; /* Assurez-vous que le formulaire prenne toute la largeur du conteneur */
   padding: 28px;
   border: 1px solid var(--ar-auth-border);
   border-radius: var(--ar-auth-radius-lg);
@@ -116,42 +118,15 @@
   margin: 0 auto;
 }
 
-.ar-auth__card--login {
-  border-color: #c8dafb;
-  background:
-    radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 34%),
-    linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
-}
-
-.ar-auth__card--hidden {
-  display: none;
-}
-
-.ar-auth__card-title {
-  margin: 2px 0 6px;
-  color: var(--ar-auth-text);
-  font-size: 1.6rem;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-.ar-auth__card-text {
-  margin: 0;
-  color: var(--ar-auth-text-soft);
-  font-size: 0.98rem;
-  line-height: 1.6;
-}
-
 .ar-auth__form-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px; /* Plus d'espace entre les champs */
 }
 
 .ar-auth__label {
   display: block;
   margin-bottom: 9px;
   color: var(--ar-auth-text);
-  font-size: 0.95rem;
+  font-size: 1rem; /* Taille des labels plus grande */
   font-weight: 700;
   letter-spacing: -0.01em;
 }
@@ -164,7 +139,7 @@
   border-radius: var(--ar-auth-radius-sm);
   background: #ffffff;
   color: var(--ar-auth-text);
-  font-size: 15px;
+  font-size: 16px; /* Agrandir la taille du texte dans les champs */
   outline: none;
   transition:
     border-color 0.18s ease,
@@ -189,7 +164,7 @@
 }
 
 .ar-auth__actions {
-  margin-top: 8px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -228,18 +203,8 @@
   background: linear-gradient(135deg, var(--ar-auth-primary-hover) 0%, var(--ar-auth-primary) 100%);
 }
 
-.ar-auth__button--secondary {
-  color: var(--ar-auth-primary);
-  background: var(--ar-auth-secondary-bg);
-  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.08);
-}
-
-.ar-auth__button--secondary:hover {
-  background: var(--ar-auth-secondary-hover);
-}
-
 .ar-auth__bottom-text {
-  margin: 18px 0 0;
+  margin-top: 20px;
   color: var(--ar-auth-text-soft);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -275,7 +240,7 @@
   .ar-auth__shell {
     padding: 22px;
     border-radius: 22px;
-    flex-direction: column; /* Disposition verticale sur mobile */
+    flex-direction: column;
   }
 
   .ar-auth__image-container {
