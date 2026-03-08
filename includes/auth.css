@@ -2,9 +2,10 @@
 .ar-auth {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Changer de center à flex-start pour avoir le texte au-dessus */
   align-items: center;
   height: 100vh;
+  padding: 20px; /* Ajouter un peu de marge autour */
 }
 
 /* Section contenant tout */
@@ -14,16 +15,24 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
 }
 
-/* Container principal des formulaires et de l'image */
+/* Section avec le texte au-dessus */
+.ar-auth__header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Espacement entre le texte et la section principale */
+  color: black;
+}
+
+/* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
   align-items: stretch; /* Aligner l'image et le formulaire à la même hauteur */
-  width: 80%;
-  max-width: 1200px;
-  height: 100%; /* Force la hauteur de 100% pour tout le conteneur */
+  width: 100%;
+  height: 100%;
 }
 
 /* Conteneur pour l'image à gauche */
@@ -36,9 +45,10 @@
   height: 100%; /* S'assure que l'image prend toute la hauteur disponible */
 }
 
+/* L'image s'adapte correctement */
 .ar-auth__image-container img {
-  width: 100%; /* L'image prend toute la largeur de son conteneur */
-  height: 100%; /* L'image prend toute la hauteur du conteneur */
+  width: 100%;
+  height: 100%;
   object-fit: cover; /* L'image couvre toute la zone sans se déformer */
 }
 
@@ -56,47 +66,47 @@
 .ar-auth__card {
   width: 100%;
   max-width: 400px;
-  background-color: white; /* Fond blanc pour le formulaire */
-  border-radius: 12px; /* Coins arrondis pour la carte */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Ombre douce autour de la carte */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   padding: 25px;
   box-sizing: border-box;
-  border: 1px solid #ddd; /* Bordure subtile gris clair */
+  border: 1px solid #ddd;
 }
 
 /* Section du haut de la carte (icône et titre) */
 .ar-auth__card-top {
   display: flex;
-  justify-content: flex-start; /* Aligner le contenu à gauche */
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 15px; /* Espacement ajusté */
+  margin-bottom: 15px;
 }
 
 .ar-auth__icon {
-  margin-right: 15px; /* Espacement entre l'icône et le texte */
+  margin-right: 15px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: #007bff; /* Fond bleu pour la flèche et le + */
-  color: white; /* Icônes en blanc */
+  background-color: #007bff;
+  color: white;
   font-size: 1.5rem;
-  border-radius: 5px; /* Coins arrondis pour les icônes */
-  border: 2px solid #007bff; /* Bordure bleue autour des icônes */
+  border-radius: 5px;
+  border: 2px solid #007bff;
 }
 
 /* Titre et texte */
 .ar-auth__card-title {
   font-size: 1.6rem;
-  color: black; /* Titre en noir */
-  margin-bottom: 5px; /* Espacement ajusté pour avoir plus de place sous le titre */
+  color: black;
+  margin-bottom: 5px;
 }
 
 .ar-auth__card-text {
-  color: black; /* Texte dans la carte en noir */
+  color: black;
   font-size: 1rem;
-  margin-top: 5px; /* Marge pour séparer du titre */
+  margin-top: 5px;
 }
 
 /* Styles des champs de formulaire avec bordures et effets de focus */
@@ -106,7 +116,7 @@
 
 .ar-auth__label {
   font-size: 1rem;
-  color: black; /* Label en noir */
+  color: black;
   display: block;
   margin-bottom: 8px;
 }
@@ -115,20 +125,20 @@
   width: 100%;
   padding: 12px;
   margin-top: 5px;
-  border: 2px solid #ccc; /* Bordure initiale gris clair */
-  border-radius: 8px; /* Coins arrondis pour les champs */
-  color: black; /* Texte dans les champs de formulaire en noir */
-  background-color: transparent; /* Fond transparent dans les champs */
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  color: black;
+  background-color: transparent;
   font-size: 1rem;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition fluide sur le focus */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Effet de focus sur les champs */
 .ar-auth__input:focus {
-  border-color: #007bff; /* Bordure bleue au focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Légère ombre bleue */
-  outline: none; /* Supprime le contour par défaut */
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
 
 /* Section des actions et boutons */
@@ -140,33 +150,33 @@
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 10px; /* Boutons arrondis */
+  border-radius: 10px;
   cursor: pointer;
-  background-color: #007bff; /* Fond bleu */
-  color: white; /* Texte des boutons en blanc */
+  background-color: #007bff;
+  color: white;
   font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Bouton au survol */
 .ar-auth__button:hover {
-  background-color: #0056b3; /* Fond bleu plus foncé au survol */
-  transform: translateY(-2px); /* Légère élévation au survol */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .ar-auth__button--primary {
-  background-color: #007bff; /* Bouton bleu */
+  background-color: #007bff;
 }
 
 .ar-auth__button--secondary {
-  background-color: #007bff; /* Bouton bleu (anciennement vert) */
+  background-color: #007bff;
 }
 
 /* Texte en bas pour la navigation entre les formulaires */
 .ar-auth__bottom-text {
   text-align: center;
   margin-top: 20px;
-  color: black; /* Texte en noir pour "Pas encore inscrit ?" et "Déjà inscrit ?" */
+  color: black;
 }
 
 .ar-auth__link-btn {
