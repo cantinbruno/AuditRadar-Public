@@ -40,6 +40,7 @@
   align-items: stretch; /* Force les éléments à avoir la même hauteur */
   width: 80%;
   max-width: 1200px;
+  height: 100%; /* Prend toute la hauteur disponible */
 }
 
 /* Conteneur pour l'image à gauche */
@@ -53,9 +54,9 @@
 }
 
 .ar-auth__image-container img {
-  max-width: 100%; /* Garde l'image responsive */
+  width: 100%; /* Garde l'image responsive */
   height: 100%; /* L'image prend toute la hauteur disponible */
-  object-fit: cover; /* Garantit que l'image couvre toute la zone sans se déformer */
+  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
 }
 
 /* Conteneur pour les formulaires */
