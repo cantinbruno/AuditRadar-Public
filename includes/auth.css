@@ -24,19 +24,18 @@
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
-  height: 100%; /* Assure que le panel occupe toute la hauteur */
+  height: 100%;
   box-sizing: border-box;
-  margin-top: 20px; /* Espacement du texte au-dessus */
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 0 0 50%; /* L'image prend 50% de l'espace */
+  flex: 1 1 45%; /* L'image prend 45% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* S'assure que l'image prend toute la hauteur */
-  padding-right: 15px;
+  height: 100%;
+  padding-right: 30px; /* Ajuste l'espacement entre l'image et le formulaire */
   box-sizing: border-box;
 }
 
@@ -44,24 +43,24 @@
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* L'image couvre toute la zone sans déformation */
+  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
 }
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 0 0 50%; /* Le formulaire prend 50% de l'espace */
+  flex: 1 1 50%; /* Le formulaire prend 50% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-left: 15px;
+  padding-left: 30px; /* Ajuste l'espacement entre l'image et le formulaire */
   box-sizing: border-box;
 }
 
 /* Styles des cartes de formulaire avec fond blanc */
 .ar-auth__card {
   width: 100%;
-  max-width: 450px; /* Augmenter la taille du formulaire */
+  max-width: 480px; /* Le formulaire est plus large */
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
