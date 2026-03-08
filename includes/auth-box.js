@@ -14,11 +14,6 @@ class AuthBox extends HTMLElement {
 
           <div class="ar-auth__panel-wrap">
 
-            <!-- Conteneur de l'image à gauche -->
-            <div class="ar-auth__image-container">
-              <img src="/img/auth.png" alt="Image d'authentification">
-            </div>
-
             <!-- Formulaire de connexion et inscription -->
             <div class="ar-auth__form-container">
               <!-- FORMULAIRE CONNEXION -->
@@ -91,6 +86,11 @@ class AuthBox extends HTMLElement {
                 </p>
               </article>
 
+            </div>
+
+            <!-- Conteneur de l'image à droite -->
+            <div class="ar-auth__image-container">
+              <img src="/img/auth.png" alt="Image d'authentification">
             </div>
 
           </div>
