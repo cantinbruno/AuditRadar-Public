@@ -98,10 +98,8 @@
 .ar-auth__image {
   flex: 1; /* L'image prend tout l'espace à gauche */
   max-width: 50%; /* L'image ne prend pas plus de la moitié de l'espace */
-  height: auto; /* Ajuste la hauteur automatiquement */
 }
 
-/* Style pour le formulaire à droite */
 .ar-auth__form {
   flex: 1; /* Le formulaire prend l'autre moitié de l'espace */
   max-width: 50%; /* Le formulaire occupe jusqu'à la moitié de l'espace */
@@ -110,10 +108,10 @@
 .ar-auth__image img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  object-fit: cover; /* Assure que l'image remplit bien l'espace sans distorsion */
 }
 
-/* panel */
+/* Panel */
 .ar-auth__panel-wrap {
   position: relative;
   z-index: 1;
