@@ -30,7 +30,7 @@
 .ar-auth {
   font-family: Inter, Arial, Helvetica, sans-serif;
   color: var(--ar-auth-text);
-  margin: 0 0 32px;
+  margin: 0;
 }
 
 .ar-auth * {
@@ -44,22 +44,22 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  align-items: stretch; /* Remplir la hauteur */
-  justify-content: center; /* Centrer verticalement */
+  align-items: center;
+  justify-content: center;
   padding: 40px;
 }
 
 .ar-auth__intro {
   position: relative;
   z-index: 1;
-  margin-bottom: 26px;
-  text-align: center; /* Centrer le texte */
+  margin-bottom: 20px; /* Réduit l'espace sous le texte */
+  text-align: center;
 }
 
 .ar-auth__title {
   margin: 0 0 12px;
   color: var(--ar-auth-text);
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -102,14 +102,14 @@
   background-color: white;
   border-radius: var(--ar-auth-radius-lg);
   flex-grow: 1;
-  max-width: 450px; /* Agrandir la largeur du formulaire */
+  max-width: 450px;
   margin-left: 20px;
   height: auto;
-  min-height: 400px; /* Hauteur minimale pour que le formulaire soit plus grand */
+  min-height: 400px;
 }
 
 .ar-auth__card {
-  width: 100%; /* Assurez-vous que le formulaire prenne toute la largeur du conteneur */
+  width: 100%;
   padding: 28px;
   border: 1px solid var(--ar-auth-border);
   border-radius: var(--ar-auth-radius-lg);
@@ -118,17 +118,17 @@
   margin: 0 auto;
 }
 
+/* Formulaire actif */
 .ar-auth__form-group {
-  margin-bottom: 20px; /* Plus d'espace entre les champs */
+  margin-bottom: 20px;
 }
 
 .ar-auth__label {
   display: block;
   margin-bottom: 9px;
   color: var(--ar-auth-text);
-  font-size: 1rem; /* Taille des labels plus grande */
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
 }
 
 .ar-auth__input {
@@ -139,7 +139,7 @@
   border-radius: var(--ar-auth-radius-sm);
   background: #ffffff;
   color: var(--ar-auth-text);
-  font-size: 16px; /* Agrandir la taille du texte dans les champs */
+  font-size: 16px;
   outline: none;
   transition:
     border-color 0.18s ease,
@@ -229,7 +229,7 @@
   display: none;
 }
 
-/* Responsive styles */
+/* Responsivité : switch entre les formulaires de connexion et d'inscription */
 @media (max-width: 980px) {
   .ar-auth__shell {
     padding: 30px;
