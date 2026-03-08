@@ -50,7 +50,7 @@
 }
 
 .ar-auth__image-container {
-  width: 30%; /* Réduire la taille de l'image */
+  width: 60%; /* Ajuster la taille de l'image pour qu'elle prenne la même largeur que le formulaire */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,8 +58,9 @@
 }
 
 .ar-auth__image-container img {
-  max-width: 100%;
-  height: auto;
+  width: 100%; /* L'image prendra toute la largeur du conteneur */
+  height: auto; /* Assurer que l'image conserve ses proportions */
+  object-fit: cover; /* Couvrir le conteneur sans déformation */
 }
 
 .ar-auth__form-container {
