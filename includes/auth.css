@@ -67,14 +67,16 @@
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
   background-color: #fff;
-  border: 2px solid black; /* Ajouter un trait noir autour du formulaire */
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Ombre marquée autour du formulaire */
+  border: none; /* Retirer toute bordure du formulaire externe */
+  box-shadow: none; /* Aucune ombre autour du formulaire externe */
 }
 
 .ar-auth__card {
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px; /* Coins arrondis pour le conteneur interne */
+  background-color: #fff;
+  border: 2px solid black; /* Ajouter une bordure noire au conteneur interne */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile autour du conteneur interne */
 }
 
 .ar-auth__card-top {
