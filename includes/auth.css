@@ -33,14 +33,14 @@
 }
 
 .ar-auth__shell {
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
   padding: 20px;
+  overflow: hidden;
 }
 
 .ar-auth__intro {
@@ -58,15 +58,14 @@
   color: var(--ar-auth-text-soft);
   font-size: 1rem;
   line-height: 1.5;
-  margin-bottom: 20px;
 }
 
-/* Formulaire section */
 .ar-auth__panel-wrap {
   display: flex;
   flex-direction: row;
+  max-width: 1200px;
   width: 100%;
-  max-width: 1200px; /* Limit to 1200px max width */
+  height: 100%;
 }
 
 .ar-auth__image-container {
@@ -83,12 +82,13 @@
 
 .ar-auth__form-container {
   flex: 1;
-  max-width: 450px; /* Control the form width */
+  max-width: 450px;
   background-color: var(--ar-auth-surface);
   padding: 30px;
   box-sizing: border-box;
   border-radius: var(--ar-auth-radius-lg);
   box-shadow: var(--ar-auth-shadow-card);
+  overflow-y: auto;
 }
 
 .ar-auth__card {
@@ -211,7 +211,6 @@
   display: none;
 }
 
-/* Responsivité : switch entre les formulaires de connexion et d'inscription */
 @media (max-width: 980px) {
   .ar-auth__shell {
     padding: 30px;
