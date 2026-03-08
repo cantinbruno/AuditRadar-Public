@@ -15,7 +15,7 @@ class AuthBox extends HTMLElement {
           <div class="ar-auth__container">
             <!-- Image à gauche -->
             <div class="ar-auth__image">
-              <img src="/includes/auth.png" alt="Audit Informatique">
+              <img src="/img/auth.png" alt="Audit Informatique">
             </div>
 
             <!-- Partie formulaire à droite -->
