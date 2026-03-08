@@ -49,7 +49,6 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  );
 }
 
 .ar-auth__intro {
@@ -85,6 +84,33 @@
   color: var(--ar-auth-text);
   font-size: 1.03rem;
   line-height: 1.8;
+}
+
+/* Container principal pour la disposition */
+.ar-auth__container {
+  display: flex;
+  justify-content: space-between; /* Pour séparer l'image et le formulaire */
+  align-items: center; /* Centrer verticalement */
+  gap: 30px; /* Espacement entre l'image et le formulaire */
+}
+
+/* Style pour l'image à gauche */
+.ar-auth__image {
+  flex: 1; /* L'image prend tout l'espace à gauche */
+  max-width: 50%; /* L'image ne prend pas plus de la moitié de l'espace */
+  height: auto; /* Ajuste la hauteur automatiquement */
+}
+
+/* Style pour le formulaire à droite */
+.ar-auth__form {
+  flex: 1; /* Le formulaire prend l'autre moitié de l'espace */
+  max-width: 50%; /* Le formulaire occupe jusqu'à la moitié de l'espace */
+}
+
+.ar-auth__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* panel */
