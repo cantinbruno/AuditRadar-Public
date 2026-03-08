@@ -1,18 +1,18 @@
 /* Container principal */
 .ar-auth {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  /* Centrage vertical */
-  height: 100%;  /* Prend toute la hauteur disponible */
-  padding: 30px;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 100vh; /* Prendre toute la hauteur de la fenêtre */
   width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Intro avec le texte au-dessus de l'image et du formulaire */
 .ar-auth__intro {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .ar-auth__title {
@@ -30,38 +30,38 @@
 /* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
   width: 100%;
   max-width: 1200px;
-  height: 500px; /* Hauteur fixe */
+  height: 500px; /* Hauteur fixe pour les deux éléments */
   box-sizing: border-box;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 /* Conteneur de l'image */
 .ar-auth__image-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Remplir toute la hauteur du conteneur */
+  height: 100%;
+  padding-right: 20px;
 }
 
 .ar-auth__image-container img {
-  width: 400px; /* Largeur fixe de l'image */
-  height: 500px; /* Hauteur fixe */
-  object-fit: cover; /* Couvre l'espace sans déformation */
-  border-radius: 12px; /* Arrondir les angles */
+  width: 400px; /* Largeur fixe pour l'image */
+  height: 500px; /* Hauteur fixe pour l'image */
+  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
+  border-radius: 12px; /* Arrondir les bords de l'image */
 }
 
 /* Conteneur pour le formulaire */
 .ar-auth__form-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Remplir toute la hauteur du conteneur */
+  height: 100%;
+  padding-left: 20px;
 }
 
 /* Formulaire avec carte */
@@ -181,16 +181,16 @@
   display: none;
 }
 
-/* Media Query pour les grands écrans */
+/* Responsive pour les grands écrans */
 @media (min-width: 768px) {
   .ar-auth__panel-wrap {
-    height: 500px;
     flex-wrap: nowrap;
+    height: 500px;
   }
 
   .ar-auth__image-container,
   .ar-auth__form-container {
     flex: 1;
-    min-width: 400px; /* Fixer une largeur minimale pour les deux éléments */
+    min-width: 400px; /* Fixer une largeur minimale pour chaque élément */
   }
 }
