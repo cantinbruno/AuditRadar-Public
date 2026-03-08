@@ -43,7 +43,7 @@
   overflow: hidden;
   padding: 42px;
   display: flex;
-  flex-direction: column; /* Le texte sera au-dessus de l'image et du formulaire */
+  flex-direction: column;
   align-items: center;
 }
 
