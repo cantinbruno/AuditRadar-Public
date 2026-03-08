@@ -37,23 +37,25 @@
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch; /* Force les éléments à avoir la même hauteur */
   width: 80%;
   max-width: 1200px;
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 1;
+  flex: 1; /* Prend tout l'espace restant disponible */
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center; /* Centre l'image dans son conteneur */
   padding-right: 30px;
+  height: 100%; /* S'assure que l'image prend toute la hauteur disponible */
 }
 
 .ar-auth__image-container img {
-  max-width: 100%;
-  height: auto;
+  max-width: 100%; /* Garde l'image responsive */
+  height: 100%; /* L'image prend toute la hauteur disponible */
+  object-fit: cover; /* Garantit que l'image couvre toute la zone sans se déformer */
 }
 
 /* Conteneur pour les formulaires */
@@ -61,8 +63,9 @@
   flex: 1;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center; /* Aligne le formulaire verticalement au centre */
   padding-left: 30px;
+  height: 100%; /* S'assure que le formulaire prend toute la hauteur disponible */
 }
 
 /* Styles des cartes de formulaire avec fond blanc */
