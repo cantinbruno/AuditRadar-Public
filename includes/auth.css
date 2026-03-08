@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Assure que l'élément occupe toute la hauteur de la fenêtre */
-  background-color: #f9f9f9;
 }
 
 .ar-auth__shell {
@@ -50,7 +49,7 @@
 }
 
 .ar-auth__image-container {
-  width: 60%; /* Ajuster la taille de l'image pour qu'elle prenne la même largeur que le formulaire */
+  width: 30%; /* Réduire la taille de l'image */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,9 +57,8 @@
 }
 
 .ar-auth__image-container img {
-  width: 100%; /* L'image prendra toute la largeur du conteneur */
-  height: auto; /* Assurer que l'image conserve ses proportions */
-  object-fit: cover; /* Couvrir le conteneur sans déformation */
+  max-width: 100%;
+  height: auto;
 }
 
 .ar-auth__form-container {
