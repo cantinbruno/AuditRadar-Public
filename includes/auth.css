@@ -19,7 +19,7 @@
 /* Intro (titre et sous-titre) */
 .ar-auth__intro {
   text-align: left; /* Texte aligné à gauche */
-  color: white; /* Texte en blanc pour l'introduction */
+  color: black; /* Texte en noir pour l'introduction */
   margin-bottom: 30px;
 }
 
@@ -30,7 +30,7 @@
 
 .ar-auth__subtitle {
   font-size: 1.2rem;
-  color: white; /* Texte en blanc pour l'introduction */
+  color: black; /* Texte en noir pour l'introduction */
 }
 
 /* Container principal des formulaires et de l'image */
