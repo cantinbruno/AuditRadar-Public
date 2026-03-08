@@ -52,7 +52,7 @@
   display: flex;
   justify-content: left;
   align-items: left;
-  padding: 10px;
+  padding: 0px;
 }
 
 .ar-auth__image-container img {
