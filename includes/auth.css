@@ -97,22 +97,25 @@
   justify-content: space-between; /* Pour séparer l'image et le formulaire */
   gap: 30px; /* Espacement entre l'image et le formulaire */
   align-items: center; /* Centrer verticalement */
+  height: 500px; /* Hauteur fixe pour que l'image et le formulaire aient la même taille */
 }
 
 /* Style pour l'image à gauche */
 .ar-auth__image {
   flex: 1; /* L'image prend tout l'espace à gauche */
   max-width: 50%; /* L'image ne prend pas plus de la moitié de l'espace */
+  height: 100%; /* L'image aura la même hauteur que le formulaire */
 }
 
 .ar-auth__form {
   flex: 1; /* Le formulaire prend l'autre moitié de l'espace */
   max-width: 50%; /* Le formulaire occupe jusqu'à la moitié de l'espace */
+  height: 100%; /* Le formulaire aura la même hauteur que l'image */
 }
 
 .ar-auth__image img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover; /* Assure que l'image remplit bien l'espace sans distorsion */
 }
 
