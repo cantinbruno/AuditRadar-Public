@@ -12,6 +12,7 @@ class AuthBox extends HTMLElement {
             </p>
           </div>
 
+          <!-- Conteneur centré de l'image et du formulaire -->
           <div class="ar-auth__panel-wrap">
 
             <!-- Formulaire de connexion et inscription -->
