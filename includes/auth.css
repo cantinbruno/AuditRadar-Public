@@ -1,4 +1,3 @@
-/* Container principal */
 .ar-auth {
   display: flex;
   flex-direction: column;
@@ -30,10 +29,10 @@
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center; /* Centrer verticalement les éléments */
   width: 100%;
   max-width: 1200px;
-  height: 100%;
+  height: 500px; /* Fixer une hauteur commune pour les deux éléments */
   box-sizing: border-box;
   padding: 20px;
 }
@@ -44,16 +43,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100%; /* Assurer que l'image occupe toute la hauteur du conteneur */
   padding-right: 20px;
 }
 
-/* Fixer la taille de l'image et arrondir les angles */
 .ar-auth__image-container img {
   width: 400px; /* Taille fixe de largeur */
-  height: 500px; /* Taille fixe de hauteur */
-  object-fit: cover; /* L'image couvre toute la zone sans déformation */
-  border-radius: 12px; /* Arrondir les angles comme le formulaire */
+  height: 100%; /* Fixer la hauteur à 100% pour qu'elle prenne toute la hauteur du conteneur */
+  object-fit: cover;
+  border-radius: 12px; /* Arrondir les angles */
 }
 
 /* Conteneur pour le formulaire */
@@ -62,7 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100%; /* Assurer que le formulaire occupe toute la hauteur du conteneur */
   padding-left: 20px;
 }
 
