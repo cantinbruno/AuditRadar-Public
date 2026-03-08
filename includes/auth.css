@@ -73,7 +73,7 @@
   border-radius: 12px; /* Coins arrondis pour le conteneur interne */
   background-color: #fff;
   border: 1px solid black; /* Ajouter une bordure noire au conteneur interne */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 1); /* Ombre subtile autour du conteneur interne */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre subtile autour du conteneur interne */
 }
 
 .ar-auth__card-top {
@@ -88,7 +88,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #007bff;
+  background-color: #111827;
   color: white;
   margin-right: 10px;
   border-radius: 6px; /* Ajouter un carré autour des icônes */
@@ -129,7 +129,7 @@
 }
 
 .ar-auth__input:focus {
-  border-color: #007bff; /* Bordure bleue au focus */
+  border-color: #111827; /* Bordure bleue au focus */
   box-shadow: none; /* Aucune ombre au focus */
   outline: none; /* Enlever la bordure par défaut du focus */
 }
@@ -185,7 +185,7 @@
 
 .ar-auth__link-btn {
   background: none;
-  color: #007bff;
+  color: #111827;
   border: none;
   cursor: pointer;
 }
