@@ -30,33 +30,37 @@
 .ar-auth {
   font-family: Inter, Arial, Helvetica, sans-serif;
   color: var(--ar-auth-text);
-  margin: 0 0 32px;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.ar-auth * {
+.ar-auth  {
   box-sizing: border-box;
   font-family: inherit;
 }
 
-.ar-auth__shell {
+.ar-auth_shell {
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  height: 100vh; /* Occupe toute la hauteur de la fenêtre */
-  align-items: stretch; /* Assure que l'image et le formulaire aient la même hauteur */
-  justify-content: center;
-  padding: 0 42px; /* Espacement autour du conteneur */
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
 }
 
-.ar-auth__intro {
+/ Section titre/subtitle en haut /
+.ar-authintro {
   position: relative;
   z-index: 1;
-  margin-bottom: 26px;
+  padding: 30px 42px;
   text-align: center;
+  background: var(--ar-auth-page-bg);
+  flex-shrink: 0;
 }
 
-.ar-auth__title {
+.ar-authtitle {
   margin: 0 0 12px;
   color: var(--ar-auth-text);
   font-size: clamp(2rem, 3vw, 2.8rem);
@@ -65,69 +69,75 @@
   letter-spacing: -0.03em;
 }
 
-.ar-auth__subtitle {
+.ar-authsubtitle {
   margin: 0;
   color: var(--ar-auth-text);
   font-size: 1.03rem;
   line-height: 1.8;
 }
 
-/* L'image et le formulaire prennent la même hauteur et sont séparés en 40/60 */
-.ar-auth__panel-wrap {
+/ Conteneur principal pour image + formulaire /
+.ar-authpanel-wrap {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%; /* Prendre toute la hauteur */
+  flex: 1;
+  overflow: hidden;
 }
 
-.ar-auth__image-container {
-  width: 40%; /* L'image prend 40% de la largeur */
-  height: 100%; /* L'image prend toute la hauteur */
+/ Image à gauche - 40% /
+.ar-authimage-container {
+  width: 40%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.ar-auth__image-container img {
+.ar-authimage-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* L'image remplira son conteneur sans être déformée */
-  border-radius: var(--ar-auth-radius-lg);
+  object-fit: cover;
+  display: block;
 }
 
-.ar-auth__form-container {
+/ Formulaire à droite - 60% /
+.ar-authform-container {
   display: flex;
   flex-direction: column;
-  width: 60%; /* Le formulaire prend 60% de la largeur */
-  height: 100%; /* Le formulaire prend toute la hauteur */
-  padding: 20px;
+  width: 60%;
+  height: 100%;
+  padding: 40px;
   box-sizing: border-box;
-  justify-content: center; /* Centrer le formulaire dans sa zone */
-  background-color: white;
-  border-radius: var(--ar-auth-radius-lg);
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
+  overflow-y: auto;
 }
 
-/* Panel styles */
-.ar-auth__card {
-  max-width: 720px;
-  padding: 28px;
+/ Card du formulaire /
+.ar-authcard {
+  width: 100%;
+  max-width: 480px;
+  padding: 36px;
   border: 1px solid var(--ar-auth-border);
   border-radius: var(--ar-auth-radius-lg);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 251, 255, 0.98) 100%);
   box-shadow: var(--ar-auth-shadow-card);
-  margin: 0 auto;
 }
 
-.ar-auth__card--login {
+.ar-authcard--login {
   border-color: #c8dafb;
   background:
     radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 34%),
     linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
 }
 
-.ar-auth__card--hidden {
+.ar-authcard--hidden {
   display: none;
 }
 
-.ar-auth__card-title {
+.ar-authcard-title {
   margin: 2px 0 6px;
   color: var(--ar-auth-text);
   font-size: 1.6rem;
@@ -136,18 +146,18 @@
   letter-spacing: -0.02em;
 }
 
-.ar-auth__card-text {
-  margin: 0;
+.ar-authcard-text {
+  margin: 0 0 24px;
   color: var(--ar-auth-text-soft);
   font-size: 0.98rem;
   line-height: 1.6;
 }
 
-.ar-auth__form-group {
+.ar-authform-group {
   margin-bottom: 18px;
 }
 
-.ar-auth__label {
+.ar-authlabel {
   display: block;
   margin-bottom: 9px;
   color: var(--ar-auth-text);
@@ -156,7 +166,7 @@
   letter-spacing: -0.01em;
 }
 
-.ar-auth__input {
+.ar-authinput {
   width: 100%;
   height: 56px;
   padding: 0 18px;
@@ -173,30 +183,30 @@
     background 0.18s ease;
 }
 
-.ar-auth__input::placeholder {
+.ar-authinput::placeholder {
   color: var(--ar-auth-placeholder);
 }
 
-.ar-auth__input:hover {
+.ar-authinput:hover {
   border-color: #aebfd6;
 }
 
-.ar-auth__input:focus {
+.ar-authinput:focus {
   border-color: var(--ar-auth-primary);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
   background: #ffffff;
   transform: translateY(-1px);
 }
 
-.ar-auth__actions {
-  margin-top: 8px;
+.ar-authactions {
+  margin-top: 24px;
   display: flex;
   justify-content: center;
 }
 
-.ar-auth__button {
+.ar-authbutton {
   min-height: 50px;
-  padding: 0 22px;
+  padding: 0 32px;
   border: none;
   border-radius: 15px;
   font-size: 1rem;
@@ -208,44 +218,46 @@
     box-shadow 0.18s ease,
     background 0.18s ease,
     color 0.18s ease;
+  width: 100%;
 }
 
-.ar-auth__button:hover {
+.ar-authbutton:hover {
   transform: translateY(-1px);
 }
 
-.ar-auth__button:active {
+.ar-authbutton:active {
   transform: translateY(0);
 }
 
-.ar-auth__button--primary {
+.ar-authbutton--primary {
   color: #ffffff;
   background: linear-gradient(135deg, var(--ar-auth-primary) 0%, #3b82f6 100%);
   box-shadow: var(--ar-auth-shadow-button);
 }
 
-.ar-auth__button--primary:hover {
+.ar-authbutton--primary:hover {
   background: linear-gradient(135deg, var(--ar-auth-primary-hover) 0%, var(--ar-auth-primary) 100%);
 }
 
-.ar-auth__button--secondary {
+.ar-authbutton--secondary {
   color: var(--ar-auth-primary);
   background: var(--ar-auth-secondary-bg);
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.08);
 }
 
-.ar-auth__button--secondary:hover {
+.ar-authbutton--secondary:hover {
   background: var(--ar-auth-secondary-hover);
 }
 
-.ar-auth__bottom-text {
+.ar-authbottom-text {
   margin: 18px 0 0;
   color: var(--ar-auth-text-soft);
   font-size: 0.95rem;
   line-height: 1.6;
+  text-align: center;
 }
 
-.ar-auth__link-btn {
+.ar-authlink-btn {
   padding: 0;
   margin-left: 4px;
   border: none;
@@ -256,7 +268,7 @@
   cursor: pointer;
 }
 
-.ar-auth__link-btn:hover {
+.ar-authlink-btn:hover {
   text-decoration: underline;
 }
 
@@ -264,52 +276,94 @@
   display: none;
 }
 
-@media (max-width: 980px) {
-  .ar-auth__shell {
-    padding: 30px;
-  }
-}
-
-@media (max-width: 640px) {
-  .ar-auth__shell {
-    padding: 22px;
-    border-radius: 22px;
-    flex-direction: column; /* Disposition verticale sur mobile */
-  }
-
-  .ar-auth__image-container {
-    width: 100%; /* L'image prend toute la largeur sur mobile */
-    height: 250px; /* Limiter la hauteur de l'image sur mobile */
-  }
-
-  .ar-auth__form-container {
-    width: 100%; /* Le formulaire prend 100% de la largeur sur mobile */
-    margin-top: 20px;
-  }
-
-  .ar-auth__title {
-    font-size: 2rem;
-  }
-
-  .ar-auth__card {
-    padding: 20px;
-    border-radius: 18px;
-  }
-
-  .ar-auth__switch {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ar-auth__button {
-    width: 100%;
-  }
-}
-
 .error-message {
   color: red;
   font-size: 14px;
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+/ Responsive pour tablettes /
+@media (max-width: 980px) {
+  .ar-authintro {
+    padding: 24px 30px;
+  }
+
+  .ar-authimage-container {
+    width: 35%;
+  }
+
+  .ar-authform-container {
+    width: 65%;
+    padding: 30px;
+  }
+
+  .ar-authcard {
+    padding: 28px;
+  }
+}
+
+/ Responsive pour mobile /
+@media (max-width: 640px) {
+  .ar-authintro {
+    padding: 20px;
+  }
+
+  .ar-authtitle {
+    font-size: 1.8rem;
+  }
+
+  .ar-authsubtitle {
+    font-size: 0.95rem;
+  }
+
+  / Sur mobile, l'image passe au-dessus du formulaire /
+  .ar-authpanel-wrap {
+    flex-direction: column;
+  }
+
+  .ar-authimage-container {
+    width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+  }
+
+  .ar-authform-container {
+    width: 100%;
+    padding: 20px;
+    flex: 1;
+  }
+
+  .ar-authcard {
+    padding: 24px 20px;
+    border-radius: 18px;
+    max-width: 100%;
+  }
+
+  .ar-authcard-title {
+    font-size: 1.4rem;
+  }
+
+  .ar-authinput {
+    height: 50px;
+  }
+
+  .ar-authbutton {
+    min-height: 46px;
+  }
+}
+
+/ Pour les très petits écrans */
+@media (max-width: 380px) {
+  .ar-authintro {
+    padding: 16px;
+  }
+
+  .ar-authtitle {
+    font-size: 1.6rem;
+  }
+
+  .ar-authcard {
+    padding: 20px 16px;
+  }
 }
