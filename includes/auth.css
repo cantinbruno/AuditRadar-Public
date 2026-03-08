@@ -1,11 +1,10 @@
-/* Container principal */
+/* Container principal - Pas de fond sur le conteneur principal */
 .ar-auth {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4; /* Fond de la page */
 }
 
 /* Section contenant tout */
@@ -20,7 +19,7 @@
 /* Intro (titre et sous-titre) */
 .ar-auth__intro {
   text-align: left; /* Texte aligné à gauche */
-  color: white; /* Texte en blanc */
+  color: white; /* Texte en blanc pour l'introduction */
   margin-bottom: 30px;
 }
 
@@ -31,7 +30,7 @@
 
 .ar-auth__subtitle {
   font-size: 1.2rem;
-  color: white; /* Texte en blanc */
+  color: white; /* Texte en blanc pour l'introduction */
 }
 
 /* Container principal des formulaires et de l'image */
@@ -91,11 +90,11 @@
 
 .ar-auth__card-title {
   font-size: 1.6rem;
-  color: white; /* Titre en blanc */
+  color: black; /* Titre en noir */
 }
 
 .ar-auth__card-text {
-  color: white; /* Texte en blanc */
+  color: black; /* Texte dans la carte en noir */
 }
 
 /* Styles des champs de formulaire */
