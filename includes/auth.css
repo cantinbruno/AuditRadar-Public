@@ -1,10 +1,10 @@
-/* Container principal - Pas de fond sur le conteneur principal */
+/* Container principal - S'assurer que tout prend la hauteur de l'écran */
 .ar-auth {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Prendre toute la hauteur disponible de la fenêtre */
 }
 
 /* Section contenant tout */
@@ -16,57 +16,40 @@
   width: 100%;
 }
 
-/* Intro (titre et sous-titre) */
-.ar-auth__intro {
-  text-align: left; /* Texte aligné à gauche */
-  color: black; /* Texte en noir pour l'introduction */
-  margin-bottom: 30px;
-}
-
-.ar-auth__title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.ar-auth__subtitle {
-  font-size: 1.2rem;
-  color: black; /* Texte en noir pour l'introduction */
-}
-
 /* Container principal des formulaires et de l'image */
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Force les éléments à avoir la même hauteur */
+  align-items: stretch; /* Les deux éléments vont avoir la même hauteur */
   width: 80%;
   max-width: 1200px;
-  height: 100%; /* Prend toute la hauteur disponible */
+  height: 100%; /* Cela garantit que le conteneur prend toute la hauteur */
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 1; /* Prend tout l'espace restant disponible */
+  flex: 1; /* Prend toute la hauteur et l'espace restant disponible */
   display: flex;
   justify-content: center;
-  align-items: center; /* Centre l'image dans son conteneur */
+  align-items: center; /* Centre l'image */
+  height: 100%; /* Garantit que l'image prend toute la hauteur */
   padding-right: 30px;
-  height: 100%; /* S'assure que l'image prend toute la hauteur disponible */
 }
 
 .ar-auth__image-container img {
-  width: 100%; /* Garde l'image responsive */
-  height: 100%; /* L'image prend toute la hauteur disponible */
-  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
+  width: 100%; /* L'image prend toute la largeur */
+  height: 100%; /* L'image prend toute la hauteur */
+  object-fit: cover; /* L'image s'ajuste pour couvrir l'espace sans se déformer */
 }
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 1;
+  flex: 1; /* Prend toute la hauteur disponible à côté de l'image */
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center; /* Aligne le formulaire verticalement au centre */
+  height: 100%; /* Garantit que le formulaire prend toute la hauteur */
   padding-left: 30px;
-  height: 100%; /* S'assure que le formulaire prend toute la hauteur disponible */
 }
 
 /* Styles des cartes de formulaire avec fond blanc */
