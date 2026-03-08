@@ -34,8 +34,8 @@
   width: 100%;
   max-width: 1200px;
   height: 500px; /* Fixer une hauteur commune pour les deux éléments */
-  box-sizing: border-box;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Conteneur de l'image */
@@ -49,8 +49,8 @@
 }
 
 .ar-auth__image-container img {
-  width: 400px; /* Taille fixe de largeur */
-  height: 500px; /* Taille fixe de hauteur */
+  width: 100%; /* Prendre toute la largeur disponible */
+  height: 100%; /* Prendre toute la hauteur disponible */
   object-fit: cover;
   border-radius: 12px; /* Arrondir les angles */
 }
@@ -180,4 +180,17 @@
 /* Cacher le formulaire d'inscription au départ */
 .ar-auth__card--hidden {
   display: none;
+}
+
+/* Media Queries pour les grands écrans */
+@media (min-width: 768px) {
+  .ar-auth__panel-wrap {
+    height: auto; /* Ajuster la hauteur de la section */
+    flex-wrap: wrap; /* Permet à l'image et au formulaire de s'ajuster sur les grands écrans */
+  }
+
+  .ar-auth__image-container, .ar-auth__form-container {
+    flex: 1; /* Assurer que l'image et le formulaire occupent une largeur égale */
+    min-width: 400px; /* Assurer qu'ils restent bien dimensionnés même sur grands écrans */
+  }
 }
