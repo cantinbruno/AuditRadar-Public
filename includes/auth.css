@@ -31,6 +31,7 @@
   width: 100%;
   padding: 0; /* Pas d'espace supplémentaire */
   overflow: hidden;
+  background-color: var(--ar-auth-page-bg); /* Fond de la page */
 }
 
 .ar-auth__intro {
@@ -52,10 +53,11 @@
 
 .ar-auth__panel-wrap {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap; /* Pour permettre à l'image et au formulaire de se réorganiser en petit écran */
   max-width: 1200px;
   width: 100%;
   height: 100%;
+  margin: 0 auto; /* Centrer */
 }
 
 .ar-auth__image-container {
@@ -79,6 +81,7 @@
   border-radius: var(--ar-auth-radius-lg);
   box-shadow: var(--ar-auth-shadow-card);
   margin: 0; /* Pas d'espace autour du formulaire */
+  min-width: 300px; /* Assurer que le formulaire ne devienne pas trop petit sur les petits écrans */
 }
 
 .ar-auth__card {
@@ -188,6 +191,8 @@
 
   .ar-auth__form-container {
     margin-top: 20px;
+    padding: 20px;
+    max-width: 100%;
   }
 
   .ar-auth__title {
@@ -199,14 +204,17 @@
     border-radius: 18px;
   }
 
-  .ar-auth__switch {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .ar-auth__panel-wrap {
+    flex-direction: column; /* Empiler l'image et le formulaire en mode mobile */
+    justify-content: center;
   }
 
   .ar-auth__button {
     width: 100%;
+  }
+
+  .ar-auth__image-container {
+    display: none; /* Cacher l'image en mobile pour plus de place */
   }
 }
 
