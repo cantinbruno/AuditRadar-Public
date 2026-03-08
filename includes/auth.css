@@ -16,6 +16,24 @@
   width: 100%;
 }
 
+/* Intro (titre et sous-titre) */
+.ar-auth__intro {
+  text-align: left; /* Texte aligné à gauche */
+  color: black; /* Texte en noir pour l'introduction */
+  margin-bottom: 30px;
+}
+
+.ar-auth__title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: black; /* Titre en noir */
+}
+
+.ar-auth__subtitle {
+  font-size: 1.2rem;
+  color: black; /* Texte en noir pour l'introduction */
+}
+
 /* Container principal des formulaires et de l'image */
 .ar-auth__panel-wrap {
   display: flex;
@@ -39,12 +57,12 @@
 .ar-auth__image-container img {
   width: 100%; /* L'image prend toute la largeur */
   height: 100%; /* L'image prend toute la hauteur */
-  object-fit: cover; /* L'image s'ajuste pour couvrir l'espace sans se déformer */
+  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
 }
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 1; /* Prend toute la hauteur disponible à côté de l'image */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center; /* Aligne le formulaire verticalement au centre */
