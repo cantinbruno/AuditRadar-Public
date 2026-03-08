@@ -1,3 +1,4 @@
+/* Container principal */
 .ar-auth {
   display: flex;
   flex-direction: column;
@@ -28,13 +29,13 @@
 /* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch; /* Aligner verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
   width: 100%;
   max-width: 1200px;
-  height: 500px; /* Fixer une hauteur pour les deux éléments */
-  padding: 20px;
+  height: 500px; /* Fixer une hauteur commune pour les deux éléments */
   box-sizing: border-box;
+  padding: 20px;
 }
 
 /* Conteneur de l'image */
@@ -43,15 +44,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Remplir la hauteur de l'élément parent */
+  height: 100%; /* Assurer que l'image occupe toute la hauteur du conteneur */
   padding-right: 20px;
 }
 
 .ar-auth__image-container img {
-  width: 100%; /* Prendre toute la largeur disponible */
-  height: 100%; /* Prendre toute la hauteur disponible */
-  object-fit: cover; /* Couvre sans déformer */
-  border-radius: 12px; /* Arrondir les bords */
+  width: 400px; /* Taille fixe de largeur */
+  height: 500px; /* Taille fixe de hauteur */
+  object-fit: cover;
+  border-radius: 12px; /* Arrondir les angles */
 }
 
 /* Conteneur pour le formulaire */
