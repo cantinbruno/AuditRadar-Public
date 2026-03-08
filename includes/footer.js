@@ -9,12 +9,6 @@ class SiteFooter extends HTMLElement {
             <strong>Audit Radar</strong>
             <span class="site-footer__muted">© ${year} WaveTools</span>
           </div>
-
-          <nav class="site-footer__links" aria-label="Liens de bas de page">
-            <a href="/mentions-legales.html">Mentions légales</a>
-            <a href="/confidentialite.html">Confidentialité</a>
-            <a href="/contact.html">Contact</a>
-          </nav>
         </div>
       </footer>
     `;
