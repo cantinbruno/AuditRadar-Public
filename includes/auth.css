@@ -67,8 +67,8 @@
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
   background-color: #fff;
-  border: none; /* Retirer toute bordure du formulaire */
-  box-shadow: none; /* Aucune ombre autour du formulaire */
+  border: 2px solid black; /* Ajouter un trait noir autour du formulaire */
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Ombre marquée autour du formulaire */
 }
 
 .ar-auth__card {
