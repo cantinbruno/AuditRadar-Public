@@ -6,6 +6,7 @@
   align-items: center;
   height: 100vh;
   padding: 20px; /* Ajouter un peu de marge autour */
+  box-sizing: border-box; /* Inclure les marges et paddings dans la taille totale */
 }
 
 /* Section contenant tout */
@@ -32,17 +33,19 @@
   justify-content: space-between;
   align-items: stretch; /* Aligner l'image et le formulaire à la même hauteur */
   width: 100%;
-  height: calc(100vh - 120px); /* Ajuste la hauteur pour laisser place au texte */
+  height: 100%; /* Occuper toute la hauteur disponible */
+  box-sizing: border-box;
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 1 1 50%; /* L'image prend 50% de l'espace */
+  flex: 0 0 50%; /* Force l'image à occuper 50% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center; /* Centre l'image verticalement */
-  padding-right: 15px; /* Ajuster l'espacement entre l'image et le formulaire */
-  height: 100%; /* S'assure que l'image prend toute la hauteur disponible */
+  padding-right: 15px; /* Ajuste l'espacement entre l'image et le formulaire */
+  height: 100%; /* Assure que l'image prend toute la hauteur disponible */
+  box-sizing: border-box;
 }
 
 /* L'image s'adapte correctement */
@@ -54,12 +57,13 @@
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 1 1 50%; /* Le formulaire prend 50% de l'espace */
+  flex: 0 0 50%; /* Force le formulaire à occuper 50% de l'espace */
   display: flex;
   justify-content: center;
   align-items: center; /* Centre le formulaire verticalement */
   height: 100%; /* Garantit que le formulaire prend toute la hauteur */
-  padding-left: 15px; /* Ajuster l'espacement entre l'image et le formulaire */
+  padding-left: 15px; /* Ajuste l'espacement entre l'image et le formulaire */
+  box-sizing: border-box;
 }
 
 /* Styles des cartes de formulaire avec fond blanc */
