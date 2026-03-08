@@ -40,7 +40,6 @@
   height: 100vh;
   width: 100%;
   padding: 20px;
-  overflow: hidden;
 }
 
 .ar-auth__intro {
@@ -66,6 +65,7 @@
   max-width: 1200px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .ar-auth__image-container {
@@ -101,6 +101,7 @@
   margin: 0 auto;
 }
 
+/* Formulaire actif */
 .ar-auth__form-group {
   margin-bottom: 20px;
 }
