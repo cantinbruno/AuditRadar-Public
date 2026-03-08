@@ -9,17 +9,20 @@
 
 .ar-auth__shell {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  width: 100%;
+  max-width: 1200px; /* Limiter la largeur */
 }
 
 .ar-auth__intro {
-  flex: 1;
+  width: 100%;
   padding: 20px;
+  text-align: center;
 }
 
 .ar-auth__title {
@@ -35,15 +38,19 @@
 
 .ar-auth__panel-wrap {
   display: flex;
-  flex: 2;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
 }
 
 .ar-auth__image-container {
-  flex: 1;
-  padding: 20px;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .ar-auth__image-container img {
@@ -52,7 +59,7 @@
 }
 
 .ar-auth__form-container {
-  flex: 1;
+  width: 50%;
   padding: 20px;
 }
 
@@ -159,17 +166,17 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .ar-auth__shell {
-    flex-direction: column;
-  }
-
   .ar-auth__panel-wrap {
     flex-direction: column;
   }
 
   .ar-auth__image-container,
   .ar-auth__form-container {
-    flex: none;
     width: 100%;
+  }
+
+  .ar-auth__intro {
+    padding: 20px;
+    text-align: center;
   }
 }
