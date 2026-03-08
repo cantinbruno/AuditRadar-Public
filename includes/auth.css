@@ -2,25 +2,19 @@
   --ar-auth-page-bg: #f4f8fc;
   --ar-auth-surface: #ffffff;
   --ar-auth-surface-soft: #f8fbff;
-
   --ar-auth-border: #d8e3f0;
   --ar-auth-border-strong: #c3d2e4;
-
   --ar-auth-text: #0f172a;
   --ar-auth-text-soft: #5f6f86;
   --ar-auth-placeholder: #98a6bb;
-
   --ar-auth-primary: #2563eb;
   --ar-auth-primary-hover: #1d4ed8;
   --ar-auth-primary-soft: #eaf2ff;
-
   --ar-auth-secondary-bg: #eef4ff;
   --ar-auth-secondary-hover: #dde9ff;
-
   --ar-auth-shadow-main: 0 24px 60px rgba(15, 23, 42, 0.08);
   --ar-auth-shadow-card: 0 14px 34px rgba(15, 23, 42, 0.07);
   --ar-auth-shadow-button: 0 12px 24px rgba(37, 99, 235, 0.18);
-
   --ar-auth-radius-xl: 30px;
   --ar-auth-radius-lg: 22px;
   --ar-auth-radius-md: 16px;
@@ -43,44 +37,36 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: center; /* Assure un alignement vertical au centre */
+  justify-content: center;
   align-items: center;
+  height: 100vh;
   padding: 20px;
 }
 
 .ar-auth__intro {
-  position: relative;
-  z-index: 1;
+  text-align: left;
   margin-bottom: 20px;
-  text-align: center; /* Centrer le texte */
 }
 
 .ar-auth__title {
-  margin: 0 0 12px;
-  color: var(--ar-auth-text);
-  font-size: clamp(2rem, 3vw, 2.8rem); /* Taille dynamique */
+  font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  margin-bottom: 10px;
 }
 
 .ar-auth__subtitle {
-  margin: 0;
-  color: var(--ar-auth-text);
+  color: var(--ar-auth-text-soft);
   font-size: 1rem;
-  line-height: 1.8;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-/* Conteneur principal : ajusté pour centrer et adapter l'espace */
+/* Formulaire section */
 .ar-auth__panel-wrap {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-width: 1200px; /* Ajouter une limite de largeur */
-  height: auto;
-  align-items: stretch;
-  margin-top: 20px;
+  max-width: 1200px; /* Limit to 1200px max width */
 }
 
 .ar-auth__image-container {
@@ -96,16 +82,13 @@
 }
 
 .ar-auth__form-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  justify-content: flex-start;
-  background-color: white;
-  border-radius: var(--ar-auth-radius-lg);
   flex: 1;
-  max-width: 450px;
-  height: 100%;
+  max-width: 450px; /* Control the form width */
+  background-color: var(--ar-auth-surface);
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: var(--ar-auth-radius-lg);
+  box-shadow: var(--ar-auth-shadow-card);
 }
 
 .ar-auth__card {
@@ -238,7 +221,6 @@
 @media (max-width: 640px) {
   .ar-auth__shell {
     padding: 22px;
-    border-radius: 22px;
     flex-direction: column;
   }
 
