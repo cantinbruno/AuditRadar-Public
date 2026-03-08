@@ -3,45 +3,66 @@
   display: flex;
   justify-content: center;  /* Centrer horizontalement */
   align-items: center;      /* Centrer verticalement */
-  height: 100vh;            /* Hauteur pleine de la fenêtre */
+  height: 100%;             /* Prendre toute la hauteur disponible */
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
+  flex-direction: column;
+}
+
+/* Intro avec le texte au-dessus de l'image et du formulaire */
+.ar-auth__intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ar-auth__title {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.ar-auth__subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
 }
 
 /* Container pour l'image et le formulaire */
 .ar-auth__panel-wrap {
   display: flex;
-  justify-content: space-between;  /* Espace entre l'image et le formulaire */
-  align-items: center;             /* Centrer verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center;     /* Centrer verticalement */
   width: 100%;
   max-width: 1200px;
-  height: 500px;                   /* Fixer la hauteur des deux éléments */
+  height: 500px;           /* Fixer la hauteur des deux éléments */
+  box-sizing: border-box;
+  margin-top: 20px;
 }
 
 /* Conteneur de l'image */
 .ar-auth__image-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-right: 20px;
 }
 
 .ar-auth__image-container img {
-  width: 400px;  /* Taille fixe pour l'image */
-  height: 500px; /* Taille fixe pour l'image */
-  object-fit: cover;  /* L'image couvre toute la zone sans déformation */
-  border-radius: 12px; /* Arrondir les bords de l'image */
+  width: 400px;   /* Largeur fixe de l'image */
+  height: 500px;  /* Hauteur fixe de l'image */
+  object-fit: cover; /* Assurer que l'image couvre la zone sans déformation */
+  border-radius: 12px; /* Coins arrondis pour l'image */
 }
 
 /* Conteneur pour le formulaire */
 .ar-auth__form-container {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-left: 20px;
 }
 
 /* Formulaire avec carte */
@@ -159,4 +180,18 @@
 /* Cacher le formulaire d'inscription au départ */
 .ar-auth__card--hidden {
   display: none;
+}
+
+/* Responsive pour les grands écrans */
+@media (min-width: 768px) {
+  .ar-auth__panel-wrap {
+    height: 500px;
+    flex-wrap: nowrap;
+  }
+
+  .ar-auth__image-container,
+  .ar-auth__form-container {
+    flex: 1;
+    min-width: 400px; /* Largeur minimale pour chaque élément */
+  }
 }
