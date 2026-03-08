@@ -20,7 +20,7 @@
 /* Intro (titre et sous-titre) */
 .ar-auth__intro {
   text-align: left; /* Texte aligné à gauche */
-  color: black; /* Texte en noir */
+  color: white; /* Texte en blanc */
   margin-bottom: 30px;
 }
 
@@ -31,7 +31,7 @@
 
 .ar-auth__subtitle {
   font-size: 1.2rem;
-  color: black; /* Texte en noir */
+  color: white; /* Texte en blanc */
 }
 
 /* Container principal des formulaires et de l'image */
@@ -66,15 +66,16 @@
   padding-left: 30px;
 }
 
-/* Styles des cartes de formulaire */
+/* Styles des cartes de formulaire avec fond transparent */
 .ar-auth__card {
   width: 100%;
   max-width: 400px;
-  background-color: #fff;
+  background-color: transparent; /* Fond transparent */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordure subtile blanche */
 }
 
 /* Section du haut de la carte (icône et titre) */
@@ -90,10 +91,11 @@
 
 .ar-auth__card-title {
   font-size: 1.6rem;
+  color: white; /* Titre en blanc */
 }
 
 .ar-auth__card-text {
-  color: #666;
+  color: white; /* Texte en blanc */
 }
 
 /* Styles des champs de formulaire */
@@ -103,7 +105,7 @@
 
 .ar-auth__label {
   font-size: 1rem;
-  color: #333;
+  color: black; /* Label en noir */
 }
 
 .ar-auth__input {
@@ -112,6 +114,8 @@
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: black; /* Texte dans les champs de formulaire en noir */
+  background-color: transparent; /* Fond transparent dans les champs */
 }
 
 /* Section des actions et boutons */
