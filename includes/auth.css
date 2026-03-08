@@ -48,11 +48,12 @@
   padding-right: 20px;
 }
 
-/* Fixer la taille de l'image */
+/* Fixer la taille de l'image et arrondir les angles */
 .ar-auth__image-container img {
   width: 400px; /* Taille fixe de largeur */
-  height: 300px; /* Taille fixe de hauteur */
-  object-fit: cover; /* L'image couvre l'espace sans déformation */
+  height: 500px; /* Taille fixe de hauteur */
+  object-fit: cover; /* L'image couvre toute la zone sans déformation */
+  border-radius: 12px; /* Arrondir les angles comme le formulaire */
 }
 
 /* Conteneur pour le formulaire */
