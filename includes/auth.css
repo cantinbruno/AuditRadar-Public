@@ -29,12 +29,12 @@
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Centrer verticalement les éléments */
+  align-items: stretch; /* Aligner verticalement */
   width: 100%;
   max-width: 1200px;
-  height: 500px; /* Fixer une hauteur commune pour les deux éléments */
-  box-sizing: border-box;
+  height: 500px; /* Fixer une hauteur pour les deux éléments */
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Conteneur de l'image */
@@ -43,15 +43,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Assurer que l'image occupe toute la hauteur du conteneur */
+  height: 100%; /* Remplir la hauteur de l'élément parent */
   padding-right: 20px;
 }
 
 .ar-auth__image-container img {
-  width: 400px; /* Taille fixe de largeur */
-  height: 100%; /* Fixer la hauteur à 100% pour qu'elle prenne toute la hauteur du conteneur */
-  object-fit: cover;
-  border-radius: 12px; /* Arrondir les angles */
+  width: 100%; /* Prendre toute la largeur disponible */
+  height: 100%; /* Prendre toute la hauteur disponible */
+  object-fit: cover; /* Couvre sans déformer */
+  border-radius: 12px; /* Arrondir les bords */
 }
 
 /* Conteneur pour le formulaire */
