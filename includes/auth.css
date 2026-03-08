@@ -173,7 +173,7 @@
 }
 
 .ar-auth__button--secondary:hover {
-  background-color: #218838; /* Changer la couleur de fond au survol */
+  background-color: #0056b3; /* Changer la couleur de fond au survol */
   transform: scale(1.05); /* Léger agrandissement pour l'effet de survol */
 }
 
