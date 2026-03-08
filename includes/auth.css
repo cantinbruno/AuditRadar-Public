@@ -41,12 +41,12 @@
 .ar-auth__shell {
   position: relative;
   overflow: hidden;
-  padding: 42px;
   display: flex;
-  flex-direction: row; /* Disposition côte à côte sur grand écran */
+  flex-direction: row;
+  height: 100vh; /* Occupe toute la hauteur de la fenêtre */
+  align-items: stretch; /* Assure que l'image et le formulaire aient la même hauteur */
   justify-content: center;
-  align-items: stretch; /* Assurer que l'image et le formulaire aient la même hauteur */
-  height: 100vh; /* Occupation de toute la hauteur de la fenêtre */
+  padding: 0 42px; /* Espacement autour du conteneur */
 }
 
 .ar-auth__intro {
@@ -72,24 +72,24 @@
   line-height: 1.8;
 }
 
-/* Mise en page avec 40% image, 60% formulaire */
+/* L'image et le formulaire prennent la même hauteur et sont séparés en 40/60 */
 .ar-auth__panel-wrap {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%; /* Assurer que l'image et le formulaire occupent toute la hauteur */
+  height: 100%; /* Prendre toute la hauteur */
 }
 
 .ar-auth__image-container {
   width: 40%; /* L'image prend 40% de la largeur */
-  height: 100%; /* L'image doit avoir la même hauteur que le formulaire */
+  height: 100%; /* L'image prend toute la hauteur */
   flex-shrink: 0;
 }
 
 .ar-auth__image-container img {
   width: 100%;
-  height: 100%; /* L'image occupe toute la hauteur du conteneur */
-  object-fit: cover; /* Remplir le conteneur sans déformation */
+  height: 100%;
+  object-fit: cover; /* L'image remplira son conteneur sans être déformée */
   border-radius: var(--ar-auth-radius-lg);
 }
 
@@ -97,10 +97,10 @@
   display: flex;
   flex-direction: column;
   width: 60%; /* Le formulaire prend 60% de la largeur */
-  height: 100%; /* Le formulaire doit avoir la même hauteur que l'image */
+  height: 100%; /* Le formulaire prend toute la hauteur */
   padding: 20px;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: center; /* Centrer le formulaire dans sa zone */
   background-color: white;
   border-radius: var(--ar-auth-radius-lg);
 }
@@ -274,17 +274,17 @@
   .ar-auth__shell {
     padding: 22px;
     border-radius: 22px;
-    flex-direction: column; /* Passer à une disposition verticale sur petits écrans */
+    flex-direction: column; /* Disposition verticale sur mobile */
   }
 
   .ar-auth__image-container {
-    width: 100%; /* L'image prend 100% de la largeur sur les petits écrans */
-    height: 250px; /* Hauteur fixe de l'image */
+    width: 100%; /* L'image prend toute la largeur sur mobile */
+    height: 250px; /* Limiter la hauteur de l'image sur mobile */
   }
 
   .ar-auth__form-container {
-    width: 100%; /* Le formulaire prend 100% de la largeur sur les petits écrans */
-    margin-top: 20px; /* Un peu de marge au-dessus du formulaire */
+    width: 100%; /* Le formulaire prend 100% de la largeur sur mobile */
+    margin-top: 20px;
   }
 
   .ar-auth__title {
