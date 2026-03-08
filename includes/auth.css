@@ -23,18 +23,20 @@
 .ar-auth__intro {
   width: 100%;
   padding: 20px;
-  text-align: center;
+  text-align: left; /* Aligner à gauche */
 }
 
 .ar-auth__title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  text-align: left; /* Alignement à gauche */
 }
 
 .ar-auth__subtitle {
   font-size: 16px;
   color: #555;
+  text-align: left; /* Alignement à gauche */
 }
 
 .ar-auth__panel-wrap {
@@ -114,22 +116,23 @@
 /* Amélioration des bordures des champs */
 .ar-auth__input {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Plus de padding pour donner de l'espace à l'intérieur */
   border-radius: 8px; /* Coins arrondis */
-  border: 2px solid #ddd; /* Bordure fine par défaut */
+  border: 2px solid #007bff; /* Bordure plus visible avec une couleur bleue */
   font-size: 14px;
   transition: border 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la bordure et l'ombre */
   background-color: #fff;
+  box-sizing: border-box; /* Assurer que le padding ne fait pas déborder le champ */
 }
 
 .ar-auth__input:focus {
-  border-color: #007bff; /* Bordure bleue au focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile pour donner un effet de focus */
+  border-color: #0056b3; /* Bordure bleue foncée au focus */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Ombre bleue plus marquée */
   outline: none; /* Enlever la bordure par défaut du focus */
 }
 
 .ar-auth__input:hover {
-  border-color: #007bff; /* Changer la bordure au survol */
+  border-color: #0056b3; /* Changer la bordure au survol */
 }
 
 .error-message {
