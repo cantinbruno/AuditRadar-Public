@@ -1,85 +1,87 @@
-/* Container principal - Prendre toute la hauteur de la fenêtre */
+/* Container principal - prend toute la hauteur */
 .ar-auth {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
+  height: 100%;
+  padding: 30px;
+  width: 100%;
 }
 
-/* Section avec le texte au-dessus */
-.ar-auth__header {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: black;
-  text-align: center; /* Centrer le texte */
+/* Titre et sous-titre du texte d'introduction */
+.ar-auth__intro {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-/* Container pour l'image et le formulaire */
+.ar-auth__title {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.ar-auth__subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Container avec image et formulaire */
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
-  height: 100%; /* Force la hauteur à 100% */
-  box-sizing: border-box;
+  max-width: 1200px;
+  height: 100%;
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 0 0 50%; /* L'image prend exactement 50% de l'espace */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Assure que l'image occupe toute la hauteur */
-  padding-right: 15px;
-  box-sizing: border-box;
+  height: 100%;
+  padding-right: 20px;
 }
 
-/* L'image s'adapte exactement à la taille du conteneur */
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* L'image couvre toute la zone sans déformation */
+  object-fit: cover;
 }
 
-/* Conteneur pour les formulaires */
+/* Conteneur pour le formulaire à droite */
 .ar-auth__form-container {
-  flex: 0 0 50%; /* Le formulaire prend exactement 50% de l'espace */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Garantit que le formulaire prend toute la hauteur */
-  padding-left: 15px;
-  box-sizing: border-box;
+  height: 100%;
+  padding-left: 20px;
 }
 
-/* Styles des cartes de formulaire avec fond blanc */
+/* Styles des cartes de formulaire */
 .ar-auth__card {
   width: 100%;
-  max-width: 450px; /* Le formulaire est plus large mais limité */
+  max-width: 450px;
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
   box-sizing: border-box;
   border: 1px solid #ddd;
 }
 
-/* Section du haut de la carte (icône et titre) */
+/* Header de la carte (icône + titre) */
 .ar-auth__card-top {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .ar-auth__icon {
-  margin-right: 15px;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 40px;
@@ -88,30 +90,27 @@
   color: white;
   font-size: 1.5rem;
   border-radius: 5px;
-  border: 2px solid #007bff;
+  margin-right: 15px;
 }
 
-/* Titre et texte */
 .ar-auth__card-title {
-  font-size: 1.8rem; /* Augmenter la taille du titre */
-  color: black;
-  margin-bottom: 5px;
+  font-size: 1.8rem;
+  color: #333;
 }
 
 .ar-auth__card-text {
-  color: black;
   font-size: 1rem;
-  margin-top: 5px;
+  color: #555;
 }
 
-/* Styles des champs de formulaire avec bordures et effets de focus */
+/* Styles pour les champs de formulaire */
 .ar-auth__form-group {
   margin-bottom: 20px;
 }
 
 .ar-auth__label {
   font-size: 1rem;
-  color: black;
+  color: #333;
   display: block;
   margin-bottom: 8px;
 }
@@ -122,25 +121,18 @@
   margin-top: 5px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  color: black;
-  background-color: transparent;
   font-size: 1rem;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Effet de focus sur les champs */
 .ar-auth__input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   outline: none;
 }
 
-/* Section des actions et boutons */
-.ar-auth__actions {
-  margin-top: 20px;
-}
-
+/* Boutons */
 .ar-auth__button {
   width: 100%;
   padding: 12px;
@@ -153,7 +145,6 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Bouton au survol */
 .ar-auth__button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
@@ -164,14 +155,14 @@
 }
 
 .ar-auth__button--secondary {
-  background-color: #007bff;
+  background-color: #28a745;
 }
 
-/* Texte en bas pour la navigation entre les formulaires */
+/* Texte en bas du formulaire */
 .ar-auth__bottom-text {
   text-align: center;
-  margin-top: 20px;
-  color: black;
+  margin-top: 15px;
+  color: #333;
 }
 
 .ar-auth__link-btn {
