@@ -86,12 +86,17 @@
   line-height: 1.8;
 }
 
+/* Texte au-dessus de l'image et du formulaire */
+.ar-auth__intro {
+  margin-bottom: 40px; /* Ajout d'un espacement avant l'image */
+}
+
 /* Container principal pour la disposition */
 .ar-auth__container {
   display: flex;
   justify-content: space-between; /* Pour séparer l'image et le formulaire */
-  align-items: center; /* Centrer verticalement */
   gap: 30px; /* Espacement entre l'image et le formulaire */
+  align-items: center; /* Centrer verticalement */
 }
 
 /* Style pour l'image à gauche */
