@@ -1,7 +1,10 @@
 class SecureBox extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <section id="protectedContent" class="ar-secure">
+      <section id="protectedContent">
+        
+        <navigation-bar></navigation-bar>
+        
         <div class="ar-secure__header">
           <h2 class="ar-secure__title">Espace sécurisé</h2>
           <p class="ar-secure__subtitle">
