@@ -1,22 +1,11 @@
-/* Container principal - Prendre toute la hauteur de la fenêtre */
+/* S'assurer que le container principal prend toute la hauteur de la fenêtre */
 .ar-auth {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changer de center à flex-start pour avoir le texte au-dessus */
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
-  padding: 20px; /* Ajouter un peu de marge autour */
-  box-sizing: border-box; /* Inclure les marges et paddings dans la taille totale */
-}
-
-/* Section contenant tout */
-.ar-auth__shell {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -24,7 +13,7 @@
 .ar-auth__header {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px; /* Espacement entre le texte et la section principale */
+  margin-bottom: 20px;
   color: black;
 }
 
@@ -32,21 +21,19 @@
 .ar-auth__panel-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Aligner l'image et le formulaire à la même hauteur */
+  align-items: stretch;
   width: 100%;
-  height: 100%; /* Occuper toute la hauteur disponible */
-  box-sizing: border-box;
-  margin-top: 20px; /* Espacement du texte au-dessus */
+  height: calc(100vh - 120px); /* Hauteur ajustée pour laisser place au texte */
 }
 
 /* Conteneur pour l'image à gauche */
 .ar-auth__image-container {
-  flex: 1 1 50%; /* Force l'image à occuper 50% de l'espace */
+  flex: 1; /* L'image prend 50% de l'espace */
   display: flex;
   justify-content: center;
-  align-items: center; /* Centre l'image verticalement */
-  padding-right: 15px; /* Ajuste l'espacement entre l'image et le formulaire */
-  height: 100%; /* Assure que l'image prend toute la hauteur disponible */
+  align-items: center;
+  padding-right: 15px;
+  height: 100%; /* Garantit que l'image prend toute la hauteur */
   box-sizing: border-box;
 }
 
@@ -54,17 +41,17 @@
 .ar-auth__image-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* L'image couvre toute la zone sans se déformer */
+  object-fit: cover; /* L'image couvre toute la zone sans déformation */
 }
 
 /* Conteneur pour les formulaires */
 .ar-auth__form-container {
-  flex: 1 1 50%; /* Force le formulaire à occuper 50% de l'espace */
+  flex: 1; /* Le formulaire prend 50% de l'espace */
   display: flex;
   justify-content: center;
-  align-items: center; /* Centre le formulaire verticalement */
+  align-items: center;
   height: 100%; /* Garantit que le formulaire prend toute la hauteur */
-  padding-left: 15px; /* Ajuste l'espacement entre l'image et le formulaire */
+  padding-left: 15px;
   box-sizing: border-box;
 }
 
