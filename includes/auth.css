@@ -66,11 +66,8 @@
   padding: 20px;
   border-radius: 12px; /* Coins arrondis pour le formulaire */
   background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Ombre marquée autour du formulaire */
-}
-
-.ar-auth__form-container:hover {
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Ombre plus marquée au survol */
+  border: none; /* Aucune bordure visible */
+  box-shadow: none; /* Aucune ombre autour du formulaire */
 }
 
 .ar-auth__card {
@@ -127,14 +124,13 @@
   border-radius: 8px; /* Coins arrondis */
   border: 2px solid #ddd; /* Bordure légère grise par défaut */
   font-size: 14px;
-  transition: border 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la bordure et l'ombre */
   background-color: #fff;
   box-sizing: border-box; /* Assurer que le padding ne fait pas déborder le champ */
 }
 
 .ar-auth__input:focus {
   border-color: #007bff; /* Bordure bleue au focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue subtile */
+  box-shadow: none; /* Aucune ombre au focus */
   outline: none; /* Enlever la bordure par défaut du focus */
 }
 
