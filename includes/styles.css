@@ -41,7 +41,7 @@ footer {
 }
 
 .logo {
-  max-width: 150px; /* Limite la taille du logo à 150px (ajuste cette valeur si nécessaire) */
+  max-width: 200px; /* Limite la taille du logo à 150px (ajuste cette valeur si nécessaire) */
   height: auto; /* Garde les proportions du logo */
   display: block; /* Assure que l'élément est un bloc pour pouvoir le centrer */
   margin-left: auto; /* Centre le logo horizontalement */
