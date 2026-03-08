@@ -195,12 +195,6 @@ function bindAuthSwitch() {
   }
 }
 
-function initAuthUI() {
-  bindMainActions();
-  bindAuthSwitch();
-  checkAuth();
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   let tries = 0;
 

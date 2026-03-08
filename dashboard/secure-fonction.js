@@ -10,6 +10,12 @@ function bindMainActions() {
   if (btnLogout) btnLogout.onclick = logoutUser;
 }
 
+function initAuthUI() {
+  bindMainActions();
+  bindAuthSwitch();
+  checkAuth();
+}
+
 async function getProfile() {
   try {
     const data = await request("/auth/me");
