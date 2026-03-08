@@ -48,9 +48,9 @@
 }
 
 .ar-auth__image-container {
-  width: 30%; /* Réduire la taille de l'image */
+  width: 40%; /* Réduire la taille de l'image */
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: left;
   padding: 10px;
 }
