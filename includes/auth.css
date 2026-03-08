@@ -80,12 +80,13 @@
 /* Section du haut de la carte (icône et titre) */
 .ar-auth__card-top {
   display: flex;
+  justify-content: flex-start; /* Aligner le contenu à gauche */
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Espacement ajusté */
 }
 
 .ar-auth__icon {
-  margin-right: 10px;
+  margin-right: 15px; /* Espacement entre l'icône et le texte */
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -102,10 +103,13 @@
 .ar-auth__card-title {
   font-size: 1.6rem;
   color: black; /* Titre en noir */
+  margin-bottom: 5px; /* Espacement ajusté pour avoir plus de place sous le titre */
 }
 
 .ar-auth__card-text {
   color: black; /* Texte dans la carte en noir */
+  font-size: 1rem;
+  margin-top: 5px; /* Marge pour séparer du titre */
 }
 
 /* Styles des champs de formulaire avec bordures et effets de focus */
