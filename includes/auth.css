@@ -144,6 +144,7 @@
 .ar-auth__bottom-text {
   text-align: center;
   margin-top: 20px;
+  color: black; /* Texte en noir pour "Pas encore inscrit ?" et "Déjà inscrit ?" */
 }
 
 .ar-auth__link-btn {
