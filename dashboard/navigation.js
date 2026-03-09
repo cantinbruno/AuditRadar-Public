@@ -3,7 +3,7 @@ class Navigation extends HTMLElement {
     this.innerHTML = `
       <div class="sidebar-container">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#home" class="nav-link" data-target="/dashboard/home.js">Home</a></li>
+          <li class="nav-item"><a href="#home" class="nav-link" data-target="/dashboard/main.js">Home</a></li>
           <li class="nav-item"><a href="#about" class="nav-link" data-target="/dashboard/about.js">About</a></li>
           <li class="nav-item"><a href="#services" class="nav-link" data-target="/dashboard/services.js">Services</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link" data-target="/dashboard/contact.js">Contact</a></li>
@@ -11,7 +11,7 @@ class Navigation extends HTMLElement {
       </div>
     `;
     this.addNavigationEventListeners();
-    this.loadDefaultScript();  // Charge le script par défaut au démarrage
+    this.loadDefaultScript();  // Charge le script par défaut au démarrage (main.js)
   }
 
   // Ajout des écouteurs d'événements pour les liens de navigation
