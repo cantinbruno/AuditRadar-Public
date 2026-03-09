@@ -4,7 +4,6 @@
   width: 180px; /* Réduire la largeur du menu */
   height: 100vh; /* Hauteur pleine page */
   background-color: #111827; /* Noir pur pour maintenir la cohérence */
-; /* Couleur de fond */
   color: white;
   padding-left: 20px; /* Espacement à gauche */
   display: flex;
