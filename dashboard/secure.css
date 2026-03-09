@@ -62,15 +62,14 @@
 
 #btnLogout {
     position: absolute; /* Positionné par rapport au body ou au parent */
-    top: 30px;
+    top: 25px;
     left: 85%; /* Centré horizontalement */
-    padding: 5px 10px; /* Réduire la taille des marges internes du bouton */
+    padding: 10px 20px; /* Réduire la taille des marges internes du bouton */
     background-color: #f44336;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; /* Réduire la taille du texte */
+    font-size: 16px; /* Réduire la taille du texte */
     z-index: 1000; /* S'assurer que le bouton reste au-dessus du header */
 }
 
@@ -83,8 +82,8 @@
 /* Style du bouton */
 #btnAudit {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 25px;
+  left: 5%;
   padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
@@ -134,3 +133,6 @@
 .close:hover {
   color: black;
 }
+
+/* --------------------------------------------------------------------------------------------------------------------- */
+
