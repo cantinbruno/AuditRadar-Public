@@ -3,6 +3,7 @@ class SecureBox extends HTMLElement {
     this.innerHTML = `
       <section id="protectedContent">
           <navigation-bar></navigation-bar>
+          <main></main>
       </section>
     `;
   }
