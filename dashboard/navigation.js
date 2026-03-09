@@ -3,13 +3,15 @@ class Navigation extends HTMLElement {
     this.innerHTML = `
         <div class="sidebar-container">
           <ul class="nav-list">
-            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="#home" class="nav-link" data-target="home.js">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link" data-target="about.js">About</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link" data-target="services.js">Services</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link" data-target="contact.js">Contact</a></li>
           </ul>
         </div>
     `;
+    this.addNavigationEventListeners();
+    this.loadDefaultScript();  // Charge le script par défaut au chargement
   }
 }
 
