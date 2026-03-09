@@ -1,7 +1,4 @@
-.main-container {
-  display: flex;
-  flex: 1; /* Prendre tout l'espace restant entre le header et le footer */
-}
+
 
 /* Conteneur du menu latéral */
 .sidebar-container {
