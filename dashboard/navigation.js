@@ -1,14 +1,16 @@
 class Navigation extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <nav class="sidebar-nav">
-        <ul class="nav-list">
+      <div class="sidebar-container">
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
             <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
             <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+          </ul>
+        </nav>
+      </div>
     `;
   }
 }
