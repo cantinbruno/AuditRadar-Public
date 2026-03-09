@@ -34,4 +34,4 @@ class Main extends HTMLElement {
   }
 }
 
-customElements.define('main', Main);
+customElements.define('main-db', Main);
