@@ -1,16 +1,16 @@
-
-
 /* Conteneur du menu latéral */
 .sidebar-container {
+  position: absolute; /* Fixer le menu à gauche de l'écran */
   width: 180px; /* Réduire la largeur du menu */
+  height: 90vh; /* Hauteur pleine page */
   background-color: #111827; /* Noir pur pour maintenir la cohérence */
   color: white;
   padding-left: 20px; /* Espacement à gauche */
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Aligner les éléments du menu vers le haut */
+  z-index: 1000; /* Assurez-vous que le menu est au-dessus des autres éléments */
   transition: width 0.3s ease; /* Animation pour la largeur */
-  height: 100%;
 }
 
 /* Liste de navigation */
