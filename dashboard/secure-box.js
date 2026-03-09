@@ -35,14 +35,11 @@ class SecureBox extends HTMLElement {
               <input type="checkbox" id="consentCheckbox"> Je certifie que j'ai les autorisations nécessaires pour effectuer cet audit et que je comprends les risques associés.
             </label>
 
-            <br><br>
-
+            <br>
             <!-- Champ pour entrer l'IP ou domaine à scanner -->
             <label for="scanTarget">IP ou Domaine à scanner :</label>
             <input type="text" id="scanTarget" placeholder="Entrez l'IP ou domaine">
-
-            <br><br>
-
+            <br>
             <button id="startAuditBtn" disabled>Lancer l'audit</button>
           </div>
         </div>
