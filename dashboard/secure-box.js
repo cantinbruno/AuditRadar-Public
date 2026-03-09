@@ -10,20 +10,20 @@ class SecureBox extends HTMLElement {
     this.loadDefaultScript();  // Charge main.js par défaut
   }
 
-  // Charge le script par défaut (main.js)
+  // Charge le script par défaut (main.js depuis /dashboard/)
   loadDefaultScript() {
-    const defaultScript = 'main-db';  // Cible le composant main-db par défaut
+    const defaultScript = '/dashboard/main.js';  // Chemin complet vers main.js
     console.log(`Chargement du script par défaut : ${defaultScript}`);
-    this.loadScript(defaultScript);   // Charge le composant main-db par défaut
+    this.loadScript(defaultScript);   // Charge le fichier main.js depuis /dashboard/
   }
 
   // Charge dynamiquement un fichier JavaScript
   loadScript(scriptName) {
     console.log(`Chargement du fichier script : ${scriptName}`);
-    const existingScript = document.querySelector(`script[src="${scriptName}.js"]`);
+    const existingScript = document.querySelector(`script[src="${scriptName}"]`);
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = `${scriptName}.js`;  // Ajouter l'extension .js
+      script.src = scriptName;  // Ajouter le chemin complet
       script.onload = () => {
         this.insertContent(scriptName);  // Insérer le contenu une fois le script chargé
       };
@@ -36,7 +36,7 @@ class SecureBox extends HTMLElement {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = '';  // Vider le conteneur avant d'ajouter du contenu
 
-    if (scriptName === 'main-db') {
+    if (scriptName === '/dashboard/main.js') {
       const mainComponent = document.createElement('main-db');
       contentContainer.appendChild(mainComponent);  // Ajouter le composant main-db (le contenu principal)
     }

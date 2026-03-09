@@ -3,10 +3,10 @@ class Navigation extends HTMLElement {
     this.innerHTML = `
       <div class="sidebar-container">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link" data-target="main-db">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="about-db">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="services-db">Services</a></li>
-          <li class="nav-item"><a href="#" class="nav-link" data-target="contact-db">Contact</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="/dashboard/main.js">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="/dashboard/about.js">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="/dashboard/services.js">Services</a></li>
+          <li class="nav-item"><a href="#" class="nav-link" data-target="/dashboard/contact.js">Contact</a></li>
         </ul>
       </div>
     `;
@@ -29,10 +29,10 @@ class Navigation extends HTMLElement {
   // Charge dynamiquement le fichier JavaScript correspondant
   loadScript(scriptName) {
     console.log(`Chargement du fichier script : ${scriptName}`);
-    const existingScript = document.querySelector(`script[src="${scriptName}.js"]`);
+    const existingScript = document.querySelector(`script[src="${scriptName}"]`);
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = `${scriptName}.js`;  // Ajouter l'extension .js
+      script.src = scriptName;  // Ajouter l'extension .js et le chemin complet
       script.onload = () => {
         this.insertContent(scriptName);  // Insérer le contenu une fois le script chargé
       };
@@ -45,10 +45,10 @@ class Navigation extends HTMLElement {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = '';  // Vider le contenu existant avant d'ajouter un nouveau
 
-    if (scriptName === 'main-db') {
+    if (scriptName === '/dashboard/main.js') {
       const mainComponent = document.createElement('main-db');
       contentContainer.appendChild(mainComponent);  // Ajouter le composant main-db
-    } else if (scriptName === 'about-db') {
+    } else if (scriptName === '/dashboard/about.js') {
       const aboutComponent = document.createElement('about-db');
       contentContainer.appendChild(aboutComponent);  // Ajouter le composant about-db
     }
