@@ -3,10 +3,10 @@ class Navigation extends HTMLElement {
     this.innerHTML = `
       <div class="sidebar-container">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#home" class="nav-link" data-target="home.js">Home</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link" data-target="about.js">About</a></li>
-          <li class="nav-item"><a href="#services" class="nav-link" data-target="services.js">Services</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link" data-target="contact.js">Contact</a></li>
+          <li class="nav-item"><a href="#home" class="nav-link" data-target="/dashboard/home.js">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" data-target="/dashboard/about.js">About</a></li>
+          <li class="nav-item"><a href="#services" class="nav-link" data-target="/dashboard/services.js">Services</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-target="/dashboard/contact.js">Contact</a></li>
         </ul>
       </div>
     `;
@@ -38,11 +38,11 @@ class Navigation extends HTMLElement {
     }
   }
 
-  // Charge le script par défaut au démarrage
+  // Charge le script par défaut au démarrage (ici main.js)
   loadDefaultScript() {
-    const defaultScript = '/dashboard/main.js';  // Spécifiez ici le script par défaut à charger
-    this.loadScript(defaultScript);
-    this.toggleSections('#home');  // Affiche la section "home" par défaut
+    const defaultScript = '/dashboard/main.js';  // Chemin absolu pour le fichier main.js
+    this.loadScript(defaultScript);   // Charge le fichier main.js
+    this.toggleSections('#home');     // Affiche la section "home" par défaut
   }
 
   // Affiche la section cible et cache les autres
