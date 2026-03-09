@@ -106,18 +106,20 @@ function bindMainActions() {
         return;
       }
 
-      const consentData = {
-        arg1: scanTargetInput.value.trim(),
-        arg2: {
-          fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
-          date: currentDateSpan.textContent
-        }
+      const target = scanTargetInput.value.trim();
+      const consent = {
+        fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
+        date: currentDateSpan.textContent
       };
 
       try {
-        const response = await request("/run/scan", {
-          method: "GET",
-          body: consentData
+        const query = new URLSearchParams({
+          arg1: target,
+          arg2: JSON.stringify(consent)
+        }).toString();
+
+        const response = await request(`/run/scan?${query}`, {
+          method: "GET"
         });
 
         console.log("Réponse de l'API :", response);
