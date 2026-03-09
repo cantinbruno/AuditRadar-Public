@@ -52,3 +52,21 @@
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 
+#btnLogout {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#btnLogout:hover {
+    background-color: #e53935;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------- */

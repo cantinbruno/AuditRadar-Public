@@ -3,6 +3,7 @@ class SecureBox extends HTMLElement {
     // Structure de base de SecureBox, avec la barre de navigation et le conteneur de contenu
     this.innerHTML = `
       <section id="protectedContent">
+        <button id="btnLogout">Déconnexion</button>
         <navigation-bar></navigation-bar> <!-- Barre de navigation -->
         <div id="content-container"></div> <!-- Conteneur pour afficher le contenu dynamique -->
       </section>
