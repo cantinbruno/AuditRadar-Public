@@ -11,7 +11,7 @@ class SecureBox extends HTMLElement {
             <span id="closeModal" class="close">&times;</span>
             <h2>Consentement à l'Audit</h2>
 
-            <p><strong>AVERTISSEMENT LÉGAL :</strong></p>
+            <p><strong>Avertissement légal :</strong></p>
             <ul>
               <li>En réalisant cet audit, vous pouvez avoir accès à des informations sensibles. Vous devez vous assurer que vous avez l'autorisation explicite pour procéder à cet audit.</li>
               <li>Vous êtes responsable de toutes les actions que vous effectuez lors de cet audit.</li>
@@ -34,12 +34,11 @@ class SecureBox extends HTMLElement {
             <label>
               <input type="checkbox" id="consentCheckbox"> Je certifie que j'ai les autorisations nécessaires pour effectuer cet audit et que je comprends les risques associés.
             </label>
-
-            <br>
             <!-- Champ pour entrer l'IP ou domaine à scanner -->
             <label for="scanTarget">IP ou Domaine à scanner :</label>
             <input type="text" id="scanTarget" placeholder="Entrez l'IP ou domaine">
             <button id="startAuditBtn" disabled>Lancer l'audit</button>
+            <small id="scanTargetError" class="input-error"></small>
           </div>
         </div>
 

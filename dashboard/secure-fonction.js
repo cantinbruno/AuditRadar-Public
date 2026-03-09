@@ -1,105 +1,131 @@
 function bindMainActions() {
   const btnMe = document.getElementById("btnMe");
   const btnLogout = document.getElementById("btnLogout");
-  const btnAudit = document.getElementById("btnAudit"); // Récupérer le bouton d'audit
-  const modal = document.getElementById("modal"); // Récupérer la fenêtre modale
-  const closeModal = document.getElementById("closeModal"); // Récupérer la croix pour fermer
-  const consentCheckbox = document.getElementById("consentCheckbox"); // Case à cocher pour consentement
-  const startAuditBtn = document.getElementById("startAuditBtn"); // Bouton pour démarrer l'audit
-  const scanTargetInput = document.getElementById("scanTarget"); // Champ pour IP ou domaine à scanner
-  const firstNameInput = document.getElementById("firstName"); // Champ pour prénom
-  const lastNameInput = document.getElementById("lastName"); // Champ pour nom
-  const fullNameSpan = document.getElementById("fullName"); // Affichage du nom complet dans la déclaration
-  const currentDateSpan = document.getElementById("currentDate"); // Affichage de la date dans la déclaration
+  const btnAudit = document.getElementById("btnAudit");
+  const modal = document.getElementById("modal");
+  const closeModal = document.getElementById("closeModal");
+  const consentCheckbox = document.getElementById("consentCheckbox");
+  const startAuditBtn = document.getElementById("startAuditBtn");
+  const scanTargetInput = document.getElementById("scanTarget");
+  const firstNameInput = document.getElementById("firstName");
+  const lastNameInput = document.getElementById("lastName");
+  const fullNameSpan = document.getElementById("fullName");
+  const currentDateSpan = document.getElementById("currentDate");
+  const scanTargetError = document.getElementById("scanTargetError");
 
-  // Fonction pour mettre à jour le nom complet et la date
   function updateDeclaration() {
     const fullName = `${firstNameInput.value} ${lastNameInput.value}`;
-    fullNameSpan.textContent = fullName;
+    fullNameSpan.textContent = fullName.trim();
 
-    const currentDate = new Date().toLocaleDateString("fr-FR"); // Format français de la date
+    const currentDate = new Date().toLocaleDateString("fr-FR");
     currentDateSpan.textContent = currentDate;
   }
 
-  // Mettre à jour la déclaration lorsque le prénom ou le nom change
-  if (firstNameInput && lastNameInput) {
-    firstNameInput.oninput = updateDeclaration;
-    lastNameInput.oninput = updateDeclaration;
+  function updateAuditButtonState() {
+    const targetError = isBlockedTarget(scanTargetInput.value);
+
+    if (scanTargetError) {
+      scanTargetError.textContent = targetError || "";
+    }
+
+    if (targetError) {
+      scanTargetInput.classList.add("input-invalid");
+    } else {
+      scanTargetInput.classList.remove("input-invalid");
+    }
+
+    startAuditBtn.disabled =
+      !consentCheckbox.checked ||
+      !scanTargetInput.value.trim() ||
+      !firstNameInput.value.trim() ||
+      !lastNameInput.value.trim() ||
+      !!targetError;
   }
 
-  // Mettre à jour la déclaration initiale avec la date
+  if (firstNameInput && lastNameInput) {
+    firstNameInput.oninput = () => {
+      updateDeclaration();
+      updateAuditButtonState();
+    };
+
+    lastNameInput.oninput = () => {
+      updateDeclaration();
+      updateAuditButtonState();
+    };
+  }
+
   updateDeclaration();
 
-  // Lier les actions de btnMe et btnLogout
   if (btnMe) btnMe.onclick = getProfile;
   if (btnLogout) btnLogout.onclick = logoutUser;
 
-  // Ouvrir la fenêtre modale au clic sur le bouton d'audit
   if (btnAudit) {
     btnAudit.onclick = () => {
-      modal.style.display = 'flex'; // Afficher la modale
+      modal.style.display = "flex";
     };
   }
 
-  // Fermer la fenêtre modale au clic sur la croix
   if (closeModal) {
     closeModal.onclick = () => {
-      modal.style.display = 'none'; // Cacher la modale
+      modal.style.display = "none";
     };
   }
 
-  // Fermer la fenêtre modale si l'utilisateur clique en dehors de la fenêtre
   if (modal) {
     window.onclick = (event) => {
       if (event.target === modal) {
-        modal.style.display = 'none'; // Cacher la modale
+        modal.style.display = "none";
       }
     };
   }
 
-  // Activer le bouton "Lancer l'audit" lorsque la case est cochée et l'IP/domaine renseigné
   if (consentCheckbox) {
-    consentCheckbox.onchange = () => {
-      startAuditBtn.disabled = !consentCheckbox.checked || !scanTargetInput.value || !firstNameInput.value || !lastNameInput.value;
-    };
+    consentCheckbox.onchange = updateAuditButtonState;
   }
 
-  // Activer le bouton "Lancer l'audit" lorsque l'IP/domaine est renseigné
   if (scanTargetInput) {
-    scanTargetInput.oninput = () => {
-      startAuditBtn.disabled = !consentCheckbox.checked || !scanTargetInput.value || !firstNameInput.value || !lastNameInput.value;
-    };
+    scanTargetInput.oninput = updateAuditButtonState;
   }
 
-  // Action du bouton pour démarrer l'audit
   if (startAuditBtn) {
     startAuditBtn.onclick = async () => {
-      if (consentCheckbox.checked && scanTargetInput.value && firstNameInput.value && lastNameInput.value) {
-        const consentData = {
-          consentGiven: {
-            fullName: `${firstNameInput.value} ${lastNameInput.value}`, // Nom complet
-            date: currentDateSpan.textContent // Date de l'attestation
-          },
-          scanTarget: scanTargetInput.value // IP ou domaine à scanner
-        };
-
-        try {
-          // Requête API pour lancer l'audit avec les données de consentement
-          const response = await request("/run/scan", {
-            method: "POST",
-            body: consentData
-          });
-
-          // Afficher la réponse de l'API
-          console.log("Réponse de l'API :", response);
-          alert("Audit lancé avec succès !");
-          modal.style.display = 'none'; // Fermer la modale après démarrage
-        } catch (error) {
-          console.error('Erreur lors de l\'appel API :', error);
-          alert("Une erreur s'est produite lors du démarrage de l'audit.");
-        }
-      } else {
+      if (
+        !consentCheckbox.checked ||
+        !scanTargetInput.value.trim() ||
+        !firstNameInput.value.trim() ||
+        !lastNameInput.value.trim()
+      ) {
         alert("Vous devez certifier que vous avez les autorisations nécessaires et entrer une IP/domaine valide.");
+        return;
+      }
+
+      const targetError = isBlockedTarget(scanTargetInput.value);
+
+      if (targetError) {
+        alert(targetError);
+        return;
+      }
+
+      const consentData = {
+        arg1: scanTargetInput.value.trim(),
+        arg2: {
+          fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
+          date: currentDateSpan.textContent
+        }
+      };
+
+      try {
+        const response = await request("/run/scan", {
+          method: "POST",
+          body: consentData
+        });
+
+        console.log("Réponse de l'API :", response);
+        alert("Audit lancé avec succès !");
+        modal.style.display = "none";
+      } catch (error) {
+        console.error("Erreur lors de l'appel API :", error);
+        alert("Une erreur s'est produite lors du démarrage de l'audit.");
       }
     };
   }
@@ -118,4 +144,54 @@ function logoutUser() {
   clearToken();
   showAuth();
   setOut("Déconnexion réussie.");
+}
+
+function isValidIPv4(ip) {
+  const ipv4Regex =
+    /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/;
+  return ipv4Regex.test(ip);
+}
+
+function isPrivateIPv4(ip) {
+  const parts = ip.split(".").map(Number);
+
+  return (
+    parts[0] === 10 ||
+    (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) ||
+    (parts[0] === 192 && parts[1] === 168) ||
+    parts[0] === 127 ||
+    (parts[0] === 169 && parts[1] === 254) ||
+    parts[0] === 0
+  );
+}
+
+function isValidDomain(domain) {
+  const domainRegex =
+    /^(?=.{1,253}$)(?!-)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,63}$/;
+  return domainRegex.test(domain);
+}
+
+function isBlockedTarget(target) {
+  const value = target.trim().toLowerCase();
+
+  if (!value) {
+    return "La cible est vide.";
+  }
+
+  if (value === "localhost") {
+    return "localhost n'est pas autorisé.";
+  }
+
+  if (isValidIPv4(value)) {
+    if (isPrivateIPv4(value)) {
+      return "Les adresses IP privées ou locales ne sont pas autorisées.";
+    }
+    return null;
+  }
+
+  if (isValidDomain(value)) {
+    return null;
+  }
+
+  return "La cible doit être un nom de domaine valide ou une IP publique valide.";
 }

@@ -203,4 +203,15 @@ input[type="text"] {
   margin: 10px auto;
 }
 
+.input-error {
+  display: block;
+  margin-top: 6px;
+  color: red;
+  font-size: 13px;
+}
+
+.input-invalid {
+  border: 1px solid red;
+}
+
 /* --------------------------------------------------------------------------------------------------------------------- */
