@@ -24,9 +24,6 @@ class Main extends HTMLElement {
             <button id="btnMe" type="button">
               Mon profil
             </button>
-            <button id="btnLogout" type="button">
-              Déconnexion
-            </button>
           </div>
           <p id="out"></p>
         </div>
