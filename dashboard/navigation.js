@@ -38,7 +38,7 @@ class Navigation extends HTMLElement {
     }
   }
 
-  // Charge le script par défaut (home.js) au démarrage
+  // Charge le script par défaut au démarrage
   loadDefaultScript() {
     const defaultScript = '/dashboard/main.js';  // Spécifiez ici le script par défaut à charger
     this.loadScript(defaultScript);
