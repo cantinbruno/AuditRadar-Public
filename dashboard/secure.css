@@ -62,7 +62,7 @@
 
 #btnLogout {
     position: absolute; /* Positionné par rapport au body ou au parent */
-    top: 25px;
+    top: 15px;
     left: 85%; /* Centré horizontalement */
     padding: 10px 20px; /* Réduire la taille des marges internes du bouton */
     background-color: #f44336;
@@ -82,7 +82,7 @@
 /* Style du bouton */
 #btnAudit {
   position: absolute;
-  top: 25px;
+  top: 15px;
   left: 5%;
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -116,7 +116,7 @@
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  width: 400px;
+  width: 600px;
   position: relative;
 }
 
@@ -169,10 +169,12 @@ button:hover {
 /* Style pour les éléments d'information */
 ul {
   padding-left: 20px;
+  font-size: 14px;
 }
 
 ul li {
   margin-bottom: 10px;
+  font-size: 10px;
 }
 
 label {
@@ -183,7 +185,7 @@ label {
 
 /* Style pour les éléments du formulaire */
 input[type="text"] {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 
@@ -191,3 +193,5 @@ input[type="text"] {
 button {
   margin-top: 20px;
 }
+
+/* --------------------------------------------------------------------------------------------------------------------- */
