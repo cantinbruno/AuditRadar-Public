@@ -54,16 +54,15 @@
 
 #btnLogout {
     position: absolute; /* Positionné par rapport au body ou au parent */
-    top: 10px;
-    left: 50%; /* Centré horizontalement */
-    transform: translateX(-50%); /* Ajuste la position pour qu'il soit parfaitement centré */
-    padding: 10px 20px;
+    top: 25px;
+    left: 90%; /* Centré horizontalement */
+    padding: 5px 10px; /* Réduire la taille des marges internes du bouton */
     background-color: #f44336;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Réduire la taille du texte */
     z-index: 1000; /* S'assurer que le bouton reste au-dessus du header */
 }
 
