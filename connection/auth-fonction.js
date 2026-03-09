@@ -252,4 +252,3 @@ function logoutUser() {
   showAuth();
   setOut("Déconnexion réussie.");
 }
-
