@@ -15,10 +15,12 @@ header {
   color: white;
   margin-top: 0; /* Réduit l'espace au-dessus du header */
   margin-bottom: 10px; /* Réduit l'espace en-dessous du header */
+  padding: 10px;
   padding-top: 10px;  /* Réduit le padding en haut */
   padding-bottom: 10px; /* Réduit le padding en bas */
   text-align: center;
   flex-shrink: 0;
+  width: 100%;
   z-index: 1;
 }
 
