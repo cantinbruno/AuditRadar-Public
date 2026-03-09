@@ -1,13 +1,11 @@
 /* Conteneur du menu latéral */
 .sidebar-container {
   position: fixed; /* Fixer le menu à gauche de l'écran */
-  top: 0;
-  left: 0;
   width: 200px; /* Réduire la largeur du menu */
   height: 100vh; /* Hauteur pleine page */
-  background-color: #333; /* Couleur de fond */
+  background-color: #111827; /* Noir pur pour maintenir la cohérence */
+; /* Couleur de fond */
   color: white;
-  padding-top: 20px; /* Espacement du haut */
   padding-left: 20px; /* Espacement à gauche */
   display: flex;
   flex-direction: column;
@@ -40,7 +38,7 @@
 
 /* Animation au survol des liens */
 .nav-link:hover {
-  background-color: #555; /* Changement de couleur de fond au survol */
+  background-color: #042658; /* Changement de couleur de fond au survol */
   padding-left: 30px; /* Décalage du texte pour effet */
   transition: padding-left 0.3s ease, background-color 0.3s ease; /* Animation fluide */
 }
@@ -48,12 +46,10 @@
 /* Contenu principal */
 .content {
   margin-left: 200px; /* Laisser de l'espace à gauche pour le menu */
-  padding: 20px;
-      padding-top: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
+  padding-left: 20px;
   overflow-y: auto;
   height: 100%;
   box-sizing: border-box;
 }
+
+/* --------------------------------------------------------------------------------------------------------------------- */
