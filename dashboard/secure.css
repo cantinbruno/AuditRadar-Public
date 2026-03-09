@@ -1,22 +1,23 @@
-/* Conteneur du menu latéral */
+/* Conteneur principal avec flexbox */
+.main-container {
+  display: flex;
+  height: 100vh; /* Hauteur pleine page */
+}
+
+/* Menu de navigation dans un div */
 .sidebar-container {
-  position: fixed;
+  width: 250px; /* Largeur du menu */
+  background-color: #333;
+  color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  position: fixed;  /* Fixer le menu latéral */
   top: 0;
   left: 0;
-  width: 250px; /* Largeur du menu */
-  height: calc(100vh - 50px); /* Hauteur ajustée pour ne pas chevaucher le footer */
-  background-color: #333;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-}
-
-/* Menu latéral */
-.sidebar-nav {
-  width: 100%;
-  padding-top: 20px;
-  padding-left: 20px;
 }
 
 .nav-list {
@@ -35,14 +36,22 @@
   color: white;
   text-decoration: none;
   font-size: 18px;
-  display: block; /* Prend toute la largeur du parent */
+  display: block;
   padding: 10px 20px;
   width: 100%;
 }
 
 .nav-link:hover {
   background-color: #555;
-  padding-left: 30px; /* Plus d'espace au survol */
+  padding-left: 30px;
   transition: padding-left 0.3s ease;
 }
 
+/* Contenu principal */
+.content {
+  margin-left: 250px; /* Espace pour le menu latéral */
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+  box-sizing: border-box;
+}

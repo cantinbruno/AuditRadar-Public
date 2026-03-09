@@ -15,7 +15,6 @@ header {
   color: white;
   margin-top: 0; /* Réduit l'espace au-dessus du header */
   margin-bottom: 10px; /* Réduit l'espace en-dessous du header */
-  padding: 10px;
   padding-top: 10px;  /* Réduit le padding en haut */
   padding-bottom: 10px; /* Réduit le padding en bas */
   text-align: center;
@@ -35,7 +34,6 @@ main {
 footer {
   background-color: #111827; /* Noir pur pour maintenir la cohérence */
   color: white;
-  position: fixed;
   bottom: 0;
   left: 0;
   padding: 10px;
