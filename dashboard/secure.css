@@ -1,18 +1,22 @@
-/* Menu latéral */
-.sidebar-nav {
-  width: 250px; /* Largeur plus large pour un design plus spacieux */
-  background-color: #333;
-  color: white;
+/* Conteneur du menu latéral */
+.sidebar-container {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
-  padding-top: 20px;
-  padding-left: 20px;
+  width: 250px; /* Largeur du menu */
+  height: 100vh; /* Hauteur sur toute la page */
+  background-color: #333;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Commence en haut */
-  align-items: flex-start; /* Alignement à gauche */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Menu latéral */
+.sidebar-nav {
+  width: 100%;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .nav-list {
@@ -31,13 +35,13 @@
   color: white;
   text-decoration: none;
   font-size: 18px;
-  display: block; /* Pour que chaque lien prenne toute la largeur du parent */
+  display: block; /* Prend toute la largeur du parent */
   padding: 10px 20px;
   width: 100%;
 }
 
 .nav-link:hover {
   background-color: #555;
-  padding-left: 30px; /* Augmente le décalage pour un effet plus marqué au survol */
+  padding-left: 30px; /* Plus d'espace au survol */
   transition: padding-left 0.3s ease;
 }
