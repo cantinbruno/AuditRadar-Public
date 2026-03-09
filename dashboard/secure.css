@@ -49,6 +49,10 @@
 .content {
   margin-left: 200px; /* Laisser de l'espace à gauche pour le menu */
   padding: 20px;
+      padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
   overflow-y: auto;
   height: 100%;
   box-sizing: border-box;
