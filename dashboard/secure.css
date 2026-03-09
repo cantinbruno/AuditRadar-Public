@@ -53,9 +53,10 @@
 /* --------------------------------------------------------------------------------------------------------------------- */
 
 #btnLogout {
-    position: fixed;
+    position: absolute; /* Positionné par rapport au body ou au parent */
     top: 10px;
-    right: 10px;
+    left: 50%; /* Centré horizontalement */
+    transform: translateX(-50%); /* Ajuste la position pour qu'il soit parfaitement centré */
     padding: 10px 20px;
     background-color: #f44336;
     color: white;
@@ -63,6 +64,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    z-index: 1000; /* S'assurer que le bouton reste au-dessus du header */
 }
 
 #btnLogout:hover {
