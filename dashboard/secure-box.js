@@ -39,7 +39,6 @@ class SecureBox extends HTMLElement {
             <!-- Champ pour entrer l'IP ou domaine à scanner -->
             <label for="scanTarget">IP ou Domaine à scanner :</label>
             <input type="text" id="scanTarget" placeholder="Entrez l'IP ou domaine">
-            <br>
             <button id="startAuditBtn" disabled>Lancer l'audit</button>
           </div>
         </div>
