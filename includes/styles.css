@@ -37,6 +37,7 @@ footer {
   text-align: center;
   width: 100%;
   flex-shrink: 0;
+  margin-top: auto;
 }
 
 .logo {
