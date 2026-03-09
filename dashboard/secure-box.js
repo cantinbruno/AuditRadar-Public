@@ -29,7 +29,6 @@ class SecureBox extends HTMLElement {
       const aboutComponent = document.createElement('about-db');
       contentContainer.appendChild(aboutComponent);  // Ajouter le composant about-db
     }
-    // Ajouter d'autres composants comme 'services-db', 'contact-db', etc.
   }
 }
 

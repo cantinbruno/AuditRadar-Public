@@ -39,20 +39,7 @@ class Navigation extends HTMLElement {
 
   // Réattacher les événements nécessaires après l'insertion du composant
   bindMainActions();  // Réattacher les actions aux boutons (login, register, etc.)
-
-  // Si vous avez des actions supplémentaires spécifiques à chaque composant, vous pouvez les ajouter ici
-  if (componentName === 'main-db') {
-    // Réattacher ou initialiser des actions spécifiques pour main-db si nécessaire
-    console.log("Composant main-db chargé.");
   }
-
-  if (componentName === 'about-db') {
-    // Réattacher ou initialiser des actions spécifiques pour about-db si nécessaire
-    console.log("Composant about-db chargé.");
-  }
-
-  // Ajoutez des conditions similaires pour d'autres composants comme 'services-db', 'contact-db', etc.
-}
 }
 
 customElements.define('navigation-bar', Navigation);  // Définir le composant 'navigation-bar'
