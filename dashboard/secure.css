@@ -79,3 +79,58 @@
 }
 
 /* --------------------------------------------------------------------------------------------------------------------- */
+
+/* Style du bouton */
+#btnAudit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+#btnAudit:hover {
+  background-color: #45a049;
+}
+
+/* Style de la fenêtre modale */
+.modal {
+  display: none; /* Initialement cachée */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenu de la fenêtre modale */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  position: relative;
+}
+
+/* Croix pour fermer */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: black;
+}

@@ -4,6 +4,7 @@ class SecureBox extends HTMLElement {
     this.innerHTML = `
       <section id="protectedContent">
         <button id="btnLogout" type="button">Déconnexion</button>
+        <button id="btnAudit" type="button">Démarrer un audit</button>
         <navigation-bar></navigation-bar> <!-- Barre de navigation -->
         <div id="content-container"></div> <!-- Conteneur pour afficher le contenu dynamique -->
       </section>
