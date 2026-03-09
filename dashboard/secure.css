@@ -136,3 +136,58 @@
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 
+/* Style pour les champs du formulaire */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Style pour les éléments d'information */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Style pour les éléments du formulaire */
+input[type="text"] {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Espacement et alignement */
+button {
+  margin-top: 20px;
+}
