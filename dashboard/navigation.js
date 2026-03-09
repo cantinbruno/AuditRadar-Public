@@ -3,6 +3,7 @@ class Navigation extends HTMLElement {
     this.innerHTML = `
       <div class="sidebar-container">
         <ul class="nav-list">
+          <br><br>
           <li class="nav-item"><a class="nav-link" data-target="main-db">Général</a></li>
           <li class="nav-item"><a class="nav-link" data-target="about-db">About</a></li>
           <li class="nav-item"><a class="nav-link" data-target="services-db">Services</a></li>
