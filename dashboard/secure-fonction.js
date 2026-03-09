@@ -85,7 +85,7 @@ function bindMainActions() {
 
         try {
           // Requête API pour lancer l'audit avec les données de consentement
-          const response = await request("/audit/start", {
+          const response = await request("/run/scan", {
             method: "POST",
             body: consentData
           });

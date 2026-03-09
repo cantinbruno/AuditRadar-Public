@@ -62,7 +62,7 @@
 
 #btnLogout {
     position: absolute; /* Positionné par rapport au body ou au parent */
-    top: 15px;
+    top: 25px;
     left: 85%; /* Centré horizontalement */
     padding: 10px 20px; /* Réduire la taille des marges internes du bouton */
     background-color: #f44336;
@@ -82,7 +82,7 @@
 /* Style du bouton */
 #btnAudit {
   position: absolute;
-  top: 15px;
+  top: 25px;
   left: 5%;
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -195,12 +195,12 @@ h2 {
 input[type="text"] {
   font-size: 15px;
   margin-bottom: 10px;
-  width: 300px;
+  width: 560px;
 }
 
 #startAuditBtn {
   display: block;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 /* --------------------------------------------------------------------------------------------------------------------- */
