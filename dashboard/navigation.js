@@ -28,12 +28,9 @@ class Navigation extends HTMLElement {
   // Charge dynamiquement le composant correspondant
   loadComponent(componentName) {
     const contentContainer = document.getElementById('content-container');
-    const currentComponent = document.querySelector(componentName);  // Chercher si le composant est déjà présent
 
-    // Supprimer le composant existant avant d'ajouter le nouveau
-    if (currentComponent) {
-      currentComponent.remove();
-    }
+    // Vider le conteneur avant d'ajouter le nouveau composant
+    contentContainer.innerHTML = '';
 
     // Ajouter dynamiquement le composant sélectionné
     const newComponent = document.createElement(componentName);
