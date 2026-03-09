@@ -13,8 +13,6 @@ header {
   position: relative;
   background-color: #111827; /* Noir pur pour un contraste fort */
   color: white;
-  margin-top: 0; /* Réduit l'espace au-dessus du header */
-  margin-bottom: 10px; /* Réduit l'espace en-dessous du header */
   padding-top: 10px;  /* Réduit le padding en haut */
   padding-bottom: 10px; /* Réduit le padding en bas */
   text-align: center;
@@ -26,7 +24,10 @@ header {
 /* Contenu principal */
 main {
   flex: 1;
-  padding: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
   box-sizing: border-box;
 }
 
