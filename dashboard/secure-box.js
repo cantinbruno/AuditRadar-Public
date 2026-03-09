@@ -21,14 +21,8 @@ class SecureBox extends HTMLElement {
   insertComponent(componentName) {
     const contentContainer = document.getElementById('content-container');
     contentContainer.innerHTML = '';  // Vider le conteneur avant d'ajouter du contenu
-
-    if (componentName === 'main-db') {
-      const mainComponent = document.createElement('main-db');
-      contentContainer.appendChild(mainComponent);  // Ajouter le composant main-db (le contenu principal)
-    } else if (componentName === 'about-db') {
-      const aboutComponent = document.createElement('about-db');
-      contentContainer.appendChild(aboutComponent);  // Ajouter le composant about-db
-    }
+    const mainComponent = document.createElement('main-db');
+    contentContainer.appendChild(mainComponent);  // Ajouter le composant main-db (le contenu principal)
   }
 }
 
