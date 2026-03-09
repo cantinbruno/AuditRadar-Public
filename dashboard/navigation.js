@@ -19,7 +19,7 @@ class Navigation extends HTMLElement {
     links.forEach(link => {
       link.addEventListener('click', (event) => {
         event.preventDefault();  // Empêche le comportement par défaut du lien (navigation)
-        const targetComponent = event.target.getAttribute('data-target');  // Récupère le nom du composant cible
+        const targetComponent = event.target.getAttribute('data-target');  // Récupère le composant cible
         this.loadComponent(targetComponent);  // Charge le composant correspondant
       });
     });
@@ -27,18 +27,17 @@ class Navigation extends HTMLElement {
 
   // Charge dynamiquement le composant correspondant
   loadComponent(componentName) {
-    console.log(`Chargement du composant : ${componentName}`);
     const contentContainer = document.getElementById('content-container');
-    contentContainer.innerHTML = '';  // Vider le contenu existant avant d'ajouter un nouveau
+    const currentComponent = document.querySelector(componentName);  // Chercher si le composant est déjà présent
 
-    if (componentName === 'main-db') {
-      const mainComponent = document.createElement('main-db');
-      contentContainer.appendChild(mainComponent);  // Ajouter le composant main-db
-    } else if (componentName === 'about-db') {
-      const aboutComponent = document.createElement('about-db');
-      contentContainer.appendChild(aboutComponent);  // Ajouter le composant about-db
+    // Supprimer le composant existant avant d'ajouter le nouveau
+    if (currentComponent) {
+      currentComponent.remove();
     }
-    // Ajouter d'autres composants comme 'services-db', 'contact-db', etc.
+
+    // Ajouter dynamiquement le composant sélectionné
+    const newComponent = document.createElement(componentName);
+    contentContainer.appendChild(newComponent);  // Ajouter le composant (comme main-db, about-db, etc.)
   }
 }
 
