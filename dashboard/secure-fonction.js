@@ -116,7 +116,7 @@ function bindMainActions() {
 
       try {
         const response = await request("/run/scan", {
-          method: "POST",
+          method: "GET",
           body: consentData
         });
 
