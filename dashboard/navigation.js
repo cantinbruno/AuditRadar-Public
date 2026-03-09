@@ -1,14 +1,14 @@
 class Navigation extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <nav>
-        <ul style="list-style-type: none; padding: 0; margin: 0; display: flex;">
-          <li style="margin-right: 20px;"><a href="#home">Home</a></li>
-          <li style="margin-right: 20px;"><a href="#about">About</a></li>
-          <li style="margin-right: 20px;"><a href="#services">Services</a></li>
-          <li style="margin-right: 20px;"><a href="#contact">Contact</a></li>
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-      </nav>
+    </nav>
     `;
   }
 }

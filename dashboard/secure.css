@@ -1,0 +1,43 @@
+/* Menu latéral */
+.sidebar-nav {
+  width: 250px; /* Largeur plus large pour un design plus spacieux */
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Commence en haut */
+  align-items: flex-start; /* Alignement à gauche */
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.nav-item {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block; /* Pour que chaque lien prenne toute la largeur du parent */
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.nav-link:hover {
+  background-color: #555;
+  padding-left: 30px; /* Augmente le décalage pour un effet plus marqué au survol */
+  transition: padding-left 0.3s ease;
+}
