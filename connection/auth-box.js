@@ -91,7 +91,7 @@ class AuthBox extends HTMLElement {
 
             <!-- Conteneur de l'image à droite -->
             <div class="ar-auth__image-container">
-              <img src="/img/auth.png" alt="Image d'authentification">
+              <img src="/img/auth.jpg" alt="Image d'authentification">
             </div>
 
           </div>
