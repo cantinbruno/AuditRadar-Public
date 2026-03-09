@@ -183,10 +183,19 @@ label {
   font-size: 14px;
 }
 
+p {
+  font-size: 14px;
+}
+
+h2 {
+  text-align: center;
+}
+
 /* Style pour les éléments du formulaire */
 input[type="text"] {
   font-size: 15px;
   margin-bottom: 10px;
+  width: 200px;
 }
 
 /* Espacement et alignement */
