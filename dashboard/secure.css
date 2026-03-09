@@ -3,7 +3,7 @@
   position: fixed; /* Fixer le menu à gauche de l'écran */
   top: 0;
   left: 0;
-  width: 250px; /* Largeur du menu */
+  width: 200px; /* Réduire la largeur du menu */
   height: 100vh; /* Hauteur pleine page */
   background-color: #333; /* Couleur de fond */
   color: white;
@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: flex-start; /* Aligner les éléments du menu vers le haut */
   z-index: 1000; /* Assurez-vous que le menu est au-dessus des autres éléments */
+  transition: width 0.3s ease; /* Animation pour la largeur */
 }
 
 /* Liste de navigation */
@@ -34,17 +35,19 @@
   display: block; /* Pour que chaque lien prenne toute la largeur */
   padding: 10px 20px;
   width: 100%;
+  transition: padding-left 0.3s ease, background-color 0.3s ease; /* Transition fluide pour padding et couleur */
 }
 
+/* Animation au survol des liens */
 .nav-link:hover {
-  background-color: #555; /* Changement de couleur au survol */
-  padding-left: 30px; /* Ajouter un décalage pour l'effet de survol */
-  transition: padding-left 0.3s ease; /* Effet de transition pour le padding */
+  background-color: #555; /* Changement de couleur de fond au survol */
+  padding-left: 30px; /* Décalage du texte pour effet */
+  transition: padding-left 0.3s ease, background-color 0.3s ease; /* Animation fluide */
 }
 
 /* Contenu principal */
 .content {
-  margin-left: 250px; /* Laisser de l'espace à gauche pour le menu */
+  margin-left: 200px; /* Laisser de l'espace à gauche pour le menu */
   padding: 20px;
   overflow-y: auto;
   height: 100%;
