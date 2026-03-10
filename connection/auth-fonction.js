@@ -4,7 +4,11 @@ const API = "https://api.wavetools.fr";
 function setOut(value) {
   const out = document.getElementById("out");
   if (!out) return;
-  out.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+
+  out.textContent =
+    typeof value === "string"
+      ? value
+      : JSON.stringify(value, null, 2);
 }
 
 // Fonction pour sauvegarder le token dans le cookie
@@ -107,6 +111,7 @@ async function checkAuth() {
 
 // Fonction pour la connexion de l'utilisateur
 async function loginUser() {
+  console.log('Attempting to log in...');  // Ajout du log pour le débogage
   try {
     const email = document.getElementById("logEmail").value.trim();
     const password = document.getElementById("logPass").value;
@@ -139,6 +144,7 @@ async function loginUser() {
 
 // Fonction pour l'enregistrement de l'utilisateur
 async function registerUser() {
+  console.log('Attempting to register user...');  // Ajout du log pour le débogage
   try {
     const email = document.getElementById("regEmail").value.trim();
     const password = document.getElementById("regPass").value;
@@ -194,19 +200,21 @@ function bindAuthSwitch() {
 
   if (goLogin) {
     goLogin.onclick = function () {
+      console.log('Switching to login panel');  // Log pour débogage
       switchAuthPanel("login");
     };
   }
 
   if (goRegister) {
     goRegister.onclick = function () {
+      console.log('Switching to register panel');  // Log pour débogage
       switchAuthPanel("register");
     };
   }
 }
 
 // Fonction pour lier les actions supplémentaires comme la déconnexion et l'affichage du profil
-function bindMainLog() {
+function bindMainActions() {
   const logoutBtn = document.getElementById("btnLogout");
   const profileBtn = document.getElementById("btnProfile");
 
