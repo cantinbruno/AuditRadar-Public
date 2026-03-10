@@ -11,15 +11,23 @@ function setOut(value) {
 }
 
 function saveToken(token) {
-  localStorage.setItem("access_token", token);
+  document.cookie = `access_token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
 }
 
 function getToken() {
-  return localStorage.getItem("access_token");
+  const name = "access_token=";
+  const decodedCookies = decodeURIComponent(document.cookie);
+  const ca = decodedCookies.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return "";
 }
 
 function clearToken() {
-  localStorage.removeItem("access_token");
+  document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 function showAuth() {
