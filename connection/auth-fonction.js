@@ -1,5 +1,6 @@
 const API = "https://api.wavetools.fr";
 
+// Fonction pour afficher la sortie
 function setOut(value) {
   const out = document.getElementById("out");
   if (!out) return;
@@ -10,10 +11,12 @@ function setOut(value) {
       : JSON.stringify(value, null, 2);
 }
 
+// Fonction pour sauvegarder le token dans le cookie
 function saveToken(token) {
   document.cookie = `access_token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
 }
 
+// Fonction pour récupérer le token depuis les cookies
 function getToken() {
   const name = "access_token=";
   const decodedCookies = decodeURIComponent(document.cookie);
@@ -26,10 +29,12 @@ function getToken() {
   return "";
 }
 
+// Fonction pour supprimer le token des cookies
 function clearToken() {
   document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
+// Fonction pour afficher le formulaire de connexion et masquer le contenu protégé
 function showAuth() {
   const authBox = document.getElementById("authBox");
   const protectedContent = document.getElementById("protectedContent");
@@ -38,6 +43,7 @@ function showAuth() {
   if (protectedContent) protectedContent.style.display = "none";
 }
 
+// Fonction pour afficher le contenu protégé et masquer le formulaire de connexion
 function showProtected() {
   const authBox = document.getElementById("authBox");
   const protectedContent = document.getElementById("protectedContent");
@@ -46,6 +52,7 @@ function showProtected() {
   if (protectedContent) protectedContent.style.display = "block";
 }
 
+// Fonction générique pour envoyer des requêtes avec le token d'authentification
 async function request(path, options = {}) {
   const method = options.method || "GET";
   const body = options.body || null;
@@ -64,7 +71,8 @@ async function request(path, options = {}) {
   const response = await fetch(API + path, {
     method,
     headers,
-    body: body !== null ? JSON.stringify(body) : null
+    body: body !== null ? JSON.stringify(body) : null,
+    credentials: 'same-origin'  // Envoie les cookies avec la requête
   });
 
   const text = await response.text();
@@ -83,6 +91,7 @@ async function request(path, options = {}) {
   return data;
 }
 
+// Vérifie l'état de l'authentification et affiche la page correcte
 async function checkAuth() {
   const token = getToken();
 
@@ -92,14 +101,15 @@ async function checkAuth() {
   }
 
   try {
-    await request("/auth/me");
-    showProtected();
+    await request("/auth/me");  // Essaie d'accéder au profil
+    showProtected();  // Affiche la page protégée
   } catch (error) {
-    clearToken();
-    showAuth();
+    clearToken();  // Si l'authentification échoue, supprime le token
+    showAuth();  // Affiche la page de connexion
   }
 }
 
+// Fonction pour la connexion de l'utilisateur
 async function loginUser() {
   try {
     const email = document.getElementById("logEmail").value.trim();
@@ -116,7 +126,7 @@ async function loginUser() {
       body: { email, password }
     });
 
-    saveToken(data.access_token);
+    saveToken(data.access_token);  // Sauvegarde le token dans les cookies
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
@@ -131,6 +141,7 @@ async function loginUser() {
   }
 }
 
+// Fonction pour l'enregistrement de l'utilisateur
 async function registerUser() {
   try {
     const email = document.getElementById("regEmail").value.trim();
@@ -160,8 +171,8 @@ async function registerUser() {
       body: { email, password }
     });
 
-    saveToken(loginData.access_token);
-    showProtected();
+    saveToken(loginData.access_token);  // Sauvegarde du token
+    showProtected();  // Passage à la page protégée
     setOut("Inscription réussie.");
   } catch (error) {
     // Gestion de l'email déjà existant
@@ -173,6 +184,7 @@ async function registerUser() {
   }
 }
 
+// Fonction pour afficher le bon panneau d'authentification (connexion ou inscription)
 function switchAuthPanel(panel) {
   const loginPanel = document.getElementById("loginPanel");
   const registerPanel = document.getElementById("registerPanel");
@@ -186,6 +198,7 @@ function switchAuthPanel(panel) {
   }
 }
 
+// Fonction pour lier les actions des boutons pour basculer entre la connexion et l'inscription
 function bindAuthSwitch() {
   const goLogin = document.getElementById("goLogin");
   const goRegister = document.getElementById("goRegister");
@@ -203,6 +216,7 @@ function bindAuthSwitch() {
   }
 }
 
+// Initialisation des éléments de l'interface d'authentification
 document.addEventListener("DOMContentLoaded", function () {
   let tries = 0;
 
@@ -228,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
   waitForElements();
 });
 
+// Lier les actions des boutons pour la connexion et l'enregistrement
 function bindMainLog() {
   const btnRegister = document.getElementById("btnRegister");
   const btnLogin = document.getElementById("btnLogin");
@@ -236,9 +251,10 @@ function bindMainLog() {
   if (btnLogin) btnLogin.onclick = loginUser;
 }
 
+// Initialisation de l'interface d'authentification
 function initAuthUI() {
   bindMainLog();
   bindMainActions();
   bindAuthSwitch();
-  checkAuth();
+  checkAuth();  // Vérifie si l'utilisateur est déjà authentifié
 }
