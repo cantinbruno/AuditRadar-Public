@@ -5,10 +5,7 @@ function setOut(value) {
   const out = document.getElementById("out");
   if (!out) return;
 
-  out.textContent =
-    typeof value === "string"
-      ? value
-      : JSON.stringify(value, null, 2);
+  out.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
 }
 
 // Fonction pour sauvegarder le token dans le cookie
@@ -34,24 +31,6 @@ function clearToken() {
   document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-// Fonction pour afficher le formulaire de connexion et masquer le contenu protégé
-function showAuth() {
-  const authBox = document.getElementById("authBox");
-  const protectedContent = document.getElementById("protectedContent");
-
-  if (authBox) authBox.style.display = "block";
-  if (protectedContent) protectedContent.style.display = "none";
-}
-
-// Fonction pour afficher le contenu protégé et masquer le formulaire de connexion
-function showProtected() {
-  const authBox = document.getElementById("authBox");
-  const protectedContent = document.getElementById("protectedContent");
-
-  if (authBox) authBox.style.display = "none";
-  if (protectedContent) protectedContent.style.display = "block";
-}
-
 // Fonction générique pour envoyer des requêtes avec le token d'authentification
 async function request(path, options = {}) {
   const method = options.method || "GET";
@@ -72,7 +51,7 @@ async function request(path, options = {}) {
     method,
     headers,
     body: body !== null ? JSON.stringify(body) : null,
-    credentials: 'same-origin'  // Envoie les cookies avec la requête
+    credentials: 'same-origin'
   });
 
   const text = await response.text();
@@ -89,24 +68,6 @@ async function request(path, options = {}) {
   }
 
   return data;
-}
-
-// Vérifie l'état de l'authentification et affiche la page correcte
-async function checkAuth() {
-  const token = getToken();
-
-  if (!token) {
-    showAuth();
-    return;
-  }
-
-  try {
-    await request("/auth/me");  // Essaie d'accéder au profil
-    showProtected();  // Affiche la page protégée
-  } catch (error) {
-    clearToken();  // Si l'authentification échoue, supprime le token
-    showAuth();  // Affiche la page de connexion
-  }
 }
 
 // Fonction pour la connexion de l'utilisateur
@@ -126,13 +87,12 @@ async function loginUser() {
       body: { email, password }
     });
 
-    saveToken(data.access_token);  // Sauvegarde le token dans les cookies
+    saveToken(data.access_token); // Sauvegarde le token dans les cookies
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    console.log("Erreur API:", error); // Log de l'objet complet pour une inspection plus approfondie
+    console.log("Erreur API:", error);
 
-    // Vérifie si l'erreur contient une information spécifique (Bad credentials)
     if (error && error.detail && error.detail === "Bad credentials") {
       document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
     } else {
@@ -152,13 +112,6 @@ async function registerUser() {
       return;
     }
 
-    // Validation du mot de passe
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-    if (!passwordRegex.test(password)) {
-      document.getElementById("registerErrorMessage").textContent = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
-      return;
-    }
-
     // Requête API d'enregistrement
     await request("/auth/register", {
       method: "POST",
@@ -171,11 +124,10 @@ async function registerUser() {
       body: { email, password }
     });
 
-    saveToken(loginData.access_token);  // Sauvegarde du token dans le cookie
-    showProtected();  // Passage à la zone protégée
+    saveToken(loginData.access_token); // Sauvegarde du token dans le cookie
+    showProtected(); // Passage à la zone protégée
     setOut("Inscription réussie.");
   } catch (error) {
-    // Gestion de l'email déjà existant
     if (error && error.detail && error.detail === "Email already exists") {
       document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else {
@@ -184,69 +136,6 @@ async function registerUser() {
   }
 }
 
-// Fonction pour afficher le bon panneau d'authentification (connexion ou inscription)
-function switchAuthPanel(panel) {
-  const loginPanel = document.getElementById("loginPanel");
-  const registerPanel = document.getElementById("registerPanel");
-
-  if (panel === "register") {
-    loginPanel.classList.add("ar-auth__card--hidden");
-    registerPanel.classList.remove("ar-auth__card--hidden");
-  } else {
-    registerPanel.classList.add("ar-auth__card--hidden");
-    loginPanel.classList.remove("ar-auth__card--hidden");
-  }
-}
-
-// Fonction pour lier les actions des boutons pour basculer entre la connexion et l'inscription
-function bindAuthSwitch() {
-  const goLogin = document.getElementById("goLogin");
-  const goRegister = document.getElementById("goRegister");
-
-  if (goLogin) {
-    goLogin.onclick = function () {
-      switchAuthPanel("login");
-    };
-  }
-
-  if (goRegister) {
-    goRegister.onclick = function () {
-      switchAuthPanel("register");
-    };
-  }
-}
-
-// Fonction pour lier les actions supplémentaires comme la déconnexion et l'affichage du profil
-function bindMainActions() {
-  const logoutBtn = document.getElementById("btnLogout");
-  const profileBtn = document.getElementById("btnProfile");
-
-  if (logoutBtn) {
-    logoutBtn.onclick = function () {
-      clearToken();
-      showAuth();  // Affiche la page de connexion
-      setOut("Vous avez été déconnecté.");
-    };
-  }
-
-  if (profileBtn) {
-    profileBtn.onclick = function () {
-      getProfile();
-    };
-  }
-}
-
-// Fonction pour récupérer le profil de l'utilisateur
-async function getProfile() {
-  try {
-    const data = await request("/auth/me");
-    setOut(data);  // Affiche les informations du profil
-  } catch (error) {
-    setOut("Erreur lors de la récupération du profil.");
-  }
-}
-
-// Initialisation des éléments de l'interface d'authentification
 document.addEventListener("DOMContentLoaded", function () {
   let tries = 0;
 
@@ -271,20 +160,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   waitForElements();
 });
-
-// Lier les actions des boutons pour la connexion et l'enregistrement
-function bindMainLog() {
-  const btnRegister = document.getElementById("btnRegister");
-  const btnLogin = document.getElementById("btnLogin");
-
-  if (btnRegister) btnRegister.onclick = registerUser;
-  if (btnLogin) btnLogin.onclick = loginUser;
-}
-
-// Initialisation de l'interface d'authentification
-function initAuthUI() {
-  bindMainLog();
-  bindMainActions();
-  bindAuthSwitch();
-  checkAuth();  // Vérifie si l'utilisateur est déjà authentifié
-}
