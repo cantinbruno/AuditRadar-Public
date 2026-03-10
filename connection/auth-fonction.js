@@ -206,7 +206,7 @@ function bindAuthSwitch() {
 }
 
 // Fonction pour lier les actions supplémentaires comme la déconnexion et l'affichage du profil
-function bindMainActions() {
+function bindMainLog() {
   const logoutBtn = document.getElementById("btnLogout");
   const profileBtn = document.getElementById("btnProfile");
 
