@@ -147,7 +147,7 @@ input[type="password"] {
   border-radius: 4px;
 }
 
-.startAuditBtn {
+#startAuditBtn {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -157,12 +157,12 @@ input[type="password"] {
   border-radius: 5px;
 }
 
-.startAuditBtn:disabled {
+#startAuditBtn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.startAuditBtn:hover {
+#startAuditBtn:hover {
   background-color: #45a049;
 }
 
