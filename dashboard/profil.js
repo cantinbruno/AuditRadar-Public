@@ -25,6 +25,7 @@ class Main extends HTMLElement {
               Mon profil
             </button>
           </div>
+          <p id="out"></p>
         </div>
     `;
   }
