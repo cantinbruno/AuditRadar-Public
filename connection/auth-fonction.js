@@ -171,8 +171,8 @@ async function registerUser() {
       body: { email, password }
     });
 
-    saveToken(loginData.access_token);  // Sauvegarde du token
-    showProtected();  // Passage à la page protégée
+    saveToken(loginData.access_token);  // Sauvegarde du token dans le cookie
+    showProtected();  // Passage à la zone protégée
     setOut("Inscription réussie.");
   } catch (error) {
     // Gestion de l'email déjà existant
@@ -213,6 +213,36 @@ function bindAuthSwitch() {
     goRegister.onclick = function () {
       switchAuthPanel("register");
     };
+  }
+}
+
+// Fonction pour lier les actions supplémentaires comme la déconnexion et l'affichage du profil
+function bindMainActions() {
+  const logoutBtn = document.getElementById("btnLogout");
+  const profileBtn = document.getElementById("btnProfile");
+
+  if (logoutBtn) {
+    logoutBtn.onclick = function () {
+      clearToken();
+      showAuth();  // Affiche la page de connexion
+      setOut("Vous avez été déconnecté.");
+    };
+  }
+
+  if (profileBtn) {
+    profileBtn.onclick = function () {
+      getProfile();
+    };
+  }
+}
+
+// Fonction pour récupérer le profil de l'utilisateur
+async function getProfile() {
+  try {
+    const data = await request("/auth/me");
+    setOut(data);  // Affiche les informations du profil
+  } catch (error) {
+    setOut("Erreur lors de la récupération du profil.");
   }
 }
 
