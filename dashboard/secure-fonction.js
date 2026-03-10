@@ -114,8 +114,8 @@ function bindMainActions() {
 
       try {
         const query = new URLSearchParams({
-          arg1: target,
-          arg2: JSON.stringify(consent)
+          arg: target,
+          arg: JSON.stringify(consent)
         }).toString();
 
         const response = await request(`/run/scan?${query}`, {
