@@ -1,6 +1,5 @@
 const API = "https://api.wavetools.fr";
 
-// Fonction pour afficher la sortie
 function setOut(value) {
   const out = document.getElementById("out");
   if (!out) return;
@@ -11,30 +10,18 @@ function setOut(value) {
       : JSON.stringify(value, null, 2);
 }
 
-// Fonction pour sauvegarder le token dans le cookie
 function saveToken(token) {
-  document.cookie = `access_token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
+  localStorage.setItem("access_token", token);
 }
 
-// Fonction pour récupérer le token depuis les cookies
 function getToken() {
-  const name = "access_token=";
-  const decodedCookies = decodeURIComponent(document.cookie);
-  const ca = decodedCookies.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1);
-    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  }
-  return "";
+  return localStorage.getItem("access_token");
 }
 
-// Fonction pour supprimer le token des cookies
 function clearToken() {
-  document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  localStorage.removeItem("access_token");
 }
 
-// Fonction pour afficher le formulaire de connexion et masquer le contenu protégé
 function showAuth() {
   const authBox = document.getElementById("authBox");
   const protectedContent = document.getElementById("protectedContent");
@@ -43,7 +30,6 @@ function showAuth() {
   if (protectedContent) protectedContent.style.display = "none";
 }
 
-// Fonction pour afficher le contenu protégé et masquer le formulaire de connexion
 function showProtected() {
   const authBox = document.getElementById("authBox");
   const protectedContent = document.getElementById("protectedContent");
@@ -52,7 +38,6 @@ function showProtected() {
   if (protectedContent) protectedContent.style.display = "block";
 }
 
-// Fonction générique pour envoyer des requêtes avec le token d'authentification
 async function request(path, options = {}) {
   const method = options.method || "GET";
   const body = options.body || null;
@@ -71,8 +56,7 @@ async function request(path, options = {}) {
   const response = await fetch(API + path, {
     method,
     headers,
-    body: body !== null ? JSON.stringify(body) : null,
-    credentials: 'same-origin'  // Envoie les cookies avec la requête
+    body: body !== null ? JSON.stringify(body) : null
   });
 
   const text = await response.text();
@@ -91,7 +75,6 @@ async function request(path, options = {}) {
   return data;
 }
 
-// Vérifie l'état de l'authentification et affiche la page correcte
 async function checkAuth() {
   const token = getToken();
 
@@ -101,17 +84,15 @@ async function checkAuth() {
   }
 
   try {
-    await request("/auth/me");  // Essaie d'accéder au profil
-    showProtected();  // Affiche la page protégée
+    await request("/auth/me");
+    showProtected();
   } catch (error) {
-    clearToken();  // Si l'authentification échoue, supprime le token
-    showAuth();  // Affiche la page de connexion
+    clearToken();
+    showAuth();
   }
 }
 
-// Fonction pour la connexion de l'utilisateur
 async function loginUser() {
-  console.log('Attempting to log in...');  // Ajout du log pour le débogage
   try {
     const email = document.getElementById("logEmail").value.trim();
     const password = document.getElementById("logPass").value;
@@ -127,11 +108,11 @@ async function loginUser() {
       body: { email, password }
     });
 
-    saveToken(data.access_token);  // Sauvegarde le token dans les cookies
+    saveToken(data.access_token);
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    console.log("Erreur API:", error);
+    console.log("Erreur API:", error); // Log de l'objet complet pour une inspection plus approfondie
 
     // Vérifie si l'erreur contient une information spécifique (Bad credentials)
     if (error && error.detail && error.detail === "Bad credentials") {
@@ -142,15 +123,20 @@ async function loginUser() {
   }
 }
 
-// Fonction pour l'enregistrement de l'utilisateur
 async function registerUser() {
-  console.log('Attempting to register user...');  // Ajout du log pour le débogage
   try {
     const email = document.getElementById("regEmail").value.trim();
     const password = document.getElementById("regPass").value;
 
     if (!email || !password) {
       document.getElementById("registerErrorMessage").textContent = "Veuillez remplir email et mot de passe.";
+      return;
+    }
+
+    // Validation du mot de passe
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      document.getElementById("registerErrorMessage").textContent = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
       return;
     }
 
@@ -166,8 +152,8 @@ async function registerUser() {
       body: { email, password }
     });
 
-    saveToken(loginData.access_token);  // Sauvegarde du token dans le cookie
-    showProtected();  // Passage à la zone protégée
+    saveToken(loginData.access_token);
+    showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
     // Gestion de l'email déjà existant
@@ -179,7 +165,6 @@ async function registerUser() {
   }
 }
 
-// Fonction pour afficher le bon panneau d'authentification (connexion ou inscription)
 function switchAuthPanel(panel) {
   const loginPanel = document.getElementById("loginPanel");
   const registerPanel = document.getElementById("registerPanel");
@@ -193,65 +178,23 @@ function switchAuthPanel(panel) {
   }
 }
 
-// Fonction pour lier les actions des boutons pour basculer entre la connexion et l'inscription
 function bindAuthSwitch() {
   const goLogin = document.getElementById("goLogin");
   const goRegister = document.getElementById("goRegister");
 
   if (goLogin) {
     goLogin.onclick = function () {
-      console.log('Switching to login panel');  // Log pour débogage
       switchAuthPanel("login");
     };
   }
 
   if (goRegister) {
     goRegister.onclick = function () {
-      console.log('Switching to register panel');  // Log pour débogage
       switchAuthPanel("register");
     };
   }
 }
 
-// Fonction pour lier les actions supplémentaires comme la déconnexion et l'affichage du profil
-function bindMainActions() {
-  const logoutBtn = document.getElementById("btnLogout");
-  const profileBtn = document.getElementById("btnProfile");
-
-  if (logoutBtn) {
-    logoutBtn.onclick = function () {
-      clearToken();
-      showAuth();  // Affiche la page de connexion
-      setOut("Vous avez été déconnecté.");
-    };
-  }
-
-  if (profileBtn) {
-    profileBtn.onclick = function () {
-      getProfile();
-    };
-  }
-}
-
-// Fonction pour récupérer le profil de l'utilisateur
-async function getProfile() {
-  try {
-    const data = await request("/auth/me");
-    setOut(data);  // Affiche les informations du profil
-  } catch (error) {
-    setOut("Erreur lors de la récupération du profil.");
-  }
-}
-
-// Fonction d'initialisation de l'UI d'authentification
-function initAuthUI() {
-  bindMainLog();
-  bindMainActions();
-  bindAuthSwitch();
-  checkAuth();  // Vérifie si l'utilisateur est déjà authentifié
-}
-
-// Initialisation des éléments de l'interface d'authentification
 document.addEventListener("DOMContentLoaded", function () {
   let tries = 0;
 
@@ -276,3 +219,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   waitForElements();
 });
+
+function bindMainLog() {
+  const btnRegister = document.getElementById("btnRegister");
+  const btnLogin = document.getElementById("btnLogin");
+
+  if (btnRegister) btnRegister.onclick = registerUser;
+  if (btnLogin) btnLogin.onclick = loginUser;
+}
+
+function initAuthUI() {
+  bindMainLog();
+  bindMainActions();
+  bindAuthSwitch();
+  checkAuth();
+}

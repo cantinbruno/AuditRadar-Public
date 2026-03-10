@@ -135,9 +135,7 @@ function bindMainActions() {
 
 async function getProfile() {
   try {
-    const data = await request("/auth/me", {
-      credentials: "same-origin"  // Ajouter cette ligne pour envoyer les cookies
-    });
+    const data = await request("/auth/me");
     setOut(data);
   } catch (error) {
     setOut(error);
