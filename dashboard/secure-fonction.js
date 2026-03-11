@@ -120,11 +120,14 @@ startAuditBtn.onclick = async () => {
   try {
     // Construction correcte des deux arguments avec le même nom 'arg'
     const query = new URLSearchParams();
-    query.append("arg", target);  // Premier argument : target
+    query.append("arg", target);  // Premier argument : IP/Domaine (8.8.8.8)
     query.append("arg", JSON.stringify(consent));  // Deuxième argument : consent (au format JSON)
 
+    // Construction de l'URL complète
+    const url = `/run/scan?${query.toString()}`;
+
     // Envoi de la requête avec les deux arguments dans l'URL
-    const response = await request(`/run/scan?${query.toString()}`, {
+    const response = await request(url, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${accessToken}`
