@@ -56,7 +56,6 @@ function bindMainActions() {
 
   updateDeclaration();
 
-  if (btnMe) btnMe.onclick = getProfile;
   if (btnLogout) btnLogout.onclick = logoutUser;
 
   if (btnAudit) {
@@ -130,15 +129,6 @@ function bindMainActions() {
         alert("Une erreur s'est produite lors du démarrage de l'audit.");
       }
     };
-  }
-}
-
-async function getProfile() {
-  try {
-    const data = await request("/auth/me");
-    document.getElementById("profileData").innerText = JSON.stringify(data, null, 2);  // Afficher les données dans le div
-  } catch (error) {
-    document.getElementById("profileData").innerText = `Error: ${error.message}`;  // Afficher l'erreur dans le div
   }
 }
 
