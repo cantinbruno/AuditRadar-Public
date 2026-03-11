@@ -87,7 +87,7 @@ function bindMainActions() {
   }
 
   if (startAuditBtn) {
- startAuditBtn.onclick = async () => {
+startAuditBtn.onclick = async () => {
   const accessToken = localStorage.getItem("access_token");
   if (!accessToken) {
     alert("Vous devez être connecté pour démarrer l'audit.");
