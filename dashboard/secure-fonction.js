@@ -88,6 +88,12 @@ function bindMainActions() {
 
   if (startAuditBtn) {
     startAuditBtn.onclick = async () => {
+      const accessToken = localStorage.getItem("access_token");
+      if (!accessToken) {
+        alert("Vous devez être connecté pour démarrer l'audit.");
+        return;
+      }
+
       if (
         !consentCheckbox.checked ||
         !scanTargetInput.value.trim() ||

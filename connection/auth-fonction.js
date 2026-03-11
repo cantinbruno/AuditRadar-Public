@@ -102,7 +102,6 @@ async function loginUser() {
       return;
     }
 
-    // Requête de connexion
     const data = await request("/auth/login", {
       method: "POST",
       body: { email, password }
@@ -112,9 +111,8 @@ async function loginUser() {
     showProtected(); // Passage à la zone protégée
     setOut("Connexion réussie.");
   } catch (error) {
-    console.log("Erreur API:", error); // Log de l'objet complet pour une inspection plus approfondie
+    console.log("Erreur API:", error);
 
-    // Vérifie si l'erreur contient une information spécifique (Bad credentials)
     if (error && error.detail && error.detail === "Bad credentials") {
       document.getElementById("loginErrorMessage").textContent = "Le mot de passe ou l'email est incorrect.";
     } else {
@@ -133,20 +131,17 @@ async function registerUser() {
       return;
     }
 
-    // Validation du mot de passe
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     if (!passwordRegex.test(password)) {
       document.getElementById("registerErrorMessage").textContent = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial.";
       return;
     }
 
-    // Requête API d'enregistrement
     await request("/auth/register", {
       method: "POST",
       body: { email, password }
     });
 
-    // Connexion automatique après inscription
     const loginData = await request("/auth/login", {
       method: "POST",
       body: { email, password }
@@ -156,7 +151,6 @@ async function registerUser() {
     showProtected();
     setOut("Inscription réussie.");
   } catch (error) {
-    // Gestion de l'email déjà existant
     if (error && error.detail && error.detail === "Email already exists") {
       document.getElementById("registerErrorMessage").textContent = "Cet email est déjà utilisé. Veuillez en choisir un autre.";
     } else {
