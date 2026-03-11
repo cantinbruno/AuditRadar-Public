@@ -118,7 +118,10 @@ function bindMainActions() {
         }).toString();
 
         const response = await request(`/run/scan?${query}`, {
-          method: "GET"
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${accessToken}`
+          }
         });
 
         console.log("Réponse de l'API :", response);
