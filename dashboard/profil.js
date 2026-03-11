@@ -1,30 +1,35 @@
 class Profil extends HTMLElement {
   connectedCallback() {
-    // Définir la structure HTML du composant
+    // Définir la structure HTML du composant avec des styles internes pour améliorer l'affichage
     this.innerHTML = `
       <div class="content">
-        <div>
-          <h2>Espace sécurisé</h2>
-          <p>
-            Vous êtes connecté. Vous pouvez maintenant accéder aux actions protégées.
-          </p>
+        <div id="profileData" class="profile-details">
+          <!-- Les données du profil seront affichées ici -->
         </div>
-        <div id="profileData"></div> <!-- Élément où les données seront affichées -->
       </div>
     `;
-
-    // Appeler la fonction getProfile après le rendu
+    
+    // Appeler la fonction pour récupérer et afficher les données
     this.getProfile();
   }
 
   async getProfile() {
     try {
-      const data = await request("/auth/me");  // Effectuer la requête API
-      // Afficher les données dans le div avec id 'profileData'
-      this.querySelector("#profileData").innerText = JSON.stringify(data, null, 2);
+      const data = await request("/auth/me"); // Effectuer la requête API
+      
+      // Construire un affichage structuré des données
+      const profileHtml = `
+        <p><span class="label">Email:</span> <span class="plan">${data.email}</span></p>
+        <p><span class="label">Plan:</span> <span class="plan">${data.plan}</span></p>
+        <p><span class="label">État:</span> <span class="${data.is_active ? 'active' : 'inactive'}">${data.is_active ? 'Actif' : 'Inactif'}</span></p>
+      `;
+
+      // Afficher les données dans le div 'profileData'
+      this.querySelector("#profileData").innerHTML = profileHtml;
+
     } catch (error) {
       // En cas d'erreur, afficher l'erreur dans le div
-      this.querySelector("#profileData").innerText = `Erreur : ${error.message}`;
+      this.querySelector("#profileData").innerHTML = `<p class="error">Erreur : ${error.message}</p>`;
     }
   }
 }
