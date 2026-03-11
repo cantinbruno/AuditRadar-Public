@@ -11,7 +11,7 @@ class Navigation extends HTMLElement {
           <li class="nav-item"><a class="nav-link" data-target="services-db">Services</a></li>
           <li class="nav-item"><a class="nav-link" data-target="contact-db">Contact</a></li>
           <li class="nav-item"><a class="nav-link" data-target="services-db">Services</a></li>
-          <li class="nav-item"><a class="nav-link" data-target="profil-db">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" data-target="profil-db">Mon profil</a></li>
         </ul>
       </div>
     `;
