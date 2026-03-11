@@ -87,57 +87,57 @@ function bindMainActions() {
   }
 
   if (startAuditBtn) {
-    startAuditBtn.onclick = async () => {
-      const accessToken = localStorage.getItem("access_token");
-      if (!accessToken) {
-        alert("Vous devez être connecté pour démarrer l'audit.");
-        return;
+ startAuditBtn.onclick = async () => {
+  const accessToken = localStorage.getItem("access_token");
+  if (!accessToken) {
+    alert("Vous devez être connecté pour démarrer l'audit.");
+    return;
+  }
+
+  if (
+    !consentCheckbox.checked ||
+    !scanTargetInput.value.trim() ||
+    !firstNameInput.value.trim() ||
+    !lastNameInput.value.trim()
+  ) {
+    alert("Vous devez certifier que vous avez les autorisations nécessaires et entrer une IP/domaine valide.");
+    return;
+  }
+
+  const targetError = isBlockedTarget(scanTargetInput.value);
+
+  if (targetError) {
+    alert(targetError);
+    return;
+  }
+
+  const target = scanTargetInput.value.trim();
+  const consent = {
+    fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
+    date: currentDateSpan.textContent
+  };
+
+  try {
+    // Construction correcte des paramètres pour la requête
+    const query = new URLSearchParams();
+    query.append("arg", target);
+    query.append("arg", JSON.stringify(consent));
+
+    const response = await request(`/run/scan?${query.toString()}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${accessToken}`
       }
+    });
 
-      if (
-        !consentCheckbox.checked ||
-        !scanTargetInput.value.trim() ||
-        !firstNameInput.value.trim() ||
-        !lastNameInput.value.trim()
-      ) {
-        alert("Vous devez certifier que vous avez les autorisations nécessaires et entrer une IP/domaine valide.");
-        return;
-      }
-
-      const targetError = isBlockedTarget(scanTargetInput.value);
-
-      if (targetError) {
-        alert(targetError);
-        return;
-      }
-
-      const target = scanTargetInput.value.trim();
-      const consent = {
-        fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
-        date: currentDateSpan.textContent
-      };
-
-      try {
-        const query = new URLSearchParams({
-          arg: target,
-          arg: JSON.stringify(consent)
-        }).toString();
-
-        const response = await request(`/run/scan?${query}`, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${accessToken}`
-          }
-        });
-
-        console.log("Réponse de l'API :", response);
-        alert("Audit lancé avec succès !");
-        modal.style.display = "none";
-      } catch (error) {
-        console.error("Erreur lors de l'appel API :", error);
-        alert("Une erreur s'est produite lors du démarrage de l'audit.");
-      }
-    };
+    console.log("Réponse de l'API :", response);
+    alert("Audit lancé avec succès !");
+    modal.style.display = "none";
+  } catch (error) {
+    console.error("Erreur lors de l'appel API :", error);
+    alert("Une erreur s'est produite lors du démarrage de l'audit.");
+  }
+};
   }
 }
 
