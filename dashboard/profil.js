@@ -1,34 +1,12 @@
-class Main extends HTMLElement {
+class Profil extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <!-- Contenu principal de la page -->
     <div class="content">
-        <div>
-          <h2>Espace sécurisé</h2>
-          <p>
-            Vous êtes connecté. Vous pouvez maintenant accéder aux actions protégées.
-          </p>
-        </div>
-        <div>
-          <div>
-            <label for="scriptName">Nom du script</label>
-            <input
-              id="scriptName"
-              type="text"
-              placeholder="Ex: afficher.sh">
-          </div>
-          <div>
-            <button id="btnRun" type="button">
-              Exécuter
-            </button>
-            <button id="btnMe" type="button">
-              Mon profil
-            </button>
-          </div>
-          <p id="out"></p>
-        </div>
+        <div id="profileData"></div>  <!-- Élément où les données seront affichées -->
+      </div>
     `;
   }
 }
 
-customElements.define('main-db', Main);
+customElements.define('profil-db', Profil);
