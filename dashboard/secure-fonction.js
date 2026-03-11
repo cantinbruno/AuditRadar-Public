@@ -118,11 +118,12 @@ function bindMainActions() {
   };
 
   try {
-    // Construction correcte des paramètres pour la requête
+    // Construction correcte des deux arguments avec le même nom 'arg'
     const query = new URLSearchParams();
-    query.append("arg", target);
-    query.append("arg", JSON.stringify(consent));
+    query.append("arg", target);  // Premier argument : target
+    query.append("arg", JSON.stringify(consent));  // Deuxième argument : consent (au format JSON)
 
+    // Envoi de la requête avec les deux arguments dans l'URL
     const response = await request(`/run/scan?${query.toString()}`, {
       method: "GET",
       headers: {
