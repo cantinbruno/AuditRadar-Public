@@ -63,64 +63,67 @@ class Profil extends HTMLElement {
     }
   }
 
-  // Fonction pour mettre à jour l'email
-  async updateEmail() {
-    const newEmail = this.querySelector("#newEmail").value;
-    const currentEmail = this.querySelector("#profileData .plan").textContent;
+// Fonction pour mettre à jour l'email
+async function updateEmail() {
+  const newEmail = document.querySelector("#newEmail").value;
+  const currentEmail = document.querySelector("#profileData .plan").textContent;
 
-    if (newEmail && newEmail !== currentEmail) {
-      this.toggleLoading(true);  // Afficher un état de chargement
-      try {
-        console.log("Données envoyées :", { new_email: newEmail });
-        const response = await request("/auth/update-email", {
-          method: "POST",
-          body: JSON.stringify({ new_email: newEmail }),
-        });
+  if (newEmail && newEmail !== currentEmail) {
+    try {
+      const response = await fetch("/auth/update-email", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ new_email: newEmail }),  // Assurez-vous que c'est "new_email"
+      });
 
-        if (response.ok) {
-          alert("Adresse mail mise à jour avec succès!");
-          this.getProfile(); // Recharger les données après mise à jour
-        } else {
-          alert(`Erreur lors de la mise à jour : ${response.error || 'Inconnue'}`);
-        }
-      } catch (error) {
-        alert(`Erreur : ${error.message}`);
-      } finally {
-        this.toggleLoading(false);  // Masquer l'état de chargement
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Adresse mail mise à jour avec succès!");
+        getProfile(); // Recharger les données après mise à jour
+      } else {
+        alert(`Erreur lors de la mise à jour : ${result.detail || 'Inconnue'}`);
       }
-    } else {
-      alert("Veuillez entrer une nouvelle adresse mail.");
+    } catch (error) {
+      alert(`Erreur : ${error.message}`);
     }
+  } else {
+    alert("Veuillez entrer une nouvelle adresse mail.");
   }
+}
 
-  // Fonction pour mettre à jour le mot de passe
-  async updatePassword() {
-    const oldPassword = this.querySelector("#oldPassword").value;
-    const newPassword = this.querySelector("#newPassword").value;
+// Fonction pour mettre à jour le mot de passe
+async function updatePassword() {
+  const oldPassword = document.querySelector("#oldPassword").value;
+  const newPassword = document.querySelector("#newPassword").value;
 
-    if (oldPassword && newPassword) {
-      this.toggleLoading(true);  // Afficher un état de chargement
-      try {
-        const response = await request("/auth/update-password", {
-          method: "POST",
-          body: JSON.stringify({ oldPassword, newPassword }),
-        });
+  if (oldPassword && newPassword) {
+    try {
+      const response = await fetch("/auth/update-password", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ old_password: oldPassword, new_password: newPassword }),
+      });
 
-        if (response.ok) {
-          alert("Mot de passe mis à jour avec succès!");
-          this.getProfile(); // Recharger les données après mise à jour
-        } else {
-          alert(`Erreur lors de la mise à jour du mot de passe : ${response.error || 'Inconnue'}`);
-        }
-      } catch (error) {
-        alert(`Erreur : ${error.message}`);
-      } finally {
-        this.toggleLoading(false);  // Masquer l'état de chargement
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Mot de passe mis à jour avec succès!");
+        getProfile(); // Recharger les données après mise à jour
+      } else {
+        alert(`Erreur lors de la mise à jour du mot de passe : ${result.detail || 'Inconnue'}`);
       }
-    } else {
-      alert("Veuillez entrer l'ancien et le nouveau mot de passe.");
+    } catch (error) {
+      alert(`Erreur : ${error.message}`);
     }
+  } else {
+    alert("Veuillez entrer l'ancien et le nouveau mot de passe.");
   }
+}
 
   // Fonction pour désactiver le compte
   async deactivateAccount() {
