@@ -9,6 +9,11 @@ class Profil extends HTMLElement {
       </div>
     `;
     
+    // Ajouter les gestionnaires d'événements dès le début
+    this.querySelector("#updateEmailBtn").addEventListener("click", () => this.updateEmail());
+    this.querySelector("#updatePasswordBtn").addEventListener("click", () => this.updatePassword());
+    this.querySelector("#deactivateAccountBtn").addEventListener("click", () => this.deactivateAccount());
+
     // Appeler la fonction pour récupérer et afficher les données
     this.getProfile();
   }
@@ -37,69 +42,125 @@ class Profil extends HTMLElement {
       // Afficher les données dans le div 'profileData'
       this.querySelector("#profileData").innerHTML = profileHtml;
 
-      // Ajouter les gestionnaires d'événements
-      this.querySelector("#updateEmailBtn").addEventListener("click", () => this.updateEmail(data.email));
-      this.querySelector("#updatePasswordBtn").addEventListener("click", () => this.updatePassword());
-      this.querySelector("#deactivateAccountBtn").addEventListener("click", () => this.deactivateAccount());
-
     } catch (error) {
       // En cas d'erreur, afficher l'erreur dans le div
       this.querySelector("#profileData").innerHTML = `<p class="error">Erreur : ${error.message}</p>`;
     }
   }
 
-  async updateEmail(currentEmail) {
+  // Fonction pour mettre à jour l'email
+  async updateEmail() {
     const newEmail = this.querySelector("#newEmail").value;
+    const currentEmail = this.querySelector("#profileData .plan").textContent;
+
     if (newEmail && newEmail !== currentEmail) {
+      this.toggleLoading(true);  // Afficher un état de chargement
       try {
         const response = await request("/auth/update-email", {
           method: "POST",
-          body: JSON.stringify({ email: newEmail }),
+          body: JSON.stringify({ new_email: newEmail }),
         });
-        alert("Adresse mail mise à jour avec succès!");
-        this.getProfile(); // Recharger les données après mise à jour
+
+        if (response.ok) {
+          alert("Adresse mail mise à jour avec succès!");
+          this.getProfile(); // Recharger les données après mise à jour
+        } else {
+          alert(`Erreur lors de la mise à jour : ${response.error || 'Inconnue'}`);
+        }
       } catch (error) {
         alert(`Erreur : ${error.message}`);
+      } finally {
+        this.toggleLoading(false);  // Masquer l'état de chargement
       }
     } else {
       alert("Veuillez entrer une nouvelle adresse mail.");
     }
   }
 
+  // Fonction pour mettre à jour le mot de passe
   async updatePassword() {
     const oldPassword = this.querySelector("#oldPassword").value;
     const newPassword = this.querySelector("#newPassword").value;
+
     if (oldPassword && newPassword) {
+      this.toggleLoading(true);  // Afficher un état de chargement
       try {
         const response = await request("/auth/update-password", {
           method: "POST",
           body: JSON.stringify({ oldPassword, newPassword }),
         });
-        alert("Mot de passe mis à jour avec succès!");
-        this.getProfile(); // Recharger les données après mise à jour
+
+        if (response.ok) {
+          alert("Mot de passe mis à jour avec succès!");
+          this.getProfile(); // Recharger les données après mise à jour
+        } else {
+          alert(`Erreur lors de la mise à jour du mot de passe : ${response.error || 'Inconnue'}`);
+        }
       } catch (error) {
         alert(`Erreur : ${error.message}`);
+      } finally {
+        this.toggleLoading(false);  // Masquer l'état de chargement
       }
     } else {
       alert("Veuillez entrer l'ancien et le nouveau mot de passe.");
     }
   }
 
+  // Fonction pour désactiver le compte
   async deactivateAccount() {
     const confirmation = confirm("Êtes-vous sûr de vouloir désactiver votre compte ?");
     if (confirmation) {
+      this.toggleLoading(true);  // Afficher un état de chargement
       try {
         const response = await request("/auth/deactivate", {
           method: "POST",
         });
-        alert("Votre compte a été désactivé.");
-        this.getProfile(); // Recharger les données après la désactivation
+
+        if (response.ok) {
+          alert("Votre compte a été désactivé.");
+          this.getProfile(); // Recharger les données après la désactivation
+        } else {
+          alert(`Erreur lors de la désactivation du compte : ${response.error || 'Inconnue'}`);
+        }
       } catch (error) {
         alert(`Erreur : ${error.message}`);
+      } finally {
+        this.toggleLoading(false);  // Masquer l'état de chargement
       }
     }
+  }
+
+  // Fonction pour gérer l'état de chargement
+  toggleLoading(isLoading) {
+    const buttons = this.querySelectorAll("button");
+    buttons.forEach(button => {
+      if (isLoading) {
+        button.disabled = true;
+        button.innerText = "Chargement...";
+      } else {
+        button.disabled = false;
+        button.innerText = button.dataset.originalText || button.innerText;
+      }
+    });
   }
 }
 
 // Enregistrer le Web Component sous le nom 'profil-db'
 customElements.define('profil-db', Profil);
+
+// Fonction request utilisant fetch
+async function request(url, options = {}) {
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {}),
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Erreur HTTP : ${response.status}`);
+  }
+
+  return await response.json();
+}
