@@ -71,6 +71,7 @@ class Profil extends HTMLElement {
     if (newEmail && newEmail !== currentEmail) {
       this.toggleLoading(true);  // Afficher un état de chargement
       try {
+        console.log("Données envoyées :", { new_email: newEmail });
         const response = await request("/auth/update-email", {
           method: "POST",
           body: JSON.stringify({ new_email: newEmail }),
