@@ -9,11 +9,6 @@ class Profil extends HTMLElement {
       </div>
     `;
     
-    // Ajouter les gestionnaires d'événements dès le début
-    this.querySelector("#updateEmailBtn").addEventListener("click", () => this.updateEmail());
-    this.querySelector("#updatePasswordBtn").addEventListener("click", () => this.updatePassword());
-    this.querySelector("#deactivateAccountBtn").addEventListener("click", () => this.deactivateAccount());
-
     // Appeler la fonction pour récupérer et afficher les données
     this.getProfile();
   }
@@ -42,9 +37,29 @@ class Profil extends HTMLElement {
       // Afficher les données dans le div 'profileData'
       this.querySelector("#profileData").innerHTML = profileHtml;
 
+      // Ajouter les gestionnaires d'événements après que le DOM ait été mis à jour
+      this.addEventListeners();
+
     } catch (error) {
       // En cas d'erreur, afficher l'erreur dans le div
       this.querySelector("#profileData").innerHTML = `<p class="error">Erreur : ${error.message}</p>`;
+    }
+  }
+
+  // Ajout des événements après la mise à jour du DOM
+  addEventListeners() {
+    const updateEmailBtn = this.querySelector("#updateEmailBtn");
+    const updatePasswordBtn = this.querySelector("#updatePasswordBtn");
+    const deactivateAccountBtn = this.querySelector("#deactivateAccountBtn");
+
+    if (updateEmailBtn) {
+      updateEmailBtn.addEventListener("click", () => this.updateEmail());
+    }
+    if (updatePasswordBtn) {
+      updatePasswordBtn.addEventListener("click", () => this.updatePassword());
+    }
+    if (deactivateAccountBtn) {
+      deactivateAccountBtn.addEventListener("click", () => this.deactivateAccount());
     }
   }
 
